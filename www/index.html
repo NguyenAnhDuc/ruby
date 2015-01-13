@@ -9,271 +9,73 @@
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
     <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
     <link rel="stylesheet" href="styles/app.css"/>
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/chat.css"/>
+    <link rel="stylesheet" href="css/menu.css"/>
+    <link rel="stylesheet" href="css/list-items.css"/>
+
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/jquery/jquery-1.10.1.min.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
 
     <script src="cordova.js"></script>
-
-    <script>
-        var module = angular.module('app', ['onsen']);
-
-        function buildHtmlQuestion(question) {
-            var htmlResult = "";
-            //question
-            htmlResult = htmlResult
-                    .concat("<ons-list-item class=\"ons-list-item right clearfix list__item ons-list-item-inner left clearfix\"><span class=\"chat-img pull-left\">");
-            htmlResult = htmlResult
-                    .concat("<img src=\"img/u.gif\" alt=\"User Avatar\" class=\"img-circle\" /></span>");
-            htmlResult = htmlResult
-                    .concat("<div class=\"chat-body clearfix\" style=\"margin-left: 60px;\" >");
-            htmlResult = htmlResult.concat("<p>");
-            htmlResult = htmlResult.concat(question);
-            htmlResult = htmlResult.concat("</p></div></ons-list-item >");
-            return htmlResult;
-        }
-
-        function buildHtmlAnswer( text) {
-            var htmlResult = "";
-            //answer
-            htmlResult = htmlResult
-                    .concat("<ons-list-item  class=\"ons-list-item right clearfix list__item ons-list-item-inner right clearfix\"><span class=\"chat-img pull-right\">");
-            htmlResult = htmlResult
-                    .concat("<img src=\"img/me.gif\" alt=\"User Avatar\" class=\"img-circle\" /></span>");
-            htmlResult = htmlResult
-                    .concat("<div class=\" chat-body clearfix\">");
-            htmlResult = htmlResult.concat("<p id=\"chat-answer\">");
-            htmlResult = htmlResult.concat("<div class=\"spinner\" id=\"loading\">	<div class=\"bounce1\"></div> <div class=\"bounce2\"></div>	<div class=\"bounce3\"></div></div>");
-            htmlResult = htmlResult.concat("</p></div></ons-list-item >");
-            return htmlResult;
-        }
-
-        function onChat() {
-            $('#chat-answer').attr('id','old-chat-answer');
-            $('#loading').attr('id','old-loading')
-            var question = $('#btn-input').val();
-            $('#btn-input').val('');
-            $('#currentqs').val(question);
-            $('.panel-body').scrollTop(1E10);
-            var oldHeight = $('.panel-body').scrollTop();
-            var htmlResult = buildHtmlQuestion(question).concat(buildHtmlAnswer("ME"));
-            $('.chat').append(htmlResult);
-            $('.panel-body').scrollTop(oldHeight+400);
-            $('#loading').show();
-            $
-                    .ajax({
-                        type: "POST",
-                        url: "http://ruby.fti.pagekite.me/rubyweb/getAnswer",
-                        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-                        data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
-                        success: function (result) {
-                            $('.spinner').hide();
-                            $('#chat-answer').html(result.answer);
-                        },
-                        error: function (result) {
-                            alert("Error");
-                        }
-                    });
-        }
-
-    </script>
-
-    <style>
-        h2 {
-            font-family: cursive !important;
-        }
-
-        .ons-list-item {
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px dotted #B3A9A9;
-        }
-
-        .ons-list-item.left .chat-body {
-            margin-left: 60px;
-        }
-
-        .ons-list-item.right .chat-body {
-            margin-right: 60px;
-        }
-
-        .chat li .chat-body p {
-            margin: 0;
-            color: #777777;
-        }
-
-        .panel .slidedown .glyphicon, .chat .glyphicon {
-            margin-right: 5px;
-        }
-
-        .panel-body {
-            overflow-y: scroll;
-            height: 900px;
-        }
-
-        .text-input--transparent {
-            padding: 0;
-            margin: 0;
-            font: inherit;
-            color: inherit;
-            background: transparent;
-            border: none;
-            line-height: normal;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            -webkit-background-clip: padding-box;
-            background-clip: padding-box;
-            vertical-align: top;
-            outline: none;
-            line-height: 1;
-            font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-weight: 400;
-            font-size: 17px;
-            letter-spacing: 0;
-            border: 1px solid #ddd;
-            -webkit-border-radius: 4px;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            color: #1f1f21;
-            padding: 4px 8px 0 8px;
-            margin: 0;
-            font-size: 15px;
-            height: 31px;
-            font-weight: 400;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            border: none;
-            background-color: transparent;
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        .spinner {
-            margin: 20px auto 0 0;
-            width: 70px;
-            text-align: center;
-        }
-
-        .spinner > div {
-            width: 18px;
-            height: 18px;
-            background-color: #FA6F57;
-
-            border-radius: 100%;
-            display: inline-block;
-            -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-            animation: bouncedelay 1.4s infinite ease-in-out;
-            /* Prevent first frame from flickering when animation starts */
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-        }
-
-        .spinner .bounce1 {
-            -webkit-animation-delay: -0.32s;
-            animation-delay: -0.32s;
-        }
-
-        .spinner .bounce2 {
-            -webkit-animation-delay: -0.16s;
-            animation-delay: -0.16s;
-        }
-
-        @-webkit-keyframes bouncedelay {
-            0%, 80%, 100% { -webkit-transform: scale(0.0) }
-            40% { -webkit-transform: scale(1.0) }
-        }
-
-        @keyframes bouncedelay {
-            0%, 80%, 100% {
-                transform: scale(0.0);
-                -webkit-transform: scale(0.0);
-            } 40% {
-                  transform: scale(1.0);
-                  -webkit-transform: scale(1.0);
-              }
-        }
-    </style>
+    <script src="js/chat.js"></script>
+    <script src="js/app.js"></script>
 
 </head>
 
 <body>
-<ons-page>
-    <ons-toolbar>
-        <div class="center">Ruby Assistant</div>
-    </ons-toolbar>
-    <div class="panel-body">
-        <ons-list class="chat">
-            <ons-list-item class="ons-list-item left clearfix"><span class="chat-img pull-left">
-                                                <img src="http://placehold.it/50/55C1E7/fff&text=U"
-                                                     alt="User Avatar" class="img-circle"/>
-                                        </span>
+<div id="main">
 
-                <div class="chat-body clearfix">
-                    <p>Xin chào, bạn là ai?</p>
-                </div>
+<ons-sliding-menu
+        menu-page="menu.html" main-page="chat.html" side="left"
+        var="menu" type="reveal" max-slide-distance="260px" swipable="true">
+</ons-sliding-menu>
+
+<ons-template id="menu.html">
+    <ons-page modifier="menu-page">
+        <ons-toolbar modifier="transparent"></ons-toolbar>
+
+        <ons-list class="menu-list">
+            <ons-list-item class="menu-item" ng-click="menu.setMainPage('chat.html', {closeMenu: true})">
+                <ons-icon icon="fa-plus"></ons-icon>
+                Ruby Assistant
             </ons-list-item>
-            <ons-list-item class="ons-list-item right clearfix"><span
-                    class="chat-img pull-right"> <img
-                    src="http://placehold.it/50/FA6F57/fff&text=ME"
-                    alt="User Avatar" class="img-circle"/>
-                                        </span>
 
-                <div class="chat-body clearfix">
-                    <div class="header">
-                    </div>
-                    <p>Mọi người gọi tôi là ruby.</p>
-                </div>
+            <ons-list-item class="menu-item" ng-click="menu.setMainPage('channels.html', {closeMenu: true})">
+                <ons-icon icon="fa-bookmark"></ons-icon>
+                Chương trình TV
             </ons-list-item>
-            <ons-list-item class="ons-list-item left clearfix"><span class="chat-img pull-left">
-                                                <img src="img/u.gif"
-                                                     alt="User Avatar" class="img-circle"/>
-                                        </span>
 
-                <div class="chat-body clearfix">
-                    <div class="header">
-                    </div>
-                    <p>Bạn có thể giúp gì được cho tôi?</p>
-                </div>
-            </ons-list-item>
-            <ons-list-item class="ons-list-item right clearfix"><span
-                    class="chat-img pull-right"> <img
-                    src="img/me.gif"
-                    alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                <div class="chat-body clearfix">
-                    <div class="header">
-                    </div>
-                    <p>Tôi có thể tra cứu phim, lịch chiếu tại rạp, lịch chiếu các chương trình tivi.</p>
-                </div>
+            <ons-list-item class="menu-item" ng-click="menu.setMainPage('cinemas.html', {closeMenu: true})">
+                <ons-icon icon="fa-twitter"></ons-icon>
+                Lịch chiếu phim
             </ons-list-item>
         </ons-list>
-    </div>
+        <br>
 
-    <ons-bottom-toolbar>
-        <ons-row>
+        <!--<ons-list class="bottom-menu-list">
+            <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page2.html', {closeMenu: true})">
+                Settings
+                <div class="notification menu-notification">3</div>
+            </ons-list-item>
 
-            <ons-col width="99%">
-                <input  id="btn-input" type="search" class="search-input" style="margin: 6px auto auto 3px;" onkeyup="if (event.keyCode == 13) document.getElementById('btn-chat').click();" placeholder="Hỏi tôi" >
-            </ons-col>
-            <ons-col>
-                <ons-button modifier="quiet" style="float:right;margin: 2px 6px auto auto;" id="btn-chat" onclick="onChat()">Gửi</ons-button>
-            </ons-col>
+            <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('chat.html', {closeMenu: true})">
+                Help
+            </ons-list-item>
 
-        </ons-row>
+            <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page2.html', {closeMenu: true})">
+                Send feedback
+            </ons-list-item>
+        </ons-list>-->
+    </ons-page>
+</ons-template>
 
-    </ons-bottom-toolbar>
-</ons-page>
 
 
+
+
+<!------------------------------------------------------------------------->
+
+</div>
 </body>
 </html>

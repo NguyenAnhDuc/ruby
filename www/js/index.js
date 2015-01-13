@@ -46,4 +46,11 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+
 };
+
+var pushNotification;
+
+document.addEventListener("deviceready", function(){
+    pushNotification = window.plugins.pushNotification;
+});
