@@ -1,6 +1,6 @@
     <ons-navigator>
         <ons-page>
-            <ons-toolbar class="top-toolbar">
+            <ons-toolbar>
                 <div class="left">
                     <ons-toolbar-button ng-click="menu.toggle()">
                         <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
@@ -13,7 +13,7 @@
                 <ons-list-item modifier="chevron" class="list-item-container" ng-repeat="item in items" ng-click="showDetail($index)">
                     <ons-row>
                         <ons-col width="95px">
-                            <img src="{{item.imageUrl}}" alt="" class="thumbnail">
+                            <img src="{{item.image}}" alt="" class="thumbnail">
                         </ons-col>
                         <ons-col>
                             <div class="name">
@@ -22,9 +22,9 @@
                             <div class="location">
                                 <i class="fa fa-map-marker"></i> {{item.address}}
                             </div>
-                            <!--<div class="desc">-->
-                                <!--Tokyo Tower is a communications and observation tower located in Tokyo, Japan.-->
-                            <!--</div>-->
+                            <div class="desc">
+                                Tokyo Tower is a communications and observation tower located in Tokyo, Japan.
+                            </div>
                         </ons-col>
                         <ons-col width="40px"></ons-col>
                     </ons-row>
@@ -45,7 +45,7 @@
             <ons-list-item class="item">
                 <ons-row>
                     <ons-col width="60px">
-                        <img src="{{item.imageUrl}}" alt="" class="item-thum"/>
+                        <img src="{{item.image}}" alt="" class="item-thum"/>
                     </ons-col>
                     <ons-col>
                         <header>
@@ -57,19 +57,18 @@
                 </ons-row>
             </ons-list-item>
 
-            <!--<ons-list-item modifier="chevron" ng-click="doSomething()">
+            <ons-list-item modifier="chevron" ng-click="doSomething()">
                 <ons-icon icon="ion-chatboxes" fixed-width="true" style="color: #ccc"></ons-icon>
                 Add a note
-            </ons-list-item>-->
+            </ons-list-item>
         </ons-list>
 
         <ons-list style="margin-top: 10px">
-            <ons-list-item class="item" ng-repeat="schedule in item.schedules">
+            <ons-list-item class="item" ng-repeat="i in [1,2,3]">
                 <header>
-                    <span class="item-title">{{schedule.movie}}</span>
+                    <span class="item-title">Lorem ipsum dolor sit amet</span>
                 </header>
-                <p ng-if="schedule.times2D.length>0" class="item-desc">2D: {{schedule.times2D}}</p>
-                <p ng-if="schedule.times3D.length>0" class="item-desc">3D: {{schedule.times3D}}</p>
+                <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </ons-list-item>
         </ons-list>
 

@@ -19,15 +19,52 @@
 
         $scope.showDetail = function(index) {
             var selectedItem = $data.items[index];
+
+            var data = {};
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                async: false,
+                data: "cin=" + selectedItem.name,
+                url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
+                success: function(result){
+                    data.items = JSON.parse(result);
+                }
+            });
+
             $data.selectedItem = selectedItem;
             $scope.ons.navigator.pushPage('cinemadetail.html', {title : selectedItem.title});
         };
     });
 
+    module.controller('ChannelDetailController', function($scope, $data) {
+        $scope.item = $data.selectedItem;
+    });
+
+    module.controller('ChannelController', function($scope, $data) {
+        $scope.items = $data.items;
+
+        $scope.showDetail = function(index) {
+            var selectedItem = $data.items[index];
+            $data.selectedItem = selectedItem;
+            $scope.ons.navigator.pushPage('channeldetail.html', {title : selectedItem.title});
+        };
+    });
+
     module.factory('$data', function() {
+
         var data = {};
 
-        data.items = [
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            async: false,
+            url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
+            success: function(result){
+                data.items = JSON.parse(result);
+            }
+        });
+        /*data.items = [
             {
                 title: 'TT Chiếu Phim Quốc Gia',
                 mobile: '043 514 1791',
@@ -59,9 +96,9 @@
                 image : 'img/cinemas/cin_thumb_cgvroyal.jpg'
             }
 
-        ];
-
+        ];*/
         return data;
+
     });
 })();
 

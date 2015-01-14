@@ -19,8 +19,7 @@
 
     <script src="cordova.js"></script>
     <script src="js/chat.js"></script>
-    <!--<script src="js/list/list-channel.js"></script>-->
-    <script src="js/list/list-cinema.js"></script>
+    <script src="js/app.js"></script>
 
 </head>
 
@@ -54,7 +53,7 @@
         </ons-list>
         <br>
 
-        <ons-list class="bottom-menu-list">
+        <!--<ons-list class="bottom-menu-list">
             <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page2.html', {closeMenu: true})">
                 Settings
                 <div class="notification menu-notification">3</div>
@@ -67,282 +66,16 @@
             <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page2.html', {closeMenu: true})">
                 Send feedback
             </ons-list-item>
-        </ons-list>
-    </ons-page>
-</ons-template>
-
-<!--PAGE 1 :CHAT ------------------------------------------------------------------ -->
-
-<ons-template id="chat.html">
-    <ons-page>
-        <ons-toolbar>
-            <div class="left">
-                <ons-toolbar-button ng-click="menu.toggle()">
-                    <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <div class="center">Ruby Assistant</div>
-        </ons-toolbar>
-        <div class="panel-body">
-            <ons-list class="chat">
-                <ons-list-item class="ons-list-item left clearfix"><span class="chat-img pull-left">
-                                                <img src="http://placehold.it/50/55C1E7/fff&text=U"
-                                                     alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <p>Xin chào, bạn là ai?</p>
-                    </div>
-                </ons-list-item>
-                <ons-list-item class="ons-list-item right clearfix"><span
-                        class="chat-img pull-right"> <img
-                        src="http://placehold.it/50/FA6F57/fff&text=ME"
-                        alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                        </div>
-                        <p>Mọi người gọi tôi là ruby.</p>
-                    </div>
-                </ons-list-item>
-                <ons-list-item class="ons-list-item left clearfix"><span class="chat-img pull-left">
-                                                <img src="img/u.gif"
-                                                     alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                        </div>
-                        <p>Bạn có thể giúp gì được cho tôi?</p>
-                    </div>
-                </ons-list-item>
-                <ons-list-item class="ons-list-item right clearfix"><span
-                        class="chat-img pull-right"> <img
-                        src="img/me.gif"
-                        alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                        </div>
-                        <p>Tôi có thể tra cứu phim, lịch chiếu tại rạp, lịch chiếu các chương trình tivi.</p>
-                    </div>
-                </ons-list-item>
-            </ons-list>
-        </div>
-
-        <ons-bottom-toolbar>
-            <ons-row>
-
-                <ons-col width="99%">
-                    <input  id="btn-input" type="search" class="search-input" style="margin: 6px auto auto 3px;" onkeyup="if (event.keyCode == 13) document.getElementById('btn-chat').click();" placeholder="Hỏi tôi" >
-                </ons-col>
-                <ons-col>
-                    <ons-button modifier="quiet" style="float:right;margin: 2px 6px auto auto;" id="btn-chat" onclick="onChat()">Gửi</ons-button>
-                </ons-col>
-
-            </ons-row>
-
-        </ons-bottom-toolbar>
-    </ons-page>
-</ons-template>
-<!--PAGE 1 :CHAT ------------------------------------------------------------------ -->
-
-<ons-template id="chat.html">
-    <ons-page>
-        <ons-toolbar>
-            <div class="left">
-                <ons-toolbar-button ng-click="menu.toggle()">
-                    <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <div class="center">Ruby Assistant</div>
-        </ons-toolbar>
-        <div class="panel-body">
-            <ons-list class="chat">
-                <ons-list-item class="ons-list-item left clearfix"><span class="chat-img pull-left">
-                                                <img src="http://placehold.it/50/55C1E7/fff&text=U"
-                                                     alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <p>Xin chào, bạn là ai?</p>
-                    </div>
-                </ons-list-item>
-                <ons-list-item class="ons-list-item right clearfix"><span
-                        class="chat-img pull-right"> <img
-                        src="http://placehold.it/50/FA6F57/fff&text=ME"
-                        alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                        </div>
-                        <p>Mọi người gọi tôi là ruby.</p>
-                    </div>
-                </ons-list-item>
-                <ons-list-item class="ons-list-item left clearfix"><span class="chat-img pull-left">
-                                                <img src="img/u.gif"
-                                                     alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                        </div>
-                        <p>Bạn có thể giúp gì được cho tôi?</p>
-                    </div>
-                </ons-list-item>
-                <ons-list-item class="ons-list-item right clearfix"><span
-                        class="chat-img pull-right"> <img
-                        src="img/me.gif"
-                        alt="User Avatar" class="img-circle"/>
-                                        </span>
-
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                        </div>
-                        <p>Tôi có thể tra cứu phim, lịch chiếu tại rạp, lịch chiếu các chương trình tivi.</p>
-                    </div>
-                </ons-list-item>
-            </ons-list>
-        </div>
-
-        <ons-bottom-toolbar>
-            <ons-row>
-
-                <ons-col width="99%">
-                    <input  id="btn-input" type="search" class="search-input" style="margin: 6px auto auto 3px;" onkeyup="if (event.keyCode == 13) document.getElementById('btn-chat').click();" placeholder="Hỏi tôi" >
-                </ons-col>
-                <ons-col>
-                    <ons-button modifier="quiet" style="float:right;margin: 2px 6px auto auto;" id="btn-chat" onclick="onChat()">Gửi</ons-button>
-                </ons-col>
-
-            </ons-row>
-
-        </ons-bottom-toolbar>
+        </ons-list>-->
     </ons-page>
 </ons-template>
 
 
-<!--PAGE 2 -------------------------------------------------------------------- -->
 
-<ons-template id="channels.html">
-    <ons-page>
-        <ons-toolbar>
-            <div class="left">
-                <ons-toolbar-button ng-click="menu.toggle()">
-                    <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <div class="center">Kênh truyền hình</div>
-        </ons-toolbar>
-        <ons-list ng-controller="ChannelController">
-            <ons-list-item modifier="chevron" class="list-item-container" ng-repeat="item in items" ng-click="showDetail($index)">
-                <ons-row>
-                    <ons-col width="95px">
-                        <img src="{{item.image}}" class="thumbnail">
-                    </ons-col>
-                    <ons-col>
-                        <div class="name">
-                            {{item.title}}
-                        </div>
-                        <div class="location">
-                            <i class="fa fa-map-marker"></i> {{item.location}}
-                        </div>
-                        <div class="desc">
-                            Tokyo Tower is a communications and observation tower located in Tokyo, Japan.
-                        </div>
-                    </ons-col>
-                    <ons-col width="40px"></ons-col>
-                </ons-row>
-            </ons-list-item>
-        </ons-list>
-    </ons-page>
-</ons-template>
 
 
 <!------------------------------------------------------------------------->
-<ons-template id="cinemas.html">
-    <ons-navigator>
-        <ons-page>
-            <ons-toolbar>
-                <div class="left">
-                <ons-toolbar-button ng-click="menu.toggle()">
-                    <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
-                </ons-toolbar-button>
-                </div>
-                <div class="center">Lịch chiếu phim rạp</div>
-            </ons-toolbar>
 
-            <ons-list ng-controller="CinemaController">
-                <ons-list-item modifier="chevron" class="list-item-container" ng-repeat="item in items" ng-click="showDetail($index)">
-                    <ons-row>
-                        <ons-col width="95px">
-                            <img src="{{item.image}}" class="thumbnail">
-                        </ons-col>
-                        <ons-col>
-                            <div class="name">
-                                {{item.title}}
-                            </div>
-                            <div class="location">
-                                <i class="fa fa-map-marker"></i> {{item.location}}
-                            </div>
-                            <div class="desc">
-                                Tokyo Tower is a communications and observation tower located in Tokyo, Japan.
-                            </div>
-                        </ons-col>
-                        <ons-col width="40px"></ons-col>
-                    </ons-row>
-                </ons-list-item>
-            </ons-list>
-        </ons-page>
-    </ons-navigator>
-</ons-template>
-
-<ons-template id="cinemadetail.html">
-    <ons-page ng-controller="CinemaDetailController">
-
-        <ons-toolbar>
-            <div class="left"><ons-back-button>Back</ons-back-button></div>
-            <div class="center">{{item.title}}</div>
-        </ons-toolbar>
-
-        <ons-list modifier="inset" style="margin-top: 10px">
-            <ons-list-item class="item">
-                <ons-row>
-                    <ons-col width="60px">
-                        <img src="{{item.image}}" alt="" class="item-thum"/>
-                    </ons-col>
-                    <ons-col>
-                        <header>
-                            <span class="item-title">{{item.title}}</span>
-                            <span class="item-label">{{item.mobile}}</span>
-                        </header>
-                        <p class="item-desc">{{item.location}}</p>
-                    </ons-col>
-                </ons-row>
-            </ons-list-item>
-
-            <ons-list-item modifier="chevron" ng-click="doSomething()">
-                <ons-icon icon="ion-chatboxes" fixed-width="true" style="color: #ccc"></ons-icon>
-                Add a note
-            </ons-list-item>
-        </ons-list>
-
-        <ons-list style="margin-top: 10px">
-            <ons-list-item class="item" ng-repeat="i in [1,2,3]">
-                <header>
-                    <span class="item-title">Lorem ipsum dolor sit amet</span>
-                </header>
-                <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </ons-list-item>
-        </ons-list>
-
-        <br>
-
-    </ons-page>
-</ons-template>
 </div>
 </body>
 </html>
