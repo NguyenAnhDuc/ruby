@@ -20,19 +20,39 @@
         $scope.showDetail = function(index) {
             var selectedItem = $data.items[index];
 
-            var data = {};
+            var dataDetail = {};
             $.ajax({
-                type: "POST",
+                type: "GET",
                 dataType: "text",
                 async: false,
-                data: "cin=" + selectedItem.name,
-                url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
+                url: "http://ruby.fti.pagekite.me/rubyweb/schedule/" + selectedItem.id,
                 success: function(result){
-                    data.items = JSON.parse(result);
+                    dataDetail = JSON.parse(result);
                 }
             });
-
+            var listSchedules = [];
+            for (var i=0;i<dataDetail.detail.length;i++)
+            {
+                var schedule = {};
+                var times2D = [], times3D = [];
+                var times = dataDetail.detail[i].pop();
+                for (var j=0;j<times.length;j++){
+                    if (times[j].type === '2D')
+                        times2D.push(new Date(times[j].date).toLocaleTimeString().substring(0,5));
+                    else
+                        times3D.push(new Date(times[j].date).toLocaleTimeString().substring(0,5));
+                }
+                schedule.times2D = times2D.join(" ");
+                schedule.times3D = times3D.join(" ");
+                var info = dataDetail.detail[i].pop();
+                if (info.movie === info.alias)
+                    schedule.movie = info.movie;
+                else
+                    schedule.movie = info.movie + " (" + info.alias + ")";
+                listSchedules.push(schedule);
+            }
             $data.selectedItem = selectedItem;
+            $data.selectedItem.schedules = listSchedules;
             $scope.ons.navigator.pushPage('cinemadetail.html', {title : selectedItem.title});
         };
     });
@@ -56,7 +76,7 @@
         var data = {};
 
         $.ajax({
-            type: "POST",
+            type: "GET",
             dataType: "text",
             async: false,
             url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
