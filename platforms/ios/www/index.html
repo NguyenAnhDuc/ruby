@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="css/list-items.css"/>
 
     <script src="lib/onsen/js/angular/angular.js"></script>
-    <script src="lib/onsen/js/jquery/jquery-1.10.1.min.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
-    <script src="lib/onsen/js/hammer.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <script src="cordova.js"></script>
     <script src="js/chat.js"></script>
@@ -27,60 +26,30 @@
         }
     </style>
     <script>
-        var eventName =
-                'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
-                'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
-        $(document).on(eventName, '#hoge', function(event) {
-            if (event.type !== 'release') {
-                $(this).text(event.type);
-            }
-        });
+        function showFrqQuestion(){
+            alert('hello');
+        }
     </script>
+    <script>
+        $(document).on('swipeleft', '#detect-area', function() {
+            alert("swipe left is detected.");
+            /*myNavigator.pushPage('html/show-questions.html',{tittle:'showFrqQuestion'});*/
+        })
+    </script>
+
 
 </head>
 
 <body>
-<!--
-<div id="main">
-    <ons-sliding-menu
-            menu-page="menu.html" main-page="chat.html" side="left"
-            var="menu" type="reveal" max-slide-distance="260px" swipable="true">
-    </ons-sliding-menu>
+<ons-navigator var="myNavigator">
+    <ons-page>
 
-    <ons-template id="menu.html">
-        <ons-page modifier="menu-page">
-            <ons-list class="menu-list">
-                <ons-list-item class="menu-item" ng-click="menu.setMainPage('chat.html', {closeMenu: true})">
-                    <ons-icon icon="fa-plus"></ons-icon>
-                    Ruby Assistant
-                </ons-list-item>
-                <ons-list-item class="menu-item" ng-click="menu.setMainPage('cinemas.html', {closeMenu: true})">
-                    <ons-icon icon="fa-bookmark"></ons-icon>
-                    Lịch chiếu phim
-                </ons-list-item>
-            </ons-list>
-            <br>
-        </ons-page>
-    </ons-template>
-</div>
--->
-    <ons-page modifier="index-page">
-        <ons-page>
-            <ons-toolbar>
-                <div class="center">Gesture Detector</div>
-            </ons-toolbar>
+        <ons-toolbar>
+            <div class="center">Gesture Detector</div>
+        </ons-toolbar>
 
-            <ons-gesture-detector style="height: 300px; margin: 50px 50px;">
-                <div id="hoge" style="border: 1px solid #ccc; background-color: #f9f9f9; width: 100%; height: 300px; line-height: 300px; text-align: center; color: #999;">
-                    ...
-                </div>
-            </ons-gesture-detector>
-
-            <p style="margin: 0 50px; color: #ccc;">Supporting events: Drag, Hold, Release, Swipe, Tap, DoubleTap, Transform, Pinch, Rotate</p>
-        </ons-page>
-
-        <!--<ons-row>
-            <ons-col width="90%">
+        <ons-gesture-detector >
+            <div id="detect-area">
                 <ons-list>
                     <ons-list-item id="display">
                         <ons-row class="image-background">
@@ -95,18 +64,12 @@
                     </ons-list-item>
 
                 </ons-list>
-            </ons-col>
-            <ons-col>
-                <ons-gesture-detector>
-                    <div id="detect-area" style="width: 100px; height: 100px;">
-                        Swipe Here
-                    </div>
-                </ons-gesture-detector>
-            </ons-col>
-
-        </ons-row>-->
+            </div>
+        </ons-gesture-detector>
 
     </ons-page>
+</ons-navigator>
 
 </body>
+
 </html>
