@@ -24,6 +24,11 @@
         .top-toolbar{
             background-color: #bdc3c7;
         }
+        .formarea {
+            width: 90%;
+            margin: 50px auto 0px auto;
+        }
+
     </style>
     <script>
         /*$(document).on('tap', '#main', function() {
@@ -44,6 +49,11 @@
         $(document).on('touch', '#history', function() {
             console.log('history -> mainpage');
             ons.navigator.popPage();
+        })
+
+
+        $(document).on('touch', '#bottom', function() {
+            console.log('hahahahhaahha');
         })
     </script>
 
@@ -79,17 +89,38 @@
                             <p>answer</p>
                         </ons-row>
                     </ons-list-item>
-                    <ons-list-item id="input">
+                    <ons-list-item id="show-input">
                         <p>input</p>
                     </ons-list-item>
 
                 </ons-list>
+                <!--<ons-bottom-toolbar id="type-toolbar">-->
+                    <!--&lt;!&ndash;<input  id="btn-input" type="search" class="search-input"  placeholder="Hỏi tôi" >&ndash;&gt;-->
+                    <!--<textarea id="input" class="textarea textarea--transparent"  style="width: 100%; height: 100%;">-->
+                    <!--</textarea>-->
+                <!--</ons-bottom-toolbar>-->
+            </div>
+        </ons-gesture-detector>
+
+        <ons-gesture-detector >
+            <div id="bottom">
+                <ons-bottom-toolbar id="type-toolbar">
+                    <!--<input  id="btn-input" type="search" class="search-input"  placeholder="Hỏi tôi" >-->
+                    <textarea id="input" class="textarea textarea--transparent"  style="width: 100%; height: 100%;" onclick="inputTap()">
+                    </textarea>
+
+                </ons-bottom-toolbar>
             </div>
         </ons-gesture-detector>
 
     </ons-page>
 </ons-navigator>
-
+    <script>
+        function inputTap(){
+            $('#type-toolbar').height('45px');
+            alert('input tap');
+        }
+    </script>
 </body>
 
 </html>

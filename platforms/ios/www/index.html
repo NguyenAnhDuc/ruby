@@ -24,10 +24,36 @@
         .top-toolbar{
             background-color: #bdc3c7;
         }
+        .formarea {
+            width: 90%;
+            margin: 50px auto 0px auto;
+        }
+
     </style>
     <script>
-        $(document).on('swipeleft', '#main', function() {
-            console.log("Swipe left is detected.");
+        /*$(document).on('tap', '#main', function() {
+            console.log('->frq-questions');
+            ons.navigator.pushPage('html/frq-questions.html',{title:'frq questions'});
+        })*/
+
+        $(document).on('tap', '#main', function() {
+            console.log('->history');
+            ons.navigator.pushPage('html/history.html',{title:'history questions'});
+        })
+
+        $(document).on('touch', '#frq-questions', function() {
+            console.log('questions->main page');
+            ons.navigator.popPage();
+        })
+
+        $(document).on('touch', '#history', function() {
+            console.log('history -> mainpage');
+            ons.navigator.popPage();
+        })
+
+
+        $(document).on('touch', '#bottom', function() {
+            console.log('hahahahhaahha');
         })
     </script>
 
@@ -38,7 +64,14 @@
 <body>
 
 
-<ons-navigator var="myNavigator">
+<ons-navigator>
+    <!--<ons-page>
+        <ons-gesture-detector >
+            <div id="show-questions" style="width: 100px; height: 100px;">
+                Touch here
+            </div>
+        </ons-gesture-detector>
+    </ons-page>-->
     <ons-page>
 
         <ons-toolbar>
@@ -56,17 +89,38 @@
                             <p>answer</p>
                         </ons-row>
                     </ons-list-item>
-                    <ons-list-item id="input">
+                    <ons-list-item id="show-input">
                         <p>input</p>
                     </ons-list-item>
 
                 </ons-list>
+                <!--<ons-bottom-toolbar id="type-toolbar">-->
+                    <!--&lt;!&ndash;<input  id="btn-input" type="search" class="search-input"  placeholder="Hỏi tôi" >&ndash;&gt;-->
+                    <!--<textarea id="input" class="textarea textarea--transparent"  style="width: 100%; height: 100%;">-->
+                    <!--</textarea>-->
+                <!--</ons-bottom-toolbar>-->
+            </div>
+        </ons-gesture-detector>
+
+        <ons-gesture-detector >
+            <div id="bottom">
+                <ons-bottom-toolbar id="type-toolbar">
+                    <!--<input  id="btn-input" type="search" class="search-input"  placeholder="Hỏi tôi" >-->
+                    <textarea id="input" class="textarea textarea--transparent"  style="width: 100%; height: 100%;" onclick="inputTap()">
+                    </textarea>
+
+                </ons-bottom-toolbar>
             </div>
         </ons-gesture-detector>
 
     </ons-page>
 </ons-navigator>
-
+    <script>
+        function inputTap(){
+            $('#type-toolbar').height('45px');
+            alert('input tap');
+        }
+    </script>
 </body>
 
 </html>
