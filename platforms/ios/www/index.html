@@ -26,42 +26,19 @@
         }
     </style>
     <script>
-        function showFrqQuestion(){
-            alert('hello');
-        }
+        $(document).on('swipeleft', '#main', function() {
+            console.log("Swipe left is detected.");
+        })
     </script>
-    <script>
-        var eventName =
-                'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
-                'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
 
-        $(document).on(eventName, '#hoge', function(event) {
-            if (event.type !== 'release') {
-                $(this).text(event.type);
-            }
-        });
-    </script>
 
 
 </head>
 
 <body>
 
-<ons-page>
-    <ons-toolbar>
-        <div class="center">Gesture Detector</div>
-    </ons-toolbar>
 
-    <ons-gesture-detector style="height: 300px; margin: 50px 50px;">
-        <div id="hoge" style="border: 1px solid #ccc; background-color: #f9f9f9; width: 100%; height: 300px; line-height: 300px; text-align: center; color: #999;">
-            ...
-        </div>
-    </ons-gesture-detector>
-
-    <p style="margin: 0 50px; color: #ccc;">Supporting events: Drag, Hold, Release, Swipe, Tap, DoubleTap, Transform, Pinch, Rotate</p>
-</ons-page>
-
-<!--<ons-navigator var="myNavigator">
+<ons-navigator var="myNavigator">
     <ons-page>
 
         <ons-toolbar>
@@ -69,7 +46,7 @@
         </ons-toolbar>
 
         <ons-gesture-detector >
-            <div id="detect-area">
+            <div id="main">
                 <ons-list>
                     <ons-list-item id="display">
                         <ons-row class="image-background">
@@ -88,7 +65,7 @@
         </ons-gesture-detector>
 
     </ons-page>
-</ons-navigator>-->
+</ons-navigator>
 
 </body>
 
