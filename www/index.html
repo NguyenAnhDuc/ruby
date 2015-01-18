@@ -9,118 +9,95 @@
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
     <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
     <link rel="stylesheet" href="styles/app.css"/>
-    <link rel="stylesheet" href="css/chat.css"/>
-    <link rel="stylesheet" href="css/menu.css"/>
-    <link rel="stylesheet" href="css/list-items.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <script src="cordova.js"></script>
-    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/app.js"></script>
-    <style>
-        .top-toolbar{
-            background-color: #bdc3c7;
-        }
-        .formarea {
-            width: 90%;
-            margin: 50px auto 0px auto;
-        }
 
-    </style>
     <script>
-        /*$(document).on('tap', '#main', function() {
+        $(document).on('swipeleft', '#main', function () {
             console.log('->frq-questions');
-            ons.navigator.pushPage('html/frq-questions.html',{title:'frq questions'});
-        })*/
-
-        $(document).on('tap', '#main', function() {
-            console.log('->history');
-            ons.navigator.pushPage('html/history.html',{title:'history questions'});
+            ons.navigator.pushPage('html/frq-questions.html', {title: 'frq questions'});
         })
 
-        $(document).on('touch', '#frq-questions', function() {
+        $(document).on('swiperight', '#main', function () {
+            console.log('->history');
+            ons.navigator.pushPage('html/history.html', {title: 'history questions'});
+        })
+
+        $(document).on('touch', '#frq-questions', function () {
             console.log('questions->main page');
             ons.navigator.popPage();
         })
 
-        $(document).on('touch', '#history', function() {
+        $(document).on('touch', '#history', function () {
             console.log('history -> mainpage');
             ons.navigator.popPage();
         })
 
 
-        $(document).on('touch', '#bottom', function() {
+        $(document).on('touch', '#bottom', function () {
             console.log('hahahahhaahha');
         })
     </script>
 
+    <style>
 
-
+    </style>
 </head>
 
 <body>
 
 
 <ons-navigator>
-    <!--<ons-page>
-        <ons-gesture-detector >
-            <div id="show-questions" style="width: 100px; height: 100px;">
-                Touch here
-            </div>
-        </ons-gesture-detector>
-    </ons-page>-->
-    <ons-page>
+    <ons-page id="wrapper">
+        <div id="content" class="center">
+            <ons-gesture-detector>
+                <div id="main">
+                    <div  class="display">
+                        <div class="center">
+                            <img class="image"  src="img/assistant.png">
+                        </div>
 
-        <ons-toolbar>
-            <div class="center">Gesture Detector</div>
-        </ons-toolbar>
+                        <div class="show-answer">
+                            <div class="answer-box">
+                                <div class="content" id="answer"></div>
+                                <div class="spinner center" id="loading">
+                                    <div class="bounce1"></div> <div class="bounce2"></div>	<div class="bounce3"> </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <ons-gesture-detector >
-            <div id="main">
-                <ons-list>
-                    <ons-list-item id="display">
-                        <ons-row class="image-background">
-                            <p>image-backgoround</p>
-                        </ons-row>
-                        <ons-row class="answer">
-                            <p>answer</p>
-                        </ons-row>
-                    </ons-list-item>
-                    <ons-list-item id="show-input">
-                        <p>input</p>
-                    </ons-list-item>
 
-                </ons-list>
-                <!--<ons-bottom-toolbar id="type-toolbar">-->
-                    <!--&lt;!&ndash;<input  id="btn-input" type="search" class="search-input"  placeholder="Hỏi tôi" >&ndash;&gt;-->
-                    <!--<textarea id="input" class="textarea textarea--transparent"  style="width: 100%; height: 100%;">-->
-                    <!--</textarea>-->
-                <!--</ons-bottom-toolbar>-->
-            </div>
-        </ons-gesture-detector>
+                    </div>
+                </div>
+            </ons-gesture-detector>
+            <ons-gesture-detector>
+                <ons-bottom-toolbar id="footer">
+                    <div class="show-question center" style="margin-top: 20px">
+                        Chạm để sửa
+                    </div>
+                    <div class="login-form">
+                        <ons-button id="button-request" class="login-button">Tap me</ons-button>
+                    </div>
 
-        <ons-gesture-detector >
-            <div id="bottom">
-                <ons-bottom-toolbar id="type-toolbar">
-                    <!--<input  id="btn-input" type="search" class="search-input"  placeholder="Hỏi tôi" >-->
-                    <textarea id="input" class="textarea textarea--transparent"  style="width: 100%; height: 100%;" onclick="inputTap()">
-                    </textarea>
-
+                    <input type="text" id="input" class="text-input text-input--transparent" placeholder="Name"
+                           style="width: 100%">
                 </ons-bottom-toolbar>
-            </div>
-        </ons-gesture-detector>
+            </ons-gesture-detector>
 
+        </div>
     </ons-page>
 </ons-navigator>
-    <script>
-        function inputTap(){
-            $('#type-toolbar').height('45px');
-            alert('input tap');
-        }
-    </script>
+
+
+
 </body>
 
 </html>
