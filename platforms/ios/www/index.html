@@ -9,16 +9,15 @@
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
     <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
     <link rel="stylesheet" href="styles/app.css"/>
-    <link rel="stylesheet" href="css/chat.css"/>
-    <link rel="stylesheet" href="css/menu.css"/>
-    <link rel="stylesheet" href="css/list-items.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <script src="cordova.js"></script>
-    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/app.js"></script>
 
     <script>
@@ -46,42 +45,13 @@
         $(document).on('touch', '#bottom', function () {
             console.log('hahahahhaahha');
         })
+
+        $(document).on('touch', '#tap-request', function () {
+            console.log('hahahahhaahha');
+        })
     </script>
 
     <style>
-        .top-toolbar {
-            background-color: #bdc3c7;
-        }
-
-        .login-form {
-            text-align: center;
-            width: 80%;
-            margin: 60px auto 0;
-        }
-
-        input[type=email], input[type=password] {
-            display: block;
-            width: 100%;
-            margin: 0 auto;
-            outline: none;
-            padding-top: 24px;
-            padding-bottom: 24px;
-        }
-
-        .image-background {
-            margin: 60px 0 auto;
-        }
-
-        .text-input {
-            padding-bottom: 12px;
-        }
-
-        #content {
-            min-height: 100%;
-            /*height: 1000px;*/
-            background-color: greenyellow;
-        }
-
 
     </style>
 </head>
@@ -90,61 +60,51 @@
 
 
 <ons-navigator>
-    <!--<ons-page>-->
-    <!--<ons-gesture-detector >-->
-    <!--<div id="show-questions" style="width: 100px; height: 100px;">-->
-    <!--Touch here-->
-    <!--</div>-->
-    <!--</ons-gesture-detector>-->
-    <!--</ons-page>-->
     <ons-page id="wrapper">
-
-
-        <div id="content">
+        <div id="content" class="center">
             <ons-gesture-detector>
                 <div id="main">
-                    <div  class="display">
-                        <div class="image-background">
-                            <img src="img/assistant.png">
+                    <div class="display">
+                        <div class="center">
+                            <img class="image" src="img/assistant.png">
                         </div>
-                        <div class="answer">
-                            <p>answer</p>
+
+                        <div class="show-answer">
+                            <div class="answer-box">
+                                <div class="content" id="answer">
+                                    Xin chào, mình là Ruby. Mình có thể trả lời cho bạn các câu hỏi về phim ảnh và
+                                    chương trình TV.
+                                </div>
+                                <div class="spinner center" id="loading">
+                                    <div class="bounce1"></div>
+                                    <div class="bounce2"></div>
+                                    <div class="bounce3"></div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </ons-gesture-detector>
+            <ons-bottom-toolbar id="footer">
+                <div class="show-question center" style="margin-top: 20px">
+                    Xin chào.
+                </div>
+                <div class="login-form" style="height: 100%">
+                    <ons-button id="button-request" class="login-button" modifier="quiet"
+                                style="width: 100%;height: 100%">Chạm để sửa
+                    </ons-button>
+                </div>
 
-            <ons-gesture-detector>
-
-                <ons-bottom-toolbar id="footer">
-                    <div class="login-form">
-                        <ons-button id="button" class="login-button">Tap me</ons-button>
-                    </div>
-
-                    <input type="text" id="input" class="text-input text-input--transparent" placeholder="Name"
-                           style="width: 100%">
-                </ons-bottom-toolbar>
-            </ons-gesture-detector>
+                <input type="text" id="input" class="text-input text-input--transparent" placeholder="Name"
+                       style="width: 100%">
+            </ons-bottom-toolbar>
 
         </div>
-
     </ons-page>
 </ons-navigator>
-<script>
-    $(document).ready(function () {
-        //$('#input').focus();
-        $('#input').hide();
-        $('#input').click(function (e) {
-            $(this).focus();
-        });
-        $('#button').click(function (e) {
-            $('#input').show();
-            $('#button').hide();
-            $('#footer').height('5%');
-            $('#input').trigger('click');
-        });
-    })
-</script>
+
+
 </body>
 
 </html>
