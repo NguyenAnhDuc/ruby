@@ -1,6 +1,18 @@
 (function(){
     'use strict';
     var module = angular.module('app', ['onsen']);
+    var preData = {};
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
+            success: function (result) {
+                preData.items = JSON.parse(result);
+            }
+        });
+    });
+
 
     module.controller('AppController', function($scope, $data) {
         $scope.doSomething = function() {
@@ -72,51 +84,11 @@
     });
 
     module.factory('$data', function() {
-
         var data = {};
+        data.items = preData.items;
 
-        $.ajax({
-            type: "GET",
-            dataType: "text",
-            async: false,
-            url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
-            success: function(result){
-                data.items = JSON.parse(result);
-            }
-        });
-        /*data.items = [
-            {
-                title: 'TT Chiếu Phim Quốc Gia',
-                mobile: '043 514 1791',
-                location: '87 Láng Hạ',
-                image : 'http://d22acspji6czwh.cloudfront.net/cin_thumb_cgvvincom.jpg'
-            },
-            {
-                title: 'Lotte Cinema Landmark',
-                mobile: '04 3837 8035',
-                location: 'Kaengnam, Phạm Hùng',
-                image: 'img/cinemas/lotte_landmark.jpg'
-            },
-            {
-                title: 'Lotte Hà Đông',
-                mobile: '043 355 8011',
-                location: 'Mê Linh Plaza Hà Đông',
-                image : 'img/cinemas/cin_thumb_lottehadong.jpg'
-            },
-            {
-                title: 'Platinum Garden Mall ',
-                mobile: '043 7878 555',
-                location: 'Garden, Mễ Trì',
-                image : 'img/cinemas/cin_thumb_plantiumgarden.jpg'
-            },
-            {
-                title: 'Platinum Vincom Royal City',
-                mobile: '04 6267 4444',
-                location: 'Royal City Nguyễn Trãi',
-                image : 'img/cinemas/cin_thumb_cgvroyal.jpg'
-            }
 
-        ];*/
+
         return data;
 
     });
