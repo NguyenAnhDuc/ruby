@@ -61,7 +61,7 @@
 
 <ons-navigator>
     <ons-page id="wrapper">
-        <div id="content" class="center">
+        <div class="content-body center">
             <ons-gesture-detector>
                 <div id="main">
                     <div class="display">
@@ -75,7 +75,7 @@
                                     Xin chào, mình là Ruby. Mình có thể trả lời cho bạn các câu hỏi về phim ảnh và
                                     chương trình TV.
                                 </div>
-                                <div class="spinner center" id="loading">
+                                <div class="spinner loading center" >
                                     <div class="bounce1"></div>
                                     <div class="bounce2"></div>
                                     <div class="bounce3"></div>
@@ -88,15 +88,21 @@
             </ons-gesture-detector>
             <ons-bottom-toolbar id="footer">
                 <div class="show-question center" style="margin-top: 20px">
-                    Xin chào.
+                    <div id="question">Xin chào.</div>
+                    <div class="login-form recommend-question" >
+                        <ons-button id="recommend-question" class="login-button" modifier="large" >
+                            Chạm để sửa
+                        </ons-button>
+                    </div>
                 </div>
-                <div class="login-form" style="height: 100%">
+
+                <div class="button-request" style="height: 70%">
                     <ons-button id="button-request" class="login-button" modifier="quiet"
                                 style="width: 100%;height: 100%">Chạm để sửa
                     </ons-button>
                 </div>
-
-                <input type="text" id="input" class="text-input text-input--transparent" placeholder="Name"
+                <div class="spinner-bottom loading"></div>
+                <input type="text" id="input" class="text-input text-input--transparent" placeholder="Hỏi tôi"
                        style="width: 100%">
             </ons-bottom-toolbar>
 
