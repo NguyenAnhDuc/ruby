@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     //$('#input').focus();
     // init
     $('#input').hide();

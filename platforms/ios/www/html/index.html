@@ -31,10 +31,6 @@
             ons.navigator.pushPage('html/history.html', {title: 'history questions'});
         })
 
-        /*$(document).on('touch', '#main', function () {
-            console.log('->random-question');
-        })*/
-
         $(document).on('touch', '#frq-questions', function () {
             console.log('questions->main page');
             ons.navigator.popPage();
@@ -55,27 +51,6 @@
         })
     </script>
 
-    <script>
-        var app = angular.module('app', ['onsen']);
-
-        app.controller('MainCtrl', function($scope) {
-            $scope.data = {
-                name: '',
-                description: ''
-            };
-
-            ons.createDialog('dialog.html').then(function(dialog) {
-                $scope.dialog = dialog;
-            });
-
-            $scope.show = function() {
-                $scope.dialog.show();
-            };
-
-        });
-
-    </script>
-
     <style>
 
     </style>
@@ -85,9 +60,9 @@
 
 
 <ons-navigator>
-    <ons-page id="wrapper" ng-controller="MainCtrl">
-        <div class="content-body center">
-            <ons-gesture-detector ng-swipedown="show()">
+    <ons-page id="wrapper">
+        <div id="content" class="center">
+            <ons-gesture-detector>
                 <div id="main">
                     <div class="display">
                         <div class="center">
@@ -134,21 +109,6 @@
         </div>
     </ons-page>
 </ons-navigator>
-
-
-<script type="text/ons-template" id="dialog.html">
-    <ons-dialog style="height: 50%;width: 100%;top:25%;" animation="slide" cancelable>
-        <ons-page>
-            <ons-toolbar>
-                <div class="center">Name</div>
-            </ons-toolbar>
-            <br />
-            <div style="text-align: center">
-                <input id="name" class="text-input" ng-model="data.name">
-            </div>
-        </ons-page>
-    </ons-dialog>
-</script>
 
 
 </body>

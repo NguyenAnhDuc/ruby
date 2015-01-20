@@ -31,6 +31,10 @@
             ons.navigator.pushPage('html/history.html', {title: 'history questions'});
         })
 
+        /*$(document).on('touch', '#main', function () {
+            console.log('->random-question');
+        })*/
+
         $(document).on('touch', '#frq-questions', function () {
             console.log('questions->main page');
             ons.navigator.popPage();
@@ -51,7 +55,18 @@
         })
     </script>
 
+    <script>
+
+
+
+    </script>
+
     <style>
+        .page__content{
+            background-color: #3498db !important;
+        }
+
+
 
     </style>
 </head>
@@ -60,9 +75,9 @@
 
 
 <ons-navigator>
-    <ons-page id="wrapper">
-        <div class="content-body center">
-            <ons-gesture-detector>
+    <ons-page id="wrapper" ng-controller="MainCtrl">
+        <div class="content-body center background">
+            <ons-gesture-detector ng-touch="show()">
                 <div id="main">
                     <div class="display">
                         <div class="center">
@@ -109,6 +124,36 @@
         </div>
     </ons-page>
 </ons-navigator>
+
+
+<script type="text/ons-template" id="dialog.html">
+    <ons-dialog style="height: 40%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable >
+        <ons-page >
+
+
+            <div class="page-inner">
+                 <div class="login-form random-question"  >
+                            <ons-button id="random-question-1" class="random-question-button" modifier="large" style="background-color: orange">
+                                Chạm để sửa
+                            </ons-button>
+                            <ons-button id="random-question-2" class="random-question-button" modifier="large" style="background-color: plum">
+                                Chạm để sửa
+                            </ons-button>
+                            <ons-button id="random-question-3" class="random-question-button" modifier="large" style="background-color: green">
+                                Chạm để sửa
+                            </ons-button>
+                 </div>
+                <div class="spinner loading center" id="random-loading" style="margin-top: 20px" >
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+
+            </div>
+        </ons-page>
+    </ons-dialog>
+</script>
+
 
 
 </body>
