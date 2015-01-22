@@ -98,8 +98,18 @@ input[type=email], input[type=password] {
     background-color: #3498db;
 }
 
+.content{
+    font-family: "Arial";
+    color: #ffffff;
+}
 
+#question{
+    color: darkslateblue;
+}
 
+#recommend-question{
+    background: plum;
+}
 /*center vertical*/
 .show-answer {display: table; height: 10%; position:absolute; overflow: hidden;width:100%;}
 .answer-box {#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;}
