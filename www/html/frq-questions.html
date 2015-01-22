@@ -11,30 +11,34 @@
             opacity: 0.7;
         }
 
-        .item-list {
+        .item-list-frq {
             background-color: #3498db;
+            border-bottom-color: lightsteelblue !important;
+            color: ghostwhite;
         }
+
+        .list-frq{
+
+        }
+
+
 
 
     </style>
 </head>
 <body>
-<ons-page >
-    <ons-gesture-detector >
+<ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">
+    <ons-page>
+            <div id="frq-questions" class="content-body" ng-controller="FrqQuestionController">
+                <ons-list class="list-frq">
+                    <ons-list-item modifier="chevron" class="item-list-frq" ng-repeat="item in items" ng-click="btnQuestionClick()">
+                         {{item.name}}
+                    </ons-list-item>
 
 
-        <div id="frq-questions" class="content-body" ng-controller="FrqQuestionController">
-            <ons-list >
-                <ons-list-item modifier="chevron" class="item-list" ng-repeat="item in items">
-                    <div class="prop-desc">
-                        {{item.name}}
-                    </div>
-                </ons-list-item>
-
-
-            </ons-list>
-        </div>
-    </ons-gesture-detector>
-</ons-page>
+                </ons-list>
+            </div>
+    </ons-page>
+</ons-carousel>
 </body>
 </html>
