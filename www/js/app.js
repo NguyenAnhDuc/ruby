@@ -2,17 +2,17 @@
     'use strict';
     var module = angular.module('app', ['onsen']);
     var preFrqQuestions = {};
-
+    var count_request = 0;
     // get Rankdom INT
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function buildHistory(question, answer){
+    function buildHistory(question, answer, count){
         var result = "";
-        result = result.concat("<ons-carousel-item data-animit-orig-style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: 100%;\" style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: 100%; transform: translate3d(0px, 0px, 0px); transition: all 0.3s cubic-bezier(0.1, 0.7, 0.1, 1) 0s;\">");
-        result = result.concat("<div class=\"your-question\" id=\"your-question\" style=\"margin-bottom: 20px\">" + question);
-        result = result.concat("</div>");
+        var style = " style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left:" +  count*100 + "%; transform: translate3d(0px, 0px, 0px); transition: all 0.4s cubic-bezier(0.1, 0.4, 0.1, 1) 0s;\"";
+        var data_style = " data-animit-orig-style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: " + count*100 + "%;\">";
+        result = result.concat("<ons-carousel-item" +style + data_style);
         result = result.concat("<div class=\"content\" id=\"answer\">" + answer);
         result = result.concat("</div>");
         result = result.concat(" </ons-carousel-item>");
@@ -21,7 +21,10 @@
 
     // ajax request to server
     function request(question){
-        $('#answer').html('');
+        count_request++;
+        $('#answer').attr('id','old-answer');
+        var htmlHistory = $('#history-carousel').html();
+        $('#old-answer').html('');
         $('.show-answer').height('10%');
         // loading
 
@@ -47,6 +50,11 @@
                 contentType: "application/x-www-form-urlencoded;charset=UTF-8",
                 data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
                 success: function (result) {
+                    // build history
+
+                    htmlHistory = htmlHistory.concat(buildHistory(question,result.answer,count_request));
+                    $('#history-carousel').html(htmlHistory);
+
                     $('.loading').hide();
                     $('#answer').html(result.answer);
                     if ($('#answer').height() > 200){
@@ -54,10 +62,7 @@
                         $('.show-answer').height('100%');
                     }
 
-                    // build history
-                    var html = $('#history-carousel').html();
-                    html = html.concat(buildHistory(question,result.answer));
-                    $('#history-carousel').html(html);
+
 
                     if (result.question != null){
                         $('#question').hide();
