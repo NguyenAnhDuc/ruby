@@ -14,9 +14,10 @@
 
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="lib/onsen/js/jquery-2.1.1.min.js"></script>
 
     <script src="cordova.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
 
     <script>
@@ -74,8 +75,8 @@
 <body>
 
 
-<ons-navigator>
-    <ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">
+<ons-navigator var="ruby.navigator">
+    <ons-carousel swipeable overscrollable auto-scroll fullscreen >
             <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
                 <ons-toolbar modifier="transparent" style="background-color: #3498db">
                     <div class="right">
@@ -95,24 +96,12 @@
 
                                 <div class="show-answer">
                                     <div class="answer-box">
-                                        <ons-carousel swipeable overscrollable auto-scroll fullscreen id="history-carousel">
+                                        <ons-carousel swipeable overscrollable auto-scroll fullscreen id="history-carousel" var="ruby.carousel">
                                             <ons-carousel-item>
-                                                <div class="your-question" id="your-question" style="margin-bottom: 20px">
-                                                    chao
-                                                </div>
                                                 <div class="content" id="answer">
-                                                    Xin chào, mình là Ruby.
+                                                   Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời các câu hỏi về phim ảnh và các chương trình TV.
                                                 </div>
                                             </ons-carousel-item>
-                                            <ons-carousel-item>
-                                                <div class="your-question" id="your-question" style="margin-bottom: 20px">
-                                                    chao
-                                                </div>
-                                                <div class="content" id="answer">
-                                                    Xin chào, mình là Ruby.
-                                                </div>
-                                            </ons-carousel-item>
-
                                         </ons-carousel>
 
                                             <div class="spinner loading center" >
@@ -140,7 +129,7 @@
 
                         <div class="button-request" style="height: 70%">
                             <ons-button id="button-request" class="login-button" modifier="quiet"
-                                        style="width: 100%;height: 100%">Chạm để sửa
+                                        style="width: 100%;height: 100%">Chạm để hỏi
                             </ons-button>
                         </div>
                         <div class="spinner-bottom loading"></div>

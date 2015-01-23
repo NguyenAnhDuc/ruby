@@ -32,7 +32,8 @@
             <div id="frq-questions" class="content-body" ng-controller="FrqQuestionController">
                 <ons-list class="list-frq">
                     <ons-list-item modifier="chevron" class="item-list-frq" ng-repeat="item in items" ng-click="btnQuestionClick()">
-                         {{item.name}}
+                        <ons-icon style="margin-right: 20px" icon={{item.icon}}></ons-icon>
+                        {{item.question}}
                     </ons-list-item>
 
 

@@ -1,93 +1,27 @@
 (function(){
     'use strict';
     var module = angular.module('app', ['onsen']);
+    var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
-
+    var count_request = 0;
     // get Rankdom INT
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+    function request(quesiton){
+        count_request++;
+        if (count_request > 11) count_request --;
+        ajax_request(quesiton,count_request);
     }
 
-    function buildHistory(question, answer){
-        var result = "";
-        result = result.concat("<ons-carousel-item data-animit-orig-style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: 100%;\" style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: 100%; transform: translate3d(0px, 0px, 0px); transition: all 0.3s cubic-bezier(0.1, 0.7, 0.1, 1) 0s;\">");
-        result = result.concat("<div class=\"your-question\" id=\"your-question\" style=\"margin-bottom: 20px\">" + question);
-        result = result.concat("</div>");
-        result = result.concat("<div class=\"content\" id=\"answer\">" + answer);
-        result = result.concat("</div>");
-        result = result.concat(" </ons-carousel-item>");
-        return result;
-    }
-
-    // ajax request to server
-    function request(question){
-        $('#answer').html('');
-        $('.show-answer').height('10%');
-        // loading
-
-        $('.image').show();
-        $('.loading').show();
-        // hide keyboard
-        $('#input').blur();
-
-
-        // footer
-        $('#input').hide();
-        $('#question').html(question);
-        $('.recommend-question').hide();
-        $('#footer').height('20%');
-        $('.button-request').hide();
-        $('.show-question').show();
-        $('#question').show();
-        // send request
-        $
-            .ajax({
-                type: "POST",
-                url: "http://ruby.fti.pagekite.me/rubyweb/getAnswer",
-                contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-                data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
-                success: function (result) {
-                    $('.loading').hide();
-                    $('#answer').html(result.answer);
-                    if ($('#answer').height() > 200){
-                        $('.image').hide();
-                        $('.show-answer').height('100%');
-                    }
-
-                    // build history
-                    var html = $('#history-carousel').html();
-                    html = html.concat(buildHistory(question,result.answer));
-                    $('#history-carousel').html(html);
-
-                    if (result.question != null){
-                        $('#question').hide();
-                        $('.recommend-question').show();
-                        $('#recommend-question').html(result.question);
-                        var random = getRandomInt(1,4);
-                        if (random === 1) $('#recommend-question').css('background-color','lightseagreen');
-                        if (random === 2) $('#recommend-question').css('background-color','lightcoral');
-                        if (random === 3) $('#recommend-question').css('background-color','plum');
-                        $('#your-question').html(question);
-                    }
-
-                    $('#answer').show();
-                    $('.button-request').show();
-                    $('#button-request').show();
-                    $('#button-request').html('Chạm để sửa');
-
-                },
-                error: function (result) {
-                    alert("Error");
-                }
-            });
-    }
     $(document).ready(function () {
+        // check internet connection
+        if (navigator.onLine === false){
+           $('#answer').html(networkErrorString);
+        }
 
         // call ajax to get list frequently question
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
+            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
             success: function (result) {
                 preFrqQuestions.items = JSON.parse(result);
             }
@@ -178,7 +112,7 @@
 
         $scope.btnQuestionClick = function(){
             ons.navigator.popPage();
-            request(this.item.name);
+            request(this.item.question);
         }
     });
 
@@ -193,11 +127,11 @@
         }
 
         $scope.showHistoryPage = function(){
-            ons.navigator.pushPage('html/history.html', {title: 'history questions'});
+            ruby.navigator.pushPage('html/history.html', {title: 'history questions'});
         }
 
         $scope.showFrqPage = function(){
-            ons.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
+            ruby.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
         }
     });
 
