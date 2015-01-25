@@ -1,99 +1,28 @@
 (function(){
     'use strict';
     var module = angular.module('app', ['onsen']);
+    var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
     var count_request = 0;
+
+    // check internet connection
+    var connectionStatus = false;
+
+
+
     // get Rankdom INT
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function buildHistory(question, answer, count){
-        var result = "";
-        var style = " style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left:" +  count*100 + "%; transform: translate3d(0px, 0px, 0px); transition: all 0.4s cubic-bezier(0.1, 0.4, 0.1, 1) 0s;\"";
-        var data_style = " data-animit-orig-style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: " + count*100 + "%;\">";
-        result = result.concat("<ons-carousel-item" +style + data_style);
-        result = result.concat("<div class=\"content\" id=\"answer\">" + answer);
-        result = result.concat("</div>");
-        result = result.concat(" </ons-carousel-item>");
-        return result;
-    }
-
-    // ajax request to server
-    function request(question){
+    function request(quesiton){
         count_request++;
-        $('#answer').attr('id','old-answer');
-        var htmlHistory = $('#history-carousel').html();
-        $('#old-answer').html('');
-        $('.show-answer').height('10%');
-        // loading
-
-        $('.image').show();
-        $('.loading').show();
-        // hide keyboard
-        $('#input').blur();
-
-
-        // footer
-        $('#input').hide();
-        $('#question').html(question);
-        $('.recommend-question').hide();
-        $('#footer').height('20%');
-        $('.button-request').hide();
-        $('.show-question').show();
-        $('#question').show();
-        // send request
-        $
-            .ajax({
-                type: "POST",
-                url: "http://ruby.fti.pagekite.me/rubyweb/getAnswer",
-                contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-                data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
-                success: function (result) {
-                    // build history
-
-                    htmlHistory = htmlHistory.concat(buildHistory(question,result.answer,count_request));
-                    $('#history-carousel').html(htmlHistory);
-                    ruby.carousel.last();
-
-                    $('.loading').hide();
-                    $('#answer').html(result.answer);
-                    if ($('#answer').height() > 200){
-                        $('.image').hide();
-                        $('.show-answer').height('100%');
-                    }
-
-
-
-                    if (result.question != null){
-                        $('#question').hide();
-                        $('.recommend-question').show();
-                        $('#recommend-question').html(result.question);
-                        var random = getRandomInt(1,4);
-                        if (random === 1) $('#recommend-question').css('background-color','lightseagreen');
-                        if (random === 2) $('#recommend-question').css('background-color','lightcoral');
-                        if (random === 3) $('#recommend-question').css('background-color','plum');
-                        $('#your-question').html(question);
-                    }
-
-                    $('#answer').show();
-                    $('.button-request').show();
-                    $('#button-request').show();
-                    $('#button-request').html('Chạm để sửa');
-
-                },
-                error: function (result) {
-                    alert("Error");
-                }
-            });
+        if (count_request > 10) count_request --;
+        ajax_request(quesiton,count_request);
     }
-    $(document).ready(function () {
 
+    $(document).ready(function () {
         // call ajax to get list frequently question
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/frequent",
+            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
             success: function (result) {
                 preFrqQuestions.items = JSON.parse(result);
             }
@@ -101,7 +30,7 @@
 
         $('#input').hide();
         $('.loading').hide();
-        $('.recommend-question').hide();
+        //$('.recommend-question').hide();
 
 
         $('#input').click(function (e) {
@@ -184,7 +113,7 @@
 
         $scope.btnQuestionClick = function(){
             ons.navigator.popPage();
-            request(this.item.suggest);
+            request(this.item.question);
         }
     });
 
@@ -193,17 +122,32 @@
         ons.createDialog('dialog.html').then(function(dialog) {
             $scope.dialog = dialog;
         });
+
+        /*ons.createDialog('seemore.html').then(function(dialog) {
+            $scope.dialog_seemore = dialog;
+        });*/
         $scope.show = function() {
             $('.dialog-mask').show();
             $scope.dialog.show();
         }
+        $scope.seemore = function (answer) {
+            $(".content-body").hide();
+            $('#footer').hide();
+            $('#modal').html(answer);
+            $scope.ruby.modal.show();
+        }
+        $scope.hideSeemore = function () {
+            $scope.ruby.modal.hide();
+            $(".content-body").show();
+            $('#footer').show();
+        }
 
         $scope.showHistoryPage = function(){
-            ons.navigator.pushPage('html/history.html', {title: 'history questions'});
+            ruby.navigator.pushPage('html/history.html', {title: 'history questions'});
         }
 
         $scope.showFrqPage = function(){
-            ons.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
+            ruby.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
         }
     });
 

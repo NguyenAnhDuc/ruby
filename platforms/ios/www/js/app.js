@@ -4,18 +4,28 @@
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
     var count_request = 0;
+
+    // check internet connection
+    var connectionStatus = false;
+
+
+
     // get Rankdom INT
     function request(quesiton){
         count_request++;
-        if (count_request > 11) count_request --;
+        if (count_request > 10) count_request --;
         ajax_request(quesiton,count_request);
     }
 
     $(document).ready(function () {
-        // check internet connection
-        if (navigator.onLine === false){
-           $('#answer').html(networkErrorString);
-        }
+        $(document).on('pagebeforeshow', '#wrapper', function () {
+            setInterval(function () {
+                connectionStatus = navigator.onLine ? 'online' : 'offline';
+            }, 100);
+            $(document).on('click', '#check-connection', function () {
+                alert(connectionStatus);
+            });
+        });
 
         // call ajax to get list frequently question
         $.ajax({
@@ -67,22 +77,22 @@
 
 
         // DIALOG for random question
-            $('.random-question').hide();
-            $('#random-loading').show();
-            $.ajax({
-                type: "GET",
-                dataType: "text",
-                url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
-                success: function (result) {
-                    $('.random-question').show();
-                    $('#random-loading').hide();
-                    var items = JSON.parse(result);
-                    $('#random-question-1').html(items[1].name);
-                    $('#random-question-2').html(items[2].name);
-                    $('#random-question-3').html(items[3].name);
+        $('.random-question').hide();
+        $('#random-loading').show();
+        $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
+            success: function (result) {
+                $('.random-question').show();
+                $('#random-loading').hide();
+                var items = JSON.parse(result);
+                $('#random-question-1').html(items[1].name);
+                $('#random-question-2').html(items[2].name);
+                $('#random-question-3').html(items[3].name);
 
-                }
-            });
+            }
+        });
         $('#random-question-1').click(function (e) {
             var question = $('#random-question-1').text();
             $('.dialog').hide();
@@ -144,4 +154,3 @@
 
 
 })();
-

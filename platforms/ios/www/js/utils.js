@@ -64,7 +64,7 @@ function ajax_request(question,count){
                 // build history
                 var htmlHistory = $('#history-carousel').html();
                 htmlHistory = htmlHistory.concat(buildHistory(question,result.answer,count));
-                if (count > 10) htmlHistory = removeFirstCoursel(htmlHistory);
+                if (count > 9) htmlHistory = removeFirstCoursel(htmlHistory);
                 $('#history-carousel').html(htmlHistory);
                 ruby.carousel.last();
                 $('.content').show();
@@ -74,8 +74,6 @@ function ajax_request(question,count){
 //                    if ($('#answer').height() > 200){
                 $('.image').hide();
                 $('.show-answer').height('100%');
-
-
 
                 if (result.related != null){
                     $('#question').hide();

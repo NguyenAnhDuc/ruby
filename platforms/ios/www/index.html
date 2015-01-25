@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capablcontent="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <title>My App</title>
 
@@ -14,11 +14,12 @@
 
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
-    <script src="lib/onsen/js/jquery-2.1.1.min.js"></script>
-
-    <script src="cordova.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
+
 
     <script>
         /*$(document).on('swipeleft', '#main', function () {
@@ -63,7 +64,7 @@
 
     <style>
         .page__content{
-            background-color: #3498db !important;
+            background-color: #2B2B2B !important;
         }
 
 
@@ -86,6 +87,7 @@
                         <ons-toolbar-button ng-click="showHistoryPage()"><ons-icon icon="ion-arrow-left-c" style="color: white; font-size: 28px;" fixed-width="false"></ons-icon></ons-toolbar-button>
                     </div>
                 </ons-toolbar>
+                <div data-role="content"> <a data-role="button" id="check-connection">Check internet connection</a>
                 <div class="content-body center background">
                     <ons-gesture-detector ng-swipedown="show()">
                         <div id="main">
