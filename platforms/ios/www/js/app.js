@@ -18,15 +18,6 @@
     }
 
     $(document).ready(function () {
-        $(document).on('pagebeforeshow', '#wrapper', function () {
-            setInterval(function () {
-                connectionStatus = navigator.onLine ? 'online' : 'offline';
-            }, 100);
-            $(document).on('click', '#check-connection', function () {
-                alert(connectionStatus);
-            });
-        });
-
         // call ajax to get list frequently question
         $.ajax({
             type: "GET",
@@ -39,7 +30,7 @@
 
         $('#input').hide();
         $('.loading').hide();
-        $('.recommend-question').hide();
+        //$('.recommend-question').hide();
 
 
         $('#input').click(function (e) {
@@ -131,9 +122,24 @@
         ons.createDialog('dialog.html').then(function(dialog) {
             $scope.dialog = dialog;
         });
+
+        /*ons.createDialog('seemore.html').then(function(dialog) {
+            $scope.dialog_seemore = dialog;
+        });*/
         $scope.show = function() {
             $('.dialog-mask').show();
             $scope.dialog.show();
+        }
+        $scope.seemore = function (answer) {
+            $(".content-body").hide();
+            $('#footer').hide();
+            $('#modal').html(answer);
+            $scope.ruby.modal.show();
+        }
+        $scope.hideSeemore = function () {
+            $scope.ruby.modal.hide();
+            $(".content-body").show();
+            $('#footer').show();
         }
 
         $scope.showHistoryPage = function(){
