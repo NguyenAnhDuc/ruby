@@ -12,28 +12,48 @@
         }
 
         .item-list-frq {
-            background-color: #2B2B2B;
+            background-color: #404040;
             border-bottom-color: lightsteelblue !important;
-            color: ghostwhite;
         }
 
-        .list-frq{
-
+        .white-color{
+            color: ghostwhite !important;
         }
 
+        .fa-lg {
+            font-size: 1em;
+        }
 
+        .frq-question{
+            line-height: 20px;
+        }
 
+        .frq-question-icon{
+            line-height: 44px;
+        }
 
     </style>
 </head>
 <body>
 <ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">
     <ons-page>
+        <ons-toolbar style="background-color: #404040;">
+            <div class="left"><ons-back-button class="white-color">
+            </ons-back-button></div>
+            <div class="center white-color" >Câu hỏi thường gặp</div>
+        </ons-toolbar>
             <div id="frq-questions" class="content-body" ng-controller="FrqQuestionController">
                 <ons-list class="list-frq">
-                    <ons-list-item modifier="chevron" class="item-list-frq" ng-repeat="item in items" ng-click="btnQuestionClick()">
-                        <ons-icon style="margin-right: 20px" icon={{item.icon}}></ons-icon>
-                        {{item.question}}
+                    <ons-list-item modifier="tappable" class="item-list-frq white-color" ng-repeat="item in items" ng-click="btnQuestionClick()">
+
+                        <ons-row >
+                            <ons-col width="50px" class="frq-question-icon" >
+                                <ons-icon  icon={{item.icon}}></ons-icon>
+                            </ons-col>
+                            <ons-col class="frq-question">
+                                    <div  >{{item.question}}</div>
+                            </ons-col>
+                        </ons-row>
                     </ons-list-item>
 
 

@@ -44,7 +44,7 @@
 
     <style>
         .page__content {
-            background-color: #2B2B2B !important;
+            background-color: #404040 !important;
         }
 
 
@@ -64,7 +64,7 @@
                     </ons-toolbar-button>
                 </div>
             </ons-toolbar>
-            <div class="content-body center background" id="main-content">
+            <div class="content-body background" id="main-content">
                 <ons-gesture-detector ng-swipedown="show()">
                     <div id="main">
                         <div class="display">
@@ -75,7 +75,7 @@
                                           var="ruby.carousel">
 
                                 <ons-carousel-item>
-                                    <div class=" your-question content" id="your-question">
+                                    <div class=" your-question content center" id="your-question">
 
                                     </div>
                                     <div class="show-answer">
@@ -84,7 +84,9 @@
                                                 Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
                                                 các câu hỏi về phim ảnh và các chương trình TV.
                                             </div>
-                                            <ons-button style="margin-top: 10px"  modifier="outline" ng-click="seemore('hahahha');">Xem thêm</ons-button>
+                                            <div class="center">
+                                                <ons-button style="margin-top: 10px"  modifier="outline" ng-click="seemore('hahahha');">Xem thêm</ons-button>
+                                            </div>
                                             <div class="spinner loading center">
                                                 <div class="bounce1"></div>
                                                 <div class="bounce2"></div>
@@ -120,8 +122,6 @@
 
             </div>
             <ons-modal var="ruby.modal" id="modal" ng-click="hideSeemore()">
-                <!--<ons-icon icon="gear" spin="true" style="line-height: 20px; vertical-align: middle;"></ons-icon>
-                <span style="line-height: 20px; font-size: 15px;">Loading...</span>-->
             </ons-modal>
         </ons-page>
 

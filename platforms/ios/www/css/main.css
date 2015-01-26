@@ -83,7 +83,7 @@ input[type=email], input[type=password] {
 
 #footer{
     height: 25%;
-    background-color: #404040;
+    background-color: #2B2B2B;
     /*background-color: #2B2B2B;*/
 }
 
@@ -94,18 +94,17 @@ input[type=email], input[type=password] {
 
 .background{
     /*background-color: #3498db;*/
-    background-color: #2B2B2B;
+    background-color: #404040;
 }
 
 .content{
     /*font-family: "Museo Slab";*/
     font-family: "monospace";
-    color: #ffffff;
+    color: #F6F6E8;
 }
 
 .your-question{
     margin-top: 10px;
-    color: #F6F6E8;
 }
 
 #recommend-question{

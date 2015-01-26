@@ -8,12 +8,11 @@ function buildHistory(question, answer, count){
     var data_style = " data-animit-orig-style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: " + count*100 + "%;\">";
 
     result = result.concat("<ons-carousel-item" +style + data_style);
-    result = result.concat("<div class=\"your-question\" id=\"your-question\">" + question + "</div>");
+    result = result.concat("<div class=\"your-question content content-answer\" id=\"your-question\">" + question + "</div>");
     result = result.concat("<div class=\"show-answer\">" );
     result = result.concat("<div class=\"answer-box\">"  );
-    result = result.concat("<div class=\"content\">");
 
-        result = result.concat("<div id=\"answer\">" + answer + "</div>");
+        result = result.concat("<div class=\"content content-answer\" id=\"answer\">" + answer + "</div>");
 
     result = result.concat("</div>");
 

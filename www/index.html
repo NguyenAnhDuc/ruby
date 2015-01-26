@@ -18,35 +18,23 @@
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
     <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/question_request.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/init.js"></script>
     <script src="js/app.js"></script>
 
-    <script>
-        $(document).on('touch', '#history', function () {
-            console.log('history -> mainpage');
-            ons.navigator.popPage();
-        })
-
-
-        $(document).on('touch', '#bottom', function () {
-            console.log('hahahahhaahha');
-        })
-
-        $(document).on('touch', '#tap-request', function () {
-            console.log('hahahahhaahha');
-        })
-    </script>
-
-    <script>
-
-
-    </script>
 
     <style>
         .page__content {
             background-color: #404040 !important;
         }
 
+        .content-answer{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            width: 90%;
+        }
 
     </style>
 </head>
@@ -55,7 +43,7 @@
 
 
 <ons-navigator var="ruby.navigator">
-    <ons-carousel swipeable overscrollable auto-scroll fullscreen>
+    <ons-carousel swipeable auto-scroll fullscreen>
         <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
             <ons-toolbar modifier="transparent" class="background">
                 <div class="right">
@@ -71,12 +59,11 @@
                             <!--<div class="center">
                                 <img class="image" src="img/assistant.png">
                             </div>-->
-                            <ons-carousel swipeable overscrollable auto-scroll fullscreen id="history-carousel"
+                            <ons-carousel swipeable  auto-scroll fullscreen id="history-carousel"
                                           var="ruby.carousel">
 
                                 <ons-carousel-item>
                                     <div class=" your-question content center" id="your-question">
-
                                     </div>
                                     <div class="show-answer">
                                         <div class="answer-box">
@@ -84,8 +71,11 @@
                                                 Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
                                                 các câu hỏi về phim ảnh và các chương trình TV.
                                             </div>
+                                            <div class="full-answer" id="full-answer">
+
+                                            </div>
                                             <div class="center">
-                                                <ons-button style="margin-top: 10px"  modifier="outline" ng-click="seemore('hahahha');">Xem thêm</ons-button>
+                                                <ons-button class="btnSeeMore"  id="btnSeeMore" style="margin-top: 10px"  modifier="outline" >Xem thêm</ons-button>
                                             </div>
                                             <div class="spinner loading center">
                                                 <div class="bounce1"></div>
@@ -121,7 +111,7 @@
                 </ons-bottom-toolbar>
 
             </div>
-            <ons-modal var="ruby.modal" id="modal" ng-click="hideSeemore()">
+            <ons-modal style="color: #F6F6E8" var="ruby.modal" id="modal" ng-click="hideSeemore()">
             </ons-modal>
         </ons-page>
 
@@ -162,20 +152,17 @@
     </ons-dialog>
 </script>
 
-<!--<script type="text/ons-template" id="seemore.html">
-    <ons-dialog style="height: 80%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
-        <ons-page>
-            <div class="page-inner">
-                <div class="random-question-box">
-                    <div class="login-form random-question">
+<script type="text/ons-template" id="seemore.html">
+    <ons-carousel swipeable auto-scroll fullscreen>
+    <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
+            <ons-page>
+                        <div class="width-90" id="full-answer-show">
+                        </div>
 
-                    </div>
-
-                </div>
-            </div>
-        </ons-page>
+            </ons-page>
     </ons-dialog>
-</script>-->
+    </ons-carousel>
+</script>
 
 
 
