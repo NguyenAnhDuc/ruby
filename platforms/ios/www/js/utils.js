@@ -8,13 +8,16 @@ function buildHistory(question, answer, count){
     var data_style = " data-animit-orig-style=\"width: 100%; position: absolute; height: 100%; top: 0px; visibility: visible; left: " + count*100 + "%;\">";
 
     result = result.concat("<ons-carousel-item" +style + data_style);
-    result = result.concat("<div class=\"your-question content content-answer\" id=\"your-question\">" + question + "</div>");
+
+    result = result.concat("<ons-scroller>");
+
+    result = result.concat("<div class=\"your-question content center width-90\" id=\"your-question\">" + question + "</div>");
     result = result.concat("<div class=\"show-answer\">" );
     result = result.concat("<div class=\"answer-box\">"  );
 
-        result = result.concat("<div class=\"content content-answer\" id=\"answer\">" + answer + "</div>");
+    result = result.concat("<div class=\"content content-answer\" id=\"answer\">" + answer + "</div>");
+    result = result.concat("<div class=\"full-answer\" id=\"full-answer\">" + answer + "</div>");
 
-    result = result.concat("</div>");
 
     result = result.concat(" <div class=\"spinner loading center\" >");
     result = result.concat("  <div class=\"bounce1\"></div>");
@@ -24,6 +27,8 @@ function buildHistory(question, answer, count){
 
     result = result.concat("</div>");
     result = result.concat("</div>");
+
+    result = result.concat("</ons-scroller>");
 
     result = result.concat(" </ons-carousel-item>");
     return result;
@@ -45,74 +50,17 @@ function removeFirstCoursel(htmlHistory){
     return result;
 }
 
-// ajax request to server
-function ajax_request(question,count){
-    $('.your-question').hide();
-    $('#your-question').attr('id','old-your-question');
-    $('#answer').attr('id','old-answer');
-    var htmlHistory = $('#history-carousel').html();
-    $('.content').hide();
 
-    //$('.show-answer').height('10%');
-    // loading
+function seemore(){
+    angular.element($('#wrapper')).scope().seemore();
+    $('#full-answer-show').html($('#full-answer').html());
+    //$('#modal').html($('#full-answer').html());
+}
 
-    $('.image').show();
-    $('.loading').show();
-    // hide keyboard
-    $('#input').blur();
-
-
-    // footer
-    $('#input').hide();
-    $('#question').html(question);
-    $('.recommend-question').hide();
-    $('#footer').height('20%');
-    $('.button-request').hide();
-    $('.show-question').show();
-    $('#question').show();
-    // send request
-    $
-        .ajax({
-            type: "POST",
-            url: "http://ruby.fti.pagekite.me/rubyweb/ans",
-            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-            data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
-            success: function (result) {
-                // build history
-                var htmlHistory = $('#history-carousel').html();
-                htmlHistory = htmlHistory.concat(buildHistory(question,result.answer,count));
-                if (count > 9) htmlHistory = removeFirstCoursel(htmlHistory);
-                $('#history-carousel').html(htmlHistory);
-                $('#your-question').html(question);
-                $('.your-question').show();
-                ruby.carousel.last();
-                $('.content').show();
-
-                $('.loading').hide();
-//                    $('#answer').html(result.answer);
-//                    if ($('#answer').height() > 200){
-                $('.image').hide();
-                //$('.show-answer').height('100%');
-
-                if (result.related != null){
-                    $('#question').hide();
-                    $('.recommend-question').show();
-                    $('#recommend-question').html(result.related.suggest);
-                    var random = getRandomInt(1,4);
-                    if (random === 1) $('#recommend-question').css('background-color','#00ACE9');  //lightseagreen
-                    if (random === 2) $('#recommend-question').css('background-color','#D43F3F'); //lightcoral
-                    if (random === 3) $('#recommend-question').css('background-color','#6A9A1F');
-
-                }
-
-                $('#answer').show();
-                $('.button-request').show();
-                $('#button-request').show();
-                $('#button-request').html('Chạm để sửa');
-
-            },
-            error: function (result) {
-                alert("Error");
-            }
-        });
+var count_request = 0, count = 0;
+function request(quesiton){
+    count_request++;
+    count++;
+    if (count > 10) count --;
+    ajax_request(quesiton,count);
 }
