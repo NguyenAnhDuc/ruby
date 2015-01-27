@@ -2,70 +2,182 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capablcontent=" yes
+    ">
     <meta name="mobile-web-app-capable" content="yes">
     <title>My App</title>
 
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
     <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
     <link rel="stylesheet" href="styles/app.css"/>
-    <link rel="stylesheet" href="css/chat.css"/>
-    <link rel="stylesheet" href="css/menu.css"/>
-    <link rel="stylesheet" href="css/list-items.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-    <script src="cordova.js"></script>
-    <script src="js/chat.js"></script>
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
-    <style>
-        .top-toolbar{
-            background-color: #bdc3c7;
-        }
-    </style>
+
     <script>
-        $(document).on('swipeleft', '#main', function() {
-            console.log("Swipe left is detected.");
+        $(document).on('touch', '#history', function () {
+            console.log('history -> mainpage');
+            ons.navigator.popPage();
+        })
+
+
+        $(document).on('touch', '#bottom', function () {
+            console.log('hahahahhaahha');
+        })
+
+        $(document).on('touch', '#tap-request', function () {
+            console.log('hahahahhaahha');
         })
     </script>
 
+    <script>
 
 
+    </script>
+
+    <style>
+        .page__content {
+            background-color: #404040 !important;
+        }
+
+
+    </style>
 </head>
 
 <body>
 
 
-<ons-navigator var="myNavigator">
-    <ons-page>
+<ons-navigator var="ruby.navigator">
+    <ons-carousel swipeable overscrollable auto-scroll fullscreen>
+        <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
+            <ons-toolbar modifier="transparent" class="background">
+                <div class="right">
+                    <ons-toolbar-button ng-click="showFrqPage()">
+                        <ons-icon icon="ion-arrow-right-c" style="color: white"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <div class="content-body background" id="main-content">
+                <ons-gesture-detector ng-swipedown="show()">
+                    <div id="main">
+                        <div class="display">
+                            <!--<div class="center">
+                                <img class="image" src="img/assistant.png">
+                            </div>-->
+                            <ons-carousel swipeable overscrollable auto-scroll fullscreen id="history-carousel"
+                                          var="ruby.carousel">
 
-        <ons-toolbar>
-            <div class="center">Gesture Detector</div>
-        </ons-toolbar>
+                                <ons-carousel-item>
+                                    <div class=" your-question content center" id="your-question">
 
-        <ons-gesture-detector >
-            <div id="main">
-                <ons-list>
-                    <ons-list-item id="display">
-                        <ons-row class="image-background">
-                            <p>image-backgoround</p>
-                        </ons-row>
-                        <ons-row class="answer">
-                            <p>answer</p>
-                        </ons-row>
-                    </ons-list-item>
-                    <ons-list-item id="input">
-                        <p>input</p>
-                    </ons-list-item>
+                                    </div>
+                                    <div class="show-answer">
+                                        <div class="answer-box">
+                                            <div class="content content-answer" id="answer">
+                                                Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
+                                                các câu hỏi về phim ảnh và các chương trình TV.
+                                            </div>
+                                            <div class="center">
+                                                <ons-button style="margin-top: 10px"  modifier="outline" ng-click="seemore('hahahha');">Xem thêm</ons-button>
+                                            </div>
+                                            <div class="spinner loading center">
+                                                <div class="bounce1"></div>
+                                                <div class="bounce2"></div>
+                                                <div class="bounce3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ons-carousel-item>
+                            </ons-carousel>
+                        </div>
+                    </div>
+                </ons-gesture-detector>
+                <ons-bottom-toolbar id="footer">
 
-                </ons-list>
+                    <div class="show-question center" style="margin-top: 20px">
+                        <div class="content" id="question"></div>
+                        <div class="login-form recommend-question">
+                            <ons-button id="recommend-question" class="login-button" modifier="large">
+                                Đang có phim gì hay ngoài rạp
+                            </ons-button>
+                        </div>
+                    </div>
+
+                    <div class="button-request" style="">
+                        <ons-button id="button-request" class="login-button" modifier="quiet"
+                                    style="width: 100%;height: 100%">Chạm để hỏi
+                        </ons-button>
+                    </div>
+                    <div class="spinner-bottom loading"></div>
+                    <input type="text" id="input" class="text-input text-input--transparent" placeholder="Hỏi tôi"
+                           style="width: 100%; color: #ffffff">
+                </ons-bottom-toolbar>
+
             </div>
-        </ons-gesture-detector>
+            <ons-modal var="ruby.modal" id="modal" ng-click="hideSeemore()">
+            </ons-modal>
+        </ons-page>
 
-    </ons-page>
+
+    </ons-carousel>
+
+
 </ons-navigator>
+
+
+<script type="text/ons-template" id="dialog.html">
+    <ons-dialog style="height: 40%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
+        <ons-page>
+            <div class="page-inner">
+                <div class="random-question-box">
+                    <div class="login-form random-question">
+                        <ons-button id="random-question-1" class="random-question-button" modifier="large"
+                                    style="background-color: #00ACE9">
+                            Chạm để sửa
+                        </ons-button>
+                        <ons-button id="random-question-2" class="random-question-button" modifier="large"
+                                    style="background-color: #D43F3F">
+                            Chạm để sửa
+                        </ons-button>
+                        <ons-button id="random-question-3" class="random-question-button" modifier="large"
+                                    style="background-color: #6A9A1F">
+                            Chạm để sửa
+                        </ons-button>
+                    </div>
+                    <div class="spinner loading center" id="random-loading" style="margin-top: 20px">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </div>
+            </div>
+        </ons-page>
+    </ons-dialog>
+</script>
+
+<!--<script type="text/ons-template" id="seemore.html">
+    <ons-dialog style="height: 80%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
+        <ons-page>
+            <div class="page-inner">
+                <div class="random-question-box">
+                    <div class="login-form random-question">
+
+                    </div>
+
+                </div>
+            </div>
+        </ons-page>
+    </ons-dialog>
+</script>-->
+
+
 
 </body>
 

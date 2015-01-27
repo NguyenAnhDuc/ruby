@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>My App</title>
+
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+    <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
+    <link rel="stylesheet" href="styles/app.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!--<link rel="stylesheet" href="css/chat.css"/>-->
+
+    <script src="lib/onsen/js/angular/angular.js"></script>
+    <script src="lib/onsen/js/onsenui.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <script src="cordova.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        $(document).on('swipeleft', '#main', function () {
+            console.log('->frq-questions');
+            ons.navigator.pushPage('html/frq-questions.html', {title: 'frq questions'});
+        })
+
+        $(document).on('swiperight', '#main', function () {
+            console.log('->history');
+            ons.navigator.pushPage('html/history.html', {title: 'history questions'});
+        })
+
+        /*$(document).on('touch', '#main', function () {
+         console.log('->random-question');
+         })*/
+
+        $(document).on('touch', '#frq-questions', function () {
+            console.log('questions->main page');
+            ons.navigator.popPage();
+        })
+
+        $(document).on('touch', '#history', function () {
+            console.log('history -> mainpage');
+            ons.navigator.popPage();
+        })
+
+
+        $(document).on('touch', '#bottom', function () {
+            console.log('hahahahhaahha');
+        })
+
+        $(document).on('touch', '#tap-request', function () {
+            console.log('hahahahhaahha');
+        })
+    </script>
+
+    <script>
+
+
+
+    </script>
+
+    <style>
+        .page__content{
+            background-color: #3498db !important;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+<ons-navigator>
+    <ons-page id="wrapper" ng-controller="MainCtrl">
+        <div class="content-body center background">
+            <ons-gesture-detector ng-swipedown="show()">
+                <div id="main">
+                    <div class="display">
+                        <div class="center">
+                            <img class="image" src="img/assistant.png">
+                        </div>
+
+                        <div class="show-answer">
+                            <div class="answer-box">
+                                <div class="content" id="answer">
+                                    Xin chào, mình là Ruby. Mình có thể trả lời cho bạn các câu hỏi về phim ảnh và
+                                    chương trình TV.
+                                </div>
+                                <div class="spinner loading center" >
+                                    <div class="bounce1"></div>
+                                    <div class="bounce2"></div>
+                                    <div class="bounce3"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </ons-gesture-detector>
+            <ons-bottom-toolbar id="footer">
+                <div class="show-question center" style="margin-top: 20px">
+                    <div id="question">Xin chào.</div>
+                    <div class="login-form recommend-question" >
+                        <ons-button id="recommend-question" class="login-button" modifier="large" >
+                            Chạm để sửa
+                        </ons-button>
+                    </div>
+                </div>
+
+                <div class="button-request" style="height: 70%">
+                    <ons-button id="button-request" class="login-button" modifier="quiet"
+                                style="width: 100%;height: 100%">Chạm để sửa
+                    </ons-button>
+                </div>
+                <div class="spinner-bottom loading"></div>
+                <input type="text" id="input" class="text-input text-input--transparent" placeholder="Hỏi tôi"
+                       style="width: 100%">
+            </ons-bottom-toolbar>
+
+        </div>
+    </ons-page>
+</ons-navigator>
+
+
+<script type="text/ons-template" id="dialog.html">
+    <ons-dialog style="height: 40%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable >
+        <ons-page >
+
+
+            <div class="page-inner">
+                <div class="login-form random-question"  >
+                    <ons-button id="random-question-1" class="random-question-button" modifier="large" style="background-color: orange">
+                        Chạm để sửa
+                    </ons-button>
+                    <ons-button id="random-question-2" class="random-question-button" modifier="large" style="background-color: plum">
+                        Chạm để sửa
+                    </ons-button>
+                    <ons-button id="random-question-3" class="random-question-button" modifier="large" style="background-color: green">
+                        Chạm để sửa
+                    </ons-button>
+                </div>
+                <div class="spinner loading center" id="random-loading" style="margin-top: 20px" >
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+
+            </div>
+        </ons-page>
+    </ons-dialog>
+</script>
+
+
+
+</body>
+
+</html>
