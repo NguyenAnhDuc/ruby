@@ -3,6 +3,7 @@
     var module = angular.module('app', ['onsen']);
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
+    var randomQuestions = {};
 
     $(document).ready(function () {
         // call ajax to get list frequently question
@@ -12,6 +13,15 @@
             url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
             success: function (result) {
                 preFrqQuestions.items = JSON.parse(result);
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
+            success: function (result) {
+                randomQuestions.items = JSON.parse(result);
             }
         });
     });
@@ -41,9 +51,16 @@
         $scope.show = function() {
             $('.dialog-mask').show();
             $scope.dialog.show();
+            $('.random-question').show();
+            var items = randomQuestions.items;
+            $('#random-question-1').html(items[1].name);
+            $('#random-question-2').html(items[2].name);
+            $('#random-question-3').html(items[3].name);
         }
         $scope.seemore = function (answer) {
             $scope.dialog_seemore.show();
+
+
         }
         $scope.hideSeemore = function () {
 

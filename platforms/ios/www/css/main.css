@@ -49,6 +49,10 @@
     margin: 20px auto 0;
 }
 
+#recommend-question{
+    white-space: normal;
+}
+
 .random-question {
     text-align: center;
     width: 90%;
