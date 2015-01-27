@@ -15,7 +15,7 @@ $(document).ready(function () {
     $('#button-request').click(function (e) {
         // footer
         $('#button-request').hide();
-        $('#footer').height('10%');
+        $('#footer').height('5%');
         $('#input').val('');
         $('.show-question').hide();
 
@@ -45,15 +45,20 @@ $(document).ready(function () {
     // DIALOG for random question
     $('.random-question').hide();
     $('#random-loading').show();
-    /*$.ajax({
+    $.ajax({
         type: "GET",
         dataType: "text",
         url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
         success: function (result) {
-
+            $('.random-question').show();
+            $('#random-loading').hide();
+            var items = JSON.parse(result);
+            $('#random-question-1').html(items[1].name);
+            $('#random-question-2').html(items[2].name);
+            $('#random-question-3').html(items[3].name);
 
         }
-    });*/
+    });
     $('#random-question-1').click(function (e) {
         var question = $('#random-question-1').text();
         $('.dialog').hide();
