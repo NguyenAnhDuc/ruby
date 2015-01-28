@@ -35,6 +35,7 @@
 
         $scope.btnQuestionClick = function(){
             ons.navigator.popPage();
+            mixpanel.track("ask", {'input': 'freq'});
             request(this.item.question);
         }
     });
@@ -58,6 +59,7 @@
             $('#random-question-3').html(items[3].name);
         }
         $scope.seemore = function (answer) {
+            mixpanel.track("seemore", {});
             $scope.dialog_seemore.show();
 
 
@@ -67,10 +69,12 @@
         }
 
         $scope.showHistoryPage = function(){
+            mixpanel.track("viewHistory");
             ruby.navigator.pushPage('html/history.html', {title: 'history questions'});
         }
 
         $scope.showFrqPage = function(){
+            mixpanel.track("viewFrequent");
             ruby.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
         }
     });
