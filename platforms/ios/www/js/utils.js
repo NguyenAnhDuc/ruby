@@ -11,12 +11,23 @@ function buildHistory(question, answer, count_request, count_carousel){
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     result = result.concat("<div class=\"your-question content center width-90\" id=\"your-question-" + count_request + "\">" + question + "</div>");
     result = result.concat("<div class=\"show-answer\">" );
     result = result.concat("<div class=\"answer-box\">"  );
 
     result = result.concat("<div class=\"content content-answer\" id=\"answer-" + count_request + "\">"  + answer + "</div>");
     result = result.concat("<div class=\"full-answer\" id=\"full-answer-" + count_request + "\">"  + answer + "</div>");
+=======
+    result = result.concat("<ons-scroller>");
+
+    result = result.concat("<div class=\"your-question content center width-90\" id=\"your-question\">" + question + "</div>");
+    result = result.concat("<div class=\"show-answer\">" );
+    result = result.concat("<div class=\"answer-box\">"  );
+
+    result = result.concat("<div class=\"content content-answer\" id=\"answer\">" + answer + "</div>");
+    result = result.concat("<div class=\"full-answer\" id=\"full-answer\">" + answer + "</div>");
+>>>>>>> analytics
 =======
     result = result.concat("<ons-scroller>");
 
@@ -72,6 +83,7 @@ function removeFirstCoursel(htmlHistory){
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var count_request = 0, count_carousel = 0, max_carousel = 3;
 function seemore(){
     angular.element($('#wrapper')).scope().seemore();
@@ -90,6 +102,8 @@ function request(quesiton){
 =======
 =======
 >>>>>>> analytics
+=======
+>>>>>>> analytics
 
 function seemore(){
     angular.element($('#wrapper')).scope().seemore();
@@ -104,6 +118,9 @@ function request(quesiton){
     if (count > 10) count --;
     ajax_request(quesiton,count);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
 =======
 >>>>>>> analytics

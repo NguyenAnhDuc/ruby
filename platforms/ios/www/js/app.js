@@ -5,7 +5,10 @@
     var preFrqQuestions = {};
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     var randomQuestions = {};
+=======
+>>>>>>> analytics
 =======
 >>>>>>> analytics
 =======
@@ -23,6 +26,7 @@
         });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         $.ajax({
             type: "GET",
@@ -32,6 +36,8 @@
                 randomQuestions.items = JSON.parse(result);
             }
         });
+=======
+>>>>>>> analytics
 =======
 >>>>>>> analytics
 =======
@@ -73,9 +79,14 @@
         $scope.seemore = function (answer) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $scope.dialog_seemore.show();
 
 
+=======
+            mixpanel.track("seemore", {});
+            $scope.dialog_seemore.show();
+>>>>>>> analytics
 =======
             mixpanel.track("seemore", {});
             $scope.dialog_seemore.show();

@@ -9,6 +9,12 @@ $(document).ready(function () {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    $('#btnSeeMore').click(function() {
+        mixpanel.track("seeMore", {});
+    });
+>>>>>>> analytics
 =======
     $('#btnSeeMore').click(function() {
         mixpanel.track("seeMore", {});
@@ -29,7 +35,11 @@ $(document).ready(function () {
         $('#button-request').hide();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         $('#footer').height('10%');
+=======
+        $('#footer').height('5%');
+>>>>>>> analytics
 =======
         $('#footer').height('5%');
 >>>>>>> analytics
@@ -53,6 +63,10 @@ $(document).ready(function () {
             var question = $('#input').val();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            mixpanel.track("ask", {'input': 'type'});
+>>>>>>> analytics
 =======
             mixpanel.track("ask", {'input': 'type'});
 >>>>>>> analytics
@@ -75,7 +89,11 @@ $(document).ready(function () {
     $('#random-loading').show();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     /*$.ajax({
+=======
+    $.ajax({
+>>>>>>> analytics
 =======
     $.ajax({
 >>>>>>> analytics
@@ -88,11 +106,14 @@ $(document).ready(function () {
         success: function (result) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
         }
     });*/
 =======
+=======
+>>>>>>> analytics
 =======
 >>>>>>> analytics
             $('.random-question').show();
@@ -105,6 +126,9 @@ $(document).ready(function () {
         }
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
 =======
 >>>>>>> analytics

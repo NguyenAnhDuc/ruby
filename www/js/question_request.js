@@ -52,18 +52,13 @@ function ajax_request(question,count_request, count_carousel){
                     var htmlSeeMore = "<div class=\"center\">";
                     htmlSeeMore = htmlSeeMore.concat("<ons-button onclick=\"seemore()\" modifier=\"outline\" style=\"margin-top: 10px\" id=\"btnSeeMore\" class=\" btnSeeMore ng-isolate-scope button effeckt-button button--outline slide-left\"><span class=\"label ons-button-inner\"><span class=\"ng-scope\">Xem thêm</span></span>"
                         + "<span class=\"spinner button__spinner button--outline__spinner\"></span></ons-button></div>");
-<<<<<<< HEAD
+
                     $('#answer-'+count_request).html(htmlAnswer + htmlSeeMore);
-=======
                     $('#answer').html(htmlAnswer + htmlSeeMore);
 
                     mixpanel.track("ans", {"code": "ok", "length": "long"});
                 } else {
                     mixpanel.track("ans", {"code": "ok", "length": "short"});
-<<<<<<< HEAD
->>>>>>> analytics
-=======
->>>>>>> analytics
                 }
                 $('.full-answer').hide();
 
@@ -82,7 +77,6 @@ function ajax_request(question,count_request, count_carousel){
                     if ($('#recommend-question').height() === 18) $('#recommend-question').css('line-height','36px');
 
                 }
-
 
                 $('.button-request').show();
                 $('#button-request').show();
