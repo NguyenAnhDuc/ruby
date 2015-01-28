@@ -7,6 +7,9 @@ $(document).ready(function () {
     $('.loading').hide();
     //$('.recommend-question').hide();
 
+    $('#btnSeeMore').click(function() {
+        mixpanel.track("seeMore", {});
+    });
 
     $('#input').click(function (e) {
         $(this).focus();
@@ -31,6 +34,7 @@ $(document).ready(function () {
     $("#input").on("keypress", function(event){
         if (event.keyCode === 13) {
             var question = $('#input').val();
+            mixpanel.track("ask", {'input': 'type'});
             request(question);
         }
     });

@@ -2,8 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capablcontent=" yes
-    ">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <title>My App</title>
 
@@ -105,7 +104,6 @@
                                     style="width: 100%;height: 100%">Chạm để hỏi
                         </ons-button>
                     </div>
-                    <a id="testLink" href="#">TEST!!!!</a>
                     <div class="spinner-bottom loading"></div>
                     <input type="text" id="input" class="text-input text-input--transparent" placeholder="Hỏi tôi"
                            style="width: 100%; color: #ffffff">
@@ -167,23 +165,21 @@
 
 
 <script type="text/javascript">
-    var id = mixpanel.get_distinct_id;
-    mixpanel.identify(id);
-    mixpanel.people.set({
-        "$last_login": new Date()
+    // Init mixpanel analytics
+    $(function() {
+        $(".recommend-question").click(function() {
+            mixpanel.track("ask", {'input': 'recommend'});
+        });
+
+//        mixpanel.identify(mixpanel.get_distinct_id());
+//        mixpanel.people.set({
+//            $name : 'u-' + mixpanel.get_distinct_id(),
+//            'last_login': new Date()
+//        });
     });
 
-    // Init mixpanel analytics
-//        mixpanel.track_links("#recommend-question", "recommend-question", {});
-    $("#testLink").click(function() {
-//       mixpanel.track("testLink");
-        console.log("XXX");
-    });
-//    mixpanel.track_links("#testLink", "test!", {});
+
 </script>
 
-
-
 </body>
-
 </html>

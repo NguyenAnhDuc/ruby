@@ -33,6 +33,7 @@ function ajax_request(question,count){
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
             success: function (result) {
+
                 // build history
                 var htmlHistory = $('#history-carousel').html();
                 htmlHistory = htmlHistory.concat(buildHistory(question,result.answer,count));
@@ -50,6 +51,10 @@ function ajax_request(question,count){
                     htmlSeeMore = htmlSeeMore.concat("<ons-button onclick=\"seemore()\" modifier=\"outline\" style=\"margin-top: 10px\" id=\"btnSeeMore\" class=\" btnSeeMore ng-isolate-scope button effeckt-button button--outline slide-left\"><span class=\"label ons-button-inner\"><span class=\"ng-scope\">Xem thêm</span></span>"
                         + "<span class=\"spinner button__spinner button--outline__spinner\"></span></ons-button></div>");
                     $('#answer').html(htmlAnswer + htmlSeeMore);
+
+                    mixpanel.track("ans", {"code": "ok", "length": "long"});
+                } else {
+                    mixpanel.track("ans", {"code": "ok", "length": "short"});
                 }
                 $('.full-answer').hide();
 
@@ -74,6 +79,7 @@ function ajax_request(question,count){
 
             },
             error: function (result) {
+                mixpanel.track("ans", {"code": "err"});
                 alert("Error");
             }
         });
