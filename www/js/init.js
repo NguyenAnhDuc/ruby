@@ -1,5 +1,5 @@
-//var HOST = "http://ruby.fti.pagekite.me/rubyweb"; // no '/'
-var HOST = "http://10.3.9.44:8080/rubyweb";
+var HOST = "http://ruby.fti.pagekite.me/rubyweb"; // no '/'
+//var HOST = "http://10.3.9.44:8080/rubyweb";
 
 $(document).ready(function () {
     // call ajax to get list frequently question
