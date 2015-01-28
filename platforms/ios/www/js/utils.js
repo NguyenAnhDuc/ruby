@@ -9,12 +9,23 @@ function buildHistory(question, answer, count_request, count_carousel){
 
     result = result.concat("<ons-carousel-item" +style + data_style);
 
+<<<<<<< HEAD
     result = result.concat("<div class=\"your-question content center width-90\" id=\"your-question-" + count_request + "\">" + question + "</div>");
     result = result.concat("<div class=\"show-answer\">" );
     result = result.concat("<div class=\"answer-box\">"  );
 
     result = result.concat("<div class=\"content content-answer\" id=\"answer-" + count_request + "\">"  + answer + "</div>");
     result = result.concat("<div class=\"full-answer\" id=\"full-answer-" + count_request + "\">"  + answer + "</div>");
+=======
+    result = result.concat("<ons-scroller>");
+
+    result = result.concat("<div class=\"your-question content center width-90\" id=\"your-question\">" + question + "</div>");
+    result = result.concat("<div class=\"show-answer\">" );
+    result = result.concat("<div class=\"answer-box\">"  );
+
+    result = result.concat("<div class=\"content content-answer\" id=\"answer\">" + answer + "</div>");
+    result = result.concat("<div class=\"full-answer\" id=\"full-answer\">" + answer + "</div>");
+>>>>>>> analytics
 
 
     result = result.concat(" <div class=\"spinner loading center\" >");
@@ -25,6 +36,8 @@ function buildHistory(question, answer, count_request, count_carousel){
 
     result = result.concat("</div>");
     result = result.concat("</div>");
+
+    result = result.concat("</ons-scroller>");
 
     result = result.concat(" </ons-carousel-item>");
     return result;
@@ -46,6 +59,7 @@ function removeFirstCoursel(htmlHistory){
     return result;
 }
 
+<<<<<<< HEAD
 var count_request = 0, count_carousel = 0, max_carousel = 3;
 function seemore(){
     angular.element($('#wrapper')).scope().seemore();
@@ -61,4 +75,19 @@ function request(quesiton){
     count_carousel++;
     if (count_carousel >= (max_carousel + 1)) count_carousel --;
     ajax_request(quesiton,count_request,count_carousel);
+=======
+
+function seemore(){
+    angular.element($('#wrapper')).scope().seemore();
+    $('#full-answer-show').html($('#full-answer').html());
+    //$('#modal').html($('#full-answer').html());
+}
+
+var count_request = 0, count = 0;
+function request(quesiton){
+    count_request++;
+    count++;
+    if (count > 10) count --;
+    ajax_request(quesiton,count);
+>>>>>>> analytics
 }

@@ -2,8 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capablcontent=" yes
-    ">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <title>My App</title>
 
@@ -22,7 +21,11 @@
     <script src="js/utils.js"></script>
     <script src="js/init.js"></script>
     <script src="js/app.js"></script>
+<<<<<<< HEAD
 
+=======
+    <script src="js/mixpanel-client.js"></script>
+>>>>>>> analytics
 
     <style>
         /*.page__content {
@@ -63,7 +66,11 @@
                                           var="ruby.carousel">
 
                                 <ons-carousel-item>
+<<<<<<< HEAD
                                     <div class=" your-question content center" id="your-question-0">
+=======
+                                    <div class=" your-question content center" id="your-question">
+>>>>>>> analytics
                                     </div>
                                     <div class="show-answer">
                                         <div class="answer-box">
@@ -71,7 +78,11 @@
                                                 Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
                                                 các câu hỏi về phim ảnh và các chương trình TV.
                                             </div>
+<<<<<<< HEAD
                                             <div class="full-answer" id="full-answer-0s">
+=======
+                                            <div class="full-answer" id="full-answer">
+>>>>>>> analytics
 
                                             </div>
                                             <div class="center">
@@ -155,7 +166,11 @@
 <script type="text/ons-template" id="seemore.html">
     <ons-carousel swipeable auto-scroll fullscreen>
     <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
+<<<<<<< HEAD
             <ons-page style="background-color: #3498db !important;">
+=======
+            <ons-page>
+>>>>>>> analytics
                         <div class="width-90" id="full-answer-show">
                         </div>
 
@@ -165,7 +180,22 @@
 </script>
 
 
+<script type="text/javascript">
+    // Init mixpanel analytics
+    $(function() {
+        $(".recommend-question").click(function() {
+            mixpanel.track("ask", {'input': 'recommend'});
+        });
+
+//        mixpanel.identify(mixpanel.get_distinct_id());
+//        mixpanel.people.set({
+//            $name : 'u-' + mixpanel.get_distinct_id(),
+//            'last_login': new Date()
+//        });
+    });
+
+
+</script>
 
 </body>
-
 </html>

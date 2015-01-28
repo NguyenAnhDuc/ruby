@@ -3,7 +3,10 @@
     var module = angular.module('app', ['onsen']);
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
+<<<<<<< HEAD
     var randomQuestions = {};
+=======
+>>>>>>> analytics
 
     $(document).ready(function () {
         // call ajax to get list frequently question
@@ -15,6 +18,7 @@
                 preFrqQuestions.items = JSON.parse(result);
             }
         });
+<<<<<<< HEAD
 
         $.ajax({
             type: "GET",
@@ -24,6 +28,8 @@
                 randomQuestions.items = JSON.parse(result);
             }
         });
+=======
+>>>>>>> analytics
     });
 
 
@@ -35,6 +41,7 @@
 
         $scope.btnQuestionClick = function(){
             ons.navigator.popPage();
+            mixpanel.track("ask", {'input': 'freq'});
             request(this.item.question);
         }
     });
@@ -58,19 +65,26 @@
             $('#random-question-3').html(items[3].name);
         }
         $scope.seemore = function (answer) {
+<<<<<<< HEAD
             $scope.dialog_seemore.show();
 
 
+=======
+            mixpanel.track("seemore", {});
+            $scope.dialog_seemore.show();
+>>>>>>> analytics
         }
         $scope.hideSeemore = function () {
 
         }
 
         $scope.showHistoryPage = function(){
+            mixpanel.track("viewHistory");
             ruby.navigator.pushPage('html/history.html', {title: 'history questions'});
         }
 
         $scope.showFrqPage = function(){
+            mixpanel.track("viewFrequent");
             ruby.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
         }
     });
