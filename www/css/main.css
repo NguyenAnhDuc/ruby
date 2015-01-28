@@ -40,13 +40,13 @@
 .button-request {
     text-align: center;
     width: 100%;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
 }
 
 .recommend-question {
     text-align: center;
     width: 80%;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
 }
 
 #recommend-question{
@@ -85,12 +85,12 @@ input[type=email], input[type=password] {
 }
 
 .text-input {
-    padding-bottom: 12px;
+    margin-left: 10px;
 }
 
 #footer{
     height: 25%;
-    background-color: #2B2B2B;
+    background-color: #E6E3B2;
     /*background-color: #2B2B2B;*/
 }
 
@@ -101,13 +101,16 @@ input[type=email], input[type=password] {
 
 .background{
     /*background-color: #3498db;*/
-    background-color: #404040;
+    /*background-color: #404040;*/
+    background-color: #76B8A6;
+
 }
 
 .content{
     /*font-family: "Museo Slab";*/
     font-family: "monospace";
-    color: #F6F6E8;
+    /*color: #F6F6E8;*/
+    color: #100F0E;
 }
 
 .your-question{
@@ -117,13 +120,19 @@ input[type=email], input[type=password] {
 #recommend-question{
     background: #D43F3F;
 }
+
+.right-content{
+    text-align: right;
+}
+
+
 /*center vertical*/
 .show-answer {display: table; height: 80%; position:absolute; overflow: hidden;width:100%;}
 .answer-box {#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;}
 .content-answer {#position: relative; #top: -50%;margin:0 auto;width:90%;}
 
 /*center vertical*/
-.page-inner {display: table; height: 80%; position:absolute; overflow: hidden;width:100%;}
+.page-inner {display: table; height: 100%; position:absolute; overflow: hidden;width:100%;}
 .random-question-box {#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;}
 .random-question {#position: relative; #top: -50%;margin:0 auto;width:90%;}
 

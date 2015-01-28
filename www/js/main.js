@@ -7,29 +7,39 @@
 
     $(document).ready(function () {
         // call ajax to get list frequently question
+
         $.ajax({
             type: "GET",
             dataType: "text",
             url: HOST + "/info/frequent",
             success: function (result) {
                 preFrqQuestions.items = JSON.parse(result);
+            },
+            error: function(){
+               ons.createAlertDialog('alert.html').then(function(alertDialog) {
+                    alertDialog.show();
+                });
             }
         });
 
         $.ajax({
             type: "GET",
             dataType: "text",
-<<<<<<< HEAD
-            url: "http://ruby.fti.pagekite.me/rubyweb/info/random",
-=======
-            url: HOST + "/info/frequent",
->>>>>>> 6c5b9244171f28ebb55eba9d9ec70eab9aba370a
+            url: HOST + "/info/random",
             success: function (result) {
                 randomQuestions.items = JSON.parse(result);
             }
+
         });
     });
 
+    module.controller('AlertController', function ($scope) {
+        $scope.closeAlert = function() {
+            if(ruby.alertDialog && ruby.alertDialog.isShown()) {
+                ruby.alertDialog.hide();
+            }
+        };
+    });
 
     module.controller('FrqQuestionController', function ($scope, $frqQuestions) {
         $scope.items = $frqQuestions.items;
@@ -42,6 +52,7 @@
     });
 
 
+
     module.controller('MainCtrl', function ($scope) {
         ons.createDialog('dialog.html').then(function (dialog) {
             $scope.dialog = dialog;
@@ -50,7 +61,7 @@
         ons.createDialog('seemore.html').then(function (dialog) {
             $scope.dialog_seemore = dialog;
         });
-        $scope.show = function () {
+        $scope.showRandom = function () {
             $('.dialog-mask').show();
             $scope.dialog.show();
             $('.random-question').show();
@@ -58,10 +69,11 @@
             $('#random-question-1').html(items[getRandomInt(0,9)]);
             $('#random-question-2').html(items[getRandomInt(10,19)]);
             $('#random-question-3').html(items[getRandomInt(20,29)]);
-            /*for (var i=1;i<=3;i++){
+            for (var i=1;i<=3;i++){
                 if ($('#random-question-'+i).height() > 36) $('#random-question-'+i).css('line-height','18px');
                 if ($('#random-question-'+i).height() === 18) $('#random-question-'+i).css('line-height','36px');
-            }*/
+            }
+            mixpanel.track("viewRandom");
 
         }
         $scope.seemore = function (answer) {
@@ -70,8 +82,13 @@
 
 
         }
-        $scope.hideSeemore = function () {
 
+
+        $scope.showInput = function () {
+            $('#footer').height('25%');
+            $('#input').hide();
+            $('.show-question').show();
+            $('#button-request').show();
         }
 
         $scope.showFrqPage = function () {

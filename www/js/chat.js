@@ -15,7 +15,6 @@ function buildHtmlQuestion(question) {
     htmlResult = htmlResult.concat("</p></div></ons-list-item >");
     return htmlResult;
 }
-
 function buildHtmlAnswer( text) {
     var htmlResult = "";
     //answer

@@ -24,10 +24,10 @@ $(document).ready(function () {
         $('#footer').height('10%');
         $('#input').val('');
         $('.show-question').hide();
-
         // init state
         $('#input').show();
         $('#input').trigger('click');
+
     });
 
     // function send request. Paramater: question

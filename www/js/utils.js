@@ -9,7 +9,7 @@ function buildHistory(question, answer, count_request, count_carousel){
 
     result = result.concat("<ons-carousel-item" +style + data_style);
 
-    result = result.concat("<div class=\"your-question content center width-90\" id=\"your-question-" + count_request + "\">" + question + "</div>");
+    result = result.concat("<div class=\"your-question content width-90 right-content\" id=\"your-question-" + count_request + "\">" + question + "</div>");
     result = result.concat("<div class=\"show-answer\">" );
     result = result.concat("<div class=\"answer-box\">"  );
 
@@ -50,7 +50,7 @@ var count_request = 0, count_carousel = 0, max_carousel = 3;
 function seemore(){
     angular.element($('#wrapper')).scope().seemore();
     var index = ruby.carousel.getActiveCarouselItemIndex();
-    if (count_request > max_carousel) index = count_request - max_carousel + index + 1;
+    if (count_request >= max_carousel) index = count_request - max_carousel + index + 1;
     $('#full-answer-show').html($('#full-answer-' + index ).html());
     //$('#modal').html($('#full-answer').html());
 }

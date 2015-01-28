@@ -12,20 +12,30 @@
     <link rel="stylesheet" href="css/main.css"/>
     <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
-    <link rel="stylesheet" href="css/offline/offline.css"/>
-    <link rel="stylesheet" href="css/offline/offline-language-english-indicator.css.css"/>
-    <link rel="stylesheet" href="css/offline/offline-language-english.css.css"/>
 
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
     <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/heyoffline.js"></script>
+    <script>
+        $(document).ready(function () {
+            new Heyoffline({
+                monitorFields: true,
+                elements: ['.monitoredFields']
+            });
+
+        });
+
+
+    </script>
+
     <script src="js/mixpanel-client.js"></script>
     <script src="js/question_request.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
 
     <!--<script src="js/offline.js"></script>-->
     <!--<script src="js/simulate.js"></script>-->
@@ -77,12 +87,13 @@
             <ons-toolbar modifier="transparent" class="background">
                 <div class="right">
                     <ons-toolbar-button ng-click="showFrqPage()">
+                        <!--div class="center content" >Xem g</div>-->
                         <ons-icon icon="ion-arrow-right-c" style="color: white"></ons-icon>
                     </ons-toolbar-button>
                 </div>
             </ons-toolbar>
             <div class="content-body background" id="main-content">
-                <ons-gesture-detector ng-swipedown="show()">
+                <ons-gesture-detector  ng-click="showInput()" ng-swipedown="showRandom()">
                     <div id="main">
                         <div class="display">
                             <!--<div class="center">
@@ -92,15 +103,16 @@
                                           var="ruby.carousel">
 
                                 <ons-carousel-item>
-                                    <div class=" your-question content center" id="your-question-0">
+                                    <div class=" your-question content width-90 right-content" id="your-question-0">
+                                        Xin chao
                                     </div>
                                     <div class="show-answer">
                                         <div class="answer-box">
                                             <div class="content content-answer" id="answer-0">
                                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
                                                 các câu hỏi về phim ảnh và các chương trình TV.</p>
-                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;Bạn có thể xem câu hỏi được gợi ý ở phía dưới, click vào mũi tên trên bên phải để xem các hỏi thường được hỏi
-                                                hoặc swipe down để xem các câu hỏi ngẫu nhiên</p>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;Bạn có thể xem câu hỏi được gợi ý ở phía dưới, click vào mũi tên trên bên phải để xem các hỏi thường được hỏi,
+                                                swipe down để xem các câu hỏi ngẫu nhiên, chạm ở dưới hỏi theo cách của bạn</p>
                                             </div>
                                             <div class="full-answer" id="full-answer-0s">
 
@@ -124,22 +136,22 @@
                 <ons-bottom-toolbar id="footer">
 
                     <div class="show-question center" style="margin-top: 10px">
-                        <div class="content" id="question"></div>
-                        <div class="login-form recommend-question">
-                            <ons-button id="recommend-question" class="login-button" modifier="large">
+                        <div class="content" id="question" style="white-space: normal"></div>
+                        <div class=" recommend-question">
+                            <ons-button id="recommend-question"  modifier="large">
                                 TV đang chiếu phim gì
                             </ons-button>
                         </div>
                     </div>
 
                     <div class="button-request" style="">
-                        <ons-button id="button-request" class="login-button" modifier="quiet"
+                        <ons-button id="button-request"      modifier="quiet"
                                     style="width: 100%;height: 100%; color:grey">Chạm để hỏi
                         </ons-button>
                     </div>
                     <div class="spinner-bottom loading"></div>
-                    <input type="text" id="input" class="text-input text-input--transparent" placeholder="Hỏi tôi"
-                           style="width: 100%; color: #ffffff">
+                    <input type="text" id="input" class="content text-input text-input--transparent" placeholder="Hỏi tôi"
+                           style="width: 100%;">
                 </ons-bottom-toolbar>
 
             </div>
@@ -155,21 +167,21 @@
 
 
 <script type="text/ons-template" id="dialog.html">
-    <ons-dialog style="height: 45%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
-        <ons-page id="pageSeeMore" style="background-color: #3498db !important; ">
+    <ons-dialog style="height: 50%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
+        <ons-page id="pageSeeMore" style="background-color: #8F8B1D !important; ">
             <div class="page-inner">
                 <div class="random-question-box">
                     <div class="random-question">
                         <ons-button id="random-question-1" class="random-question-button" modifier="large"
-                                    style="background-color: #00ACE9">
+                                    style="background-color: lightsalmon ">
                             Chạm để sửa
                         </ons-button>
                         <ons-button id="random-question-2" class="random-question-button" modifier="large"
-                                    style="background-color: #D43F3F">
+                                    style="background-color: lightseagreen">
                             Chạm để sửa
                         </ons-button>
                         <ons-button id="random-question-3" class="random-question-button" modifier="large"
-                                    style="background-color: #6A9A1F">
+                                    style="background-color: lightcoral   ">
                             Chạm để sửa
                         </ons-button>
                     </div>
@@ -182,7 +194,7 @@
 <script type="text/ons-template" id="seemore.html">
     <ons-carousel swipeable auto-scroll fullscreen>
     <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
-            <ons-page style="background-color: #3498db !important;">
+            <ons-page style="background-color: #76B8A6 !important;">
                         <div class="width-90" id="full-answer-show">
                         </div>
 
@@ -191,6 +203,19 @@
     </ons-carousel>
 </script>
 
+
+
+<script type="text/ons-template" id="alert.html">
+    <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog" ng-controller="AlertController">
+        <div class="alert-dialog-title">Lỗi!</div>
+        <div class="alert-dialog-content">
+           Có lỗi xảy ra. Xin bạn vui lòng kiểm tra kết nối internet!
+        </div>
+       <div class="alert-dialog-footer" ng-click="closeAlert()">
+            <button class="alert-dialog-button">OK</button>
+        </div>
+    </ons-alert-dialog>
+</script>
 
 <script type="text/javascript">
     $(function() {

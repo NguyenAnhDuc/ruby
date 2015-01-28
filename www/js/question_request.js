@@ -47,10 +47,10 @@ function ajax_request(question,count_request, count_carousel){
 
                 var length = "short";
                 // check to build seemore button
-                if ($('#answer-' + count_request).height() > $('#wrapper').height()*0.5){
-                    var htmlAnswer = result.answer.substring(0,300);
+                if ($('#answer-' + count_request).height() > $('#wrapper').height()*0.4){
+                    var htmlAnswer = result.answer.substring(0, Math.round($('#wrapper').height() / 2));
                     var end = htmlAnswer.lastIndexOf("</br>");
-                    htmlAnswer = htmlAnswer.substring(0,end).concat("</br>" + " ...");
+                    htmlAnswer = htmlAnswer.substring(0,end);
                     var htmlSeeMore = "<div class=\"center\">";
                     htmlSeeMore = htmlSeeMore.concat("<ons-button onclick=\"seemore()\" modifier=\"outline\" style=\"margin-top: 10px\" id=\"btnSeeMore\" class=\" btnSeeMore ng-isolate-scope button effeckt-button button--outline slide-left\"><span class=\"label ons-button-inner\"><span class=\"ng-scope\">Xem thêm</span></span>"
                         + "<span class=\"spinner button__spinner button--outline__spinner\"></span></ons-button></div>");
@@ -66,6 +66,7 @@ function ajax_request(question,count_request, count_carousel){
 
                 $('.loading').hide();
                 $('.image').hide();
+                $('#input').hide();
 
                 if (result.related != null){
                     $('#question').hide();
@@ -75,8 +76,8 @@ function ajax_request(question,count_request, count_carousel){
                     if (random === 1) $('#recommend-question').css('background-color','#00ACE9');  //lightseagreen
                     if (random === 2) $('#recommend-question').css('background-color','#D43F3F'); //lightcoral
                     if (random === 3) $('#recommend-question').css('background-color','#6A9A1F');
-                    /*if ($('#recommend-question').height() > 36) $('#recommend-question').css('line-height','18px');
-                    if ($('#recommend-question').height() === 18) $('#recommend-question').css('line-height','36px');*/
+                    if ($('#recommend-question').height() > 36) $('#recommend-question').css('line-height','18px');
+                    if ($('#recommend-question').height() === 18) $('#recommend-question').css('line-height','36px');
 
                 }
 
@@ -87,7 +88,9 @@ function ajax_request(question,count_request, count_carousel){
             },
             error: function (result) {
                 mixpanel.track("ans", {"code": "err"});
-                alert("Error");
+                ons.createAlertDialog('alert.html').then(function(alertDialog) {
+                    alertDialog.show();
+                });
             }
         });
 }
