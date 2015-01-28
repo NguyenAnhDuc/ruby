@@ -8,6 +8,12 @@ $(document).ready(function () {
     //$('.recommend-question').hide();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    $('#btnSeeMore').click(function() {
+        mixpanel.track("seeMore", {});
+    });
+>>>>>>> analytics
 =======
     $('#btnSeeMore').click(function() {
         mixpanel.track("seeMore", {});
@@ -22,7 +28,11 @@ $(document).ready(function () {
         // footer
         $('#button-request').hide();
 <<<<<<< HEAD
+<<<<<<< HEAD
         $('#footer').height('10%');
+=======
+        $('#footer').height('5%');
+>>>>>>> analytics
 =======
         $('#footer').height('5%');
 >>>>>>> analytics
@@ -42,6 +52,10 @@ $(document).ready(function () {
         if (event.keyCode === 13) {
             var question = $('#input').val();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            mixpanel.track("ask", {'input': 'type'});
+>>>>>>> analytics
 =======
             mixpanel.track("ask", {'input': 'type'});
 >>>>>>> analytics
@@ -60,7 +74,11 @@ $(document).ready(function () {
     $('.random-question').hide();
     $('#random-loading').show();
 <<<<<<< HEAD
+<<<<<<< HEAD
     /*$.ajax({
+=======
+    $.ajax({
+>>>>>>> analytics
 =======
     $.ajax({
 >>>>>>> analytics
@@ -69,11 +87,14 @@ $(document).ready(function () {
         url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
         success: function (result) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
         }
     });*/
 =======
+=======
+>>>>>>> analytics
             $('.random-question').show();
             $('#random-loading').hide();
             var items = JSON.parse(result);
@@ -83,6 +104,9 @@ $(document).ready(function () {
 
         }
     });
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
     $('#random-question-1').click(function (e) {
         var question = $('#random-question-1').text();

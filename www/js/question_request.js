@@ -60,6 +60,9 @@ function ajax_request(question,count_request, count_carousel){
                     mixpanel.track("ans", {"code": "ok", "length": "long"});
                 } else {
                     mixpanel.track("ans", {"code": "ok", "length": "short"});
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
                 }
                 $('.full-answer').hide();

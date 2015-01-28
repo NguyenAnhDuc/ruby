@@ -4,7 +4,10 @@
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
 <<<<<<< HEAD
+<<<<<<< HEAD
     var randomQuestions = {};
+=======
+>>>>>>> analytics
 =======
 >>>>>>> analytics
 
@@ -19,6 +22,7 @@
             }
         });
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         $.ajax({
             type: "GET",
@@ -28,6 +32,8 @@
                 randomQuestions.items = JSON.parse(result);
             }
         });
+=======
+>>>>>>> analytics
 =======
 >>>>>>> analytics
     });
@@ -66,9 +72,14 @@
         }
         $scope.seemore = function (answer) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             $scope.dialog_seemore.show();
 
 
+=======
+            mixpanel.track("seemore", {});
+            $scope.dialog_seemore.show();
+>>>>>>> analytics
 =======
             mixpanel.track("seemore", {});
             $scope.dialog_seemore.show();

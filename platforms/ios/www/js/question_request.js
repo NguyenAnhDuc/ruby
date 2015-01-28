@@ -1,5 +1,6 @@
 // ajax request to server
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ajax_request(question,count_request, count_carousel){
     var carousel_index = ruby.carousel.getActiveCarouselItemIndex();
     $('.your-question').hide();
@@ -7,12 +8,17 @@ function ajax_request(question,count_request, count_carousel){
     $('#full-answer').attr('id','full-answer-' + carousel_index);
     $('#answer').attr('id','answer-'+carousel_index);*/
 =======
+=======
+>>>>>>> analytics
 function ajax_request(question,count){
     var carousel_index = ruby.carousel.getActiveCarouselItemIndex();
     $('.your-question').hide();
     $('#your-question').attr('id','your-question-' + carousel_index);
     $('#full-answer').attr('id','full-answer-' + carousel_index);
     $('#answer').attr('id','answer-'+carousel_index);
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
     var htmlHistory = $('#history-carousel').html();
     $('.content').hide();
@@ -31,7 +37,11 @@ function ajax_request(question,count){
     $('#question').html(question);
     $('.recommend-question').hide();
 <<<<<<< HEAD
+<<<<<<< HEAD
     $('#footer').height('25%');
+=======
+    $('#footer').height('20%');
+>>>>>>> analytics
 =======
     $('#footer').height('20%');
 >>>>>>> analytics
@@ -46,6 +56,7 @@ function ajax_request(question,count){
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
             success: function (result) {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 // build history
                 var htmlHistory = $('#history-carousel').html();
@@ -67,6 +78,8 @@ function ajax_request(question,count){
                         + "<span class=\"spinner button__spinner button--outline__spinner\"></span></ons-button></div>");
                     $('#answer-'+count_request).html(htmlAnswer + htmlSeeMore);
 =======
+=======
+>>>>>>> analytics
 
                 // build history
                 var htmlHistory = $('#history-carousel').html();
@@ -89,6 +102,9 @@ function ajax_request(question,count){
                     mixpanel.track("ans", {"code": "ok", "length": "long"});
                 } else {
                     mixpanel.track("ans", {"code": "ok", "length": "short"});
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
                 }
                 $('.full-answer').hide();
@@ -105,8 +121,11 @@ function ajax_request(question,count){
                     if (random === 2) $('#recommend-question').css('background-color','#D43F3F'); //lightcoral
                     if (random === 3) $('#recommend-question').css('background-color','#6A9A1F');
 <<<<<<< HEAD
+<<<<<<< HEAD
                     if ($('#recommend-question').height() > 36) $('#recommend-question').css('line-height','18px');
                     if ($('#recommend-question').height() === 18) $('#recommend-question').css('line-height','36px');
+=======
+>>>>>>> analytics
 =======
 >>>>>>> analytics
 
@@ -116,16 +135,22 @@ function ajax_request(question,count){
                 $('.button-request').show();
                 $('#button-request').show();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 $('#button-request').html('Chạm để hỏi');
 
             },
             error: function (result) {
 =======
+=======
+>>>>>>> analytics
                 $('#button-request').html('Chạm để sửa');
 
             },
             error: function (result) {
                 mixpanel.track("ans", {"code": "err"});
+<<<<<<< HEAD
+>>>>>>> analytics
+=======
 >>>>>>> analytics
                 alert("Error");
             }
