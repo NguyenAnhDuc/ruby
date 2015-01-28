@@ -56,7 +56,6 @@ function ajax_request(question,count_request, count_carousel){
                         + "<span class=\"spinner button__spinner button--outline__spinner\"></span></ons-button></div>");
 
                     $('#answer-'+count_request).html(htmlAnswer + htmlSeeMore);
-                    $('#answer').html(htmlAnswer + htmlSeeMore);
 
                     length = "long";
                 }
