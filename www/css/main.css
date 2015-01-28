@@ -53,14 +53,10 @@
     white-space: normal;
 }
 
-.random-question {
-    text-align: center;
-    width: 90%;
-    margin: 15px auto 0;
-}
 
 .random-question-button{
     margin-top: 20px;
+    white-space: normal;
 }
 
 input[type=email], input[type=password] {

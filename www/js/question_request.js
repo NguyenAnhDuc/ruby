@@ -72,8 +72,8 @@ function ajax_request(question,count_request, count_carousel){
                     if (random === 1) $('#recommend-question').css('background-color','#00ACE9');  //lightseagreen
                     if (random === 2) $('#recommend-question').css('background-color','#D43F3F'); //lightcoral
                     if (random === 3) $('#recommend-question').css('background-color','#6A9A1F');
-                    if ($('#recommend-question').height() > 36) $('#recommend-question').css('line-height','18px');
-                    if ($('#recommend-question').height() === 18) $('#recommend-question').css('line-height','36px');
+                    /*if ($('#recommend-question').height() > 36) $('#recommend-question').css('line-height','18px');
+                    if ($('#recommend-question').height() === 18) $('#recommend-question').css('line-height','36px');*/
 
                 }
 

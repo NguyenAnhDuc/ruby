@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="css/main.css"/>
     <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
+    <link rel="stylesheet" href="css/offline/offline.css"/>
+    <link rel="stylesheet" href="css/offline/offline-language-english-indicator.css.css"/>
+    <link rel="stylesheet" href="css/offline/offline-language-english.css.css"/>
+
     <script src="lib/onsen/js/angular/angular.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
@@ -22,6 +26,10 @@
     <script src="js/utils.js"></script>
     <script src="js/init.js"></script>
     <script src="js/app.js"></script>
+
+    <script src="js/offline.js"></script>
+    <script src="js/simulate.js"></script>
+
 
     <style>
         /*.page__content {
@@ -36,6 +44,28 @@
         }
 
     </style>
+
+    <script>
+        $(function(){
+
+            var
+                    $online = $('.online'),
+                    $offline = $('.offline');
+
+            Offline.on('confirmed-down', function () {
+                $online.fadeOut(function () {
+                    $offline.fadeIn();
+                });
+            });
+
+            Offline.on('confirmed-up', function () {
+                $offline.fadeOut(function () {
+                    $online.fadeIn();
+                });
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -67,8 +97,10 @@
                                     <div class="show-answer">
                                         <div class="answer-box">
                                             <div class="content content-answer" id="answer-0">
-                                                Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
-                                                các câu hỏi về phim ảnh và các chương trình TV.
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
+                                                các câu hỏi về phim ảnh và các chương trình TV.</p>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;Bạn có thể xem câu hỏi được gợi ý ở phía dưới, click vào mũi tên trên bên phải để xem các hỏi thường được hỏi
+                                                hoặc swipe down để xem các câu hỏi ngẫu nhiên</p>
                                             </div>
                                             <div class="full-answer" id="full-answer-0s">
 
@@ -83,6 +115,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </ons-carousel-item>
                             </ons-carousel>
                         </div>
@@ -122,11 +155,11 @@
 
 
 <script type="text/ons-template" id="dialog.html">
-    <ons-dialog style="height: 40%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
-        <ons-page id="pageSeeMore" >
+    <ons-dialog style="height: 45%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
+        <ons-page id="pageSeeMore" style="background-color: #3498db !important; ">
             <div class="page-inner">
                 <div class="random-question-box">
-                    <div class="login-form random-question">
+                    <div class="random-question">
                         <ons-button id="random-question-1" class="random-question-button" modifier="large"
                                     style="background-color: #00ACE9">
                             Chạm để sửa
@@ -139,11 +172,6 @@
                                     style="background-color: #6A9A1F">
                             Chạm để sửa
                         </ons-button>
-                    </div>
-                    <div class="spinner loading center" id="random-loading" style="margin-top: 20px">
-                        <div class="bounce1"></div>
-                        <div class="bounce2"></div>
-                        <div class="bounce3"></div>
                     </div>
                 </div>
             </div>

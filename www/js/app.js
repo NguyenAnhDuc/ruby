@@ -19,7 +19,7 @@
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
+            url: "http://ruby.fti.pagekite.me/rubyweb/info/random",
             success: function (result) {
                 randomQuestions.items = JSON.parse(result);
             }
@@ -54,9 +54,14 @@
             $scope.dialog.show();
             $('.random-question').show();
             var items = randomQuestions.items;
-            $('#random-question-1').html(items[1].name);
-            $('#random-question-2').html(items[2].name);
-            $('#random-question-3').html(items[3].name);
+            $('#random-question-1').html(items[getRandomInt(0,9)]);
+            $('#random-question-2').html(items[getRandomInt(10,19)]);
+            $('#random-question-3').html(items[getRandomInt(20,29)]);
+            /*for (var i=1;i<=3;i++){
+                if ($('#random-question-'+i).height() > 36) $('#random-question-'+i).css('line-height','18px');
+                if ($('#random-question-'+i).height() === 18) $('#random-question-'+i).css('line-height','36px');
+            }*/
+
         }
         $scope.seemore = function (answer) {
             mixpanel.track("seemore", {});
