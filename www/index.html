@@ -197,6 +197,10 @@
         $(".recommend-question").click(function() {
             mixpanel.track("ask", {'input': 'recommend'});
         });
+
+        $(".random-question").click(function() {
+            mixpanel.track("ask", {'input': 'random'});
+        });
     });
 
 
