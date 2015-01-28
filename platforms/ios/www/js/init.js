@@ -1,3 +1,6 @@
+//var HOST = "http://ruby.fti.pagekite.me/rubyweb";
+var HOST = "localhost/rubyweb";
+
 $(document).ready(function () {
     // call ajax to get list frequently question
 
@@ -7,24 +10,9 @@ $(document).ready(function () {
     $('.loading').hide();
     //$('.recommend-question').hide();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     $('#btnSeeMore').click(function() {
         mixpanel.track("seeMore", {});
     });
->>>>>>> analytics
-=======
-    $('#btnSeeMore').click(function() {
-        mixpanel.track("seeMore", {});
-    });
->>>>>>> analytics
-=======
-    $('#btnSeeMore').click(function() {
-        mixpanel.track("seeMore", {});
-    });
->>>>>>> analytics
 
     $('#input').click(function (e) {
         $(this).focus();
@@ -33,19 +21,7 @@ $(document).ready(function () {
     $('#button-request').click(function (e) {
         // footer
         $('#button-request').hide();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         $('#footer').height('10%');
-=======
-        $('#footer').height('5%');
->>>>>>> analytics
-=======
-        $('#footer').height('5%');
->>>>>>> analytics
-=======
-        $('#footer').height('5%');
->>>>>>> analytics
         $('#input').val('');
         $('.show-question').hide();
 
@@ -61,18 +37,7 @@ $(document).ready(function () {
     $("#input").on("keypress", function(event){
         if (event.keyCode === 13) {
             var question = $('#input').val();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
             mixpanel.track("ask", {'input': 'type'});
->>>>>>> analytics
-=======
-            mixpanel.track("ask", {'input': 'type'});
->>>>>>> analytics
-=======
-            mixpanel.track("ask", {'input': 'type'});
->>>>>>> analytics
             request(question);
         }
     });
@@ -87,51 +52,15 @@ $(document).ready(function () {
     // DIALOG for random question
     $('.random-question').hide();
     $('#random-loading').show();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     /*$.ajax({
-=======
-    $.ajax({
->>>>>>> analytics
-=======
-    $.ajax({
->>>>>>> analytics
-=======
-    $.ajax({
->>>>>>> analytics
         type: "GET",
         dataType: "text",
         url: "http://ruby.fti.pagekite.me/rubyweb/cinema",
         success: function (result) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
         }
     });*/
-=======
-=======
->>>>>>> analytics
-=======
->>>>>>> analytics
-            $('.random-question').show();
-            $('#random-loading').hide();
-            var items = JSON.parse(result);
-            $('#random-question-1').html(items[1].name);
-            $('#random-question-2').html(items[2].name);
-            $('#random-question-3').html(items[3].name);
-
-        }
-    });
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> analytics
-=======
->>>>>>> analytics
-=======
->>>>>>> analytics
     $('#random-question-1').click(function (e) {
         var question = $('#random-question-1').text();
         $('.dialog').hide();

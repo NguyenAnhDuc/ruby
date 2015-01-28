@@ -1,4 +1,4 @@
-(function(){
+(function () {
     'use strict';
     var module = angular.module('app', ['onsen']);
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
@@ -10,7 +10,7 @@
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
+            url: HOST + "/info/frequent",
             success: function (result) {
                 preFrqQuestions.items = JSON.parse(result);
             }
@@ -19,7 +19,7 @@
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
+            url: HOST + "/info/frequent",
             success: function (result) {
                 randomQuestions.items = JSON.parse(result);
             }
@@ -27,13 +27,10 @@
     });
 
 
-
-
-
-    module.controller('FrqQuestionController', function($scope, $frqQuestions) {
+    module.controller('FrqQuestionController', function ($scope, $frqQuestions) {
         $scope.items = $frqQuestions.items;
 
-        $scope.btnQuestionClick = function(){
+        $scope.btnQuestionClick = function () {
             ons.navigator.popPage();
             mixpanel.track("ask", {'input': 'freq'});
             request(this.item.question);
@@ -41,15 +38,15 @@
     });
 
 
-    module.controller('MainCtrl', function($scope) {
-        ons.createDialog('dialog.html').then(function(dialog) {
+    module.controller('MainCtrl', function ($scope) {
+        ons.createDialog('dialog.html').then(function (dialog) {
             $scope.dialog = dialog;
         });
 
-        ons.createDialog('seemore.html').then(function(dialog) {
+        ons.createDialog('seemore.html').then(function (dialog) {
             $scope.dialog_seemore = dialog;
         });
-        $scope.show = function() {
+        $scope.show = function () {
             $('.dialog-mask').show();
             $scope.dialog.show();
             $('.random-question').show();
@@ -68,26 +65,18 @@
 
         }
 
-        $scope.showHistoryPage = function(){
-            mixpanel.track("viewHistory");
-            ruby.navigator.pushPage('html/history.html', {title: 'history questions'});
-        }
-
-        $scope.showFrqPage = function(){
+        $scope.showFrqPage = function () {
             mixpanel.track("viewFrequent");
-            ruby.navigator.pushPage('html/frq-questions.html', {title:'frequently asked questions'})
+            ruby.navigator.pushPage('html/frq-questions.html', {title: 'frequently asked questions'})
         }
     });
 
 
-
-    module.factory('$frqQuestions', function() {
+    module.factory('$frqQuestions', function () {
         var data = {};
         data.items = preFrqQuestions.items;
         return data;
     });
-
-
 
 
 })();

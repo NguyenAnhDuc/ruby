@@ -46,7 +46,7 @@ function onChat() {
     $
         .ajax({
             type: "POST",
-            url: "http://ruby.fti.pagekite.me/rubyweb/getAnswer",
+            url: HOST + "/getAnswer",
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
             success: function (result) {

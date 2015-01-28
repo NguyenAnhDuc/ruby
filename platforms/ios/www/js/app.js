@@ -3,45 +3,27 @@
     var module = angular.module('app', ['onsen']);
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     var randomQuestions = {};
-=======
->>>>>>> analytics
-=======
->>>>>>> analytics
-=======
->>>>>>> analytics
 
     $(document).ready(function () {
         // call ajax to get list frequently question
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
+            url: HOST + "/info/frequent",
             success: function (result) {
                 preFrqQuestions.items = JSON.parse(result);
             }
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: "http://ruby.fti.pagekite.me/rubyweb/info/frequent",
+            url: HOST + "/info/frequent",
             success: function (result) {
                 randomQuestions.items = JSON.parse(result);
             }
         });
-=======
->>>>>>> analytics
-=======
->>>>>>> analytics
-=======
->>>>>>> analytics
     });
 
 
@@ -77,32 +59,13 @@
             $('#random-question-3').html(items[3].name);
         }
         $scope.seemore = function (answer) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+            mixpanel.track("seemore", {});
             $scope.dialog_seemore.show();
 
 
-=======
-            mixpanel.track("seemore", {});
-            $scope.dialog_seemore.show();
->>>>>>> analytics
-=======
-            mixpanel.track("seemore", {});
-            $scope.dialog_seemore.show();
->>>>>>> analytics
-=======
-            mixpanel.track("seemore", {});
-            $scope.dialog_seemore.show();
->>>>>>> analytics
         }
         $scope.hideSeemore = function () {
 
-        }
-
-        $scope.showHistoryPage = function(){
-            mixpanel.track("viewHistory");
-            ruby.navigator.pushPage('html/history.html', {title: 'history questions'});
         }
 
         $scope.showFrqPage = function(){
