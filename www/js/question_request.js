@@ -29,7 +29,7 @@ function ajax_request(question,count_request, count_carousel){
     $
         .ajax({
             type: "POST",
-            url: "http://ruby.fti.pagekite.me/rubyweb/ans",
+            url: HOST + "/ans",
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             data: "question=" + encodeURIComponent(question) + "&confirmWebSearch=" + encodeURIComponent("yes"),
             success: function (result) {
@@ -44,6 +44,8 @@ function ajax_request(question,count_request, count_carousel){
                 ruby.carousel.last();
                 $('.content').show();
                 $('#answer-' + count_request).show();
+
+                var length = "short";
                 // check to build seemore button
                 if ($('#answer-' + count_request).height() > $('#wrapper').height()*0.5){
                     var htmlAnswer = result.answer.substring(0,300);
@@ -55,10 +57,11 @@ function ajax_request(question,count_request, count_carousel){
 
                     $('#answer-'+count_request).html(htmlAnswer + htmlSeeMore);
 
-                    mixpanel.track("ans", {"code": "ok", "length": "long"});
-                } else {
-                    mixpanel.track("ans", {"code": "ok", "length": "short"});
+                    length = "long";
                 }
+
+                mixpanel.track("ans", {"code": result.answer.indexOf("Opps,") == -1 ? "ok" : "no-ans", "length": length, "domain": result.domain, "intent": result.intent, "tv": result.tvMods, "mv": result.mvMods});
+
                 $('.full-answer').hide();
 
                 $('.loading').hide();

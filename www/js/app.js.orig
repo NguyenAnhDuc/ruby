@@ -19,7 +19,11 @@
         $.ajax({
             type: "GET",
             dataType: "text",
-            url: HOST + "/info/random",
+<<<<<<< HEAD
+            url: "http://ruby.fti.pagekite.me/rubyweb/info/random",
+=======
+            url: HOST + "/info/frequent",
+>>>>>>> 6c5b9244171f28ebb55eba9d9ec70eab9aba370a
             success: function (result) {
                 randomQuestions.items = JSON.parse(result);
             }
@@ -54,10 +58,10 @@
             $('#random-question-1').html(items[getRandomInt(0,9)]);
             $('#random-question-2').html(items[getRandomInt(10,19)]);
             $('#random-question-3').html(items[getRandomInt(20,29)]);
-            for (var i=1;i<=3;i++){
+            /*for (var i=1;i<=3;i++){
                 if ($('#random-question-'+i).height() > 36) $('#random-question-'+i).css('line-height','18px');
                 if ($('#random-question-'+i).height() === 18) $('#random-question-'+i).css('line-height','36px');
-            }
+            }*/
 
         }
         $scope.seemore = function (answer) {
