@@ -47,9 +47,11 @@ function ajax_request(question,count_request, count_carousel){
 
                 var length = "short";
                 // check to build seemore button
-                if ($('#answer-' + count_request).height() > $('#wrapper').height()*0.4){
-                    var htmlAnswer = result.answer.substring(0, Math.round($('#wrapper').height() / 2));
+                var k = 0.5;
+                if ($('#answer-' + count_request).height() > $('#wrapper').height()*k){
+                    var htmlAnswer = result.answer.substring(0, Math.round($('#wrapper').height() * k));
                     var end = htmlAnswer.lastIndexOf("</br>");
+                    if (end === 0) end = htmlAnswer.lastIndexOf(" ");
                     htmlAnswer = htmlAnswer.substring(0,end);
                     var htmlSeeMore = "<div class=\"center\" id=\"seemore-row\">";
                     htmlSeeMore = htmlSeeMore.concat("<ons-button onclick=\"seemore()\" modifier=\"outline\" style=\"margin-top: 10px\" id=\"btnSeeMore\" class=\" btnSeeMore ng-isolate-scope button effeckt-button button--outline slide-left\"><span class=\"label ons-button-inner\"><span class=\"ng-scope\">Xem thêm</span></span>"

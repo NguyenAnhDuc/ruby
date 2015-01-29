@@ -30,7 +30,10 @@ $(document).ready(function () {
 
     });
 
-    // function send request. Paramater: question
+    // function send request. Paramater: questionư
+
+
+    
 
 
     //trigger enter key

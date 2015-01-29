@@ -62,14 +62,14 @@
         <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
             <ons-toolbar modifier="transparent" class="background">
                 <div class="right">
-                    <ons-toolbar-button ng-click="showFrqPage()" style="height: 50px">
+                    <ons-toolbar-button   ng-click="showFrqPage()" style="height: 50px">
                         <!--div class="center content" >Xem g</div>-->
-                        <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color: white;"></ons-icon>
+                        <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color: white;margin-top: 20px;"></ons-icon>
                     </ons-toolbar-button>
                 </div>
             </ons-toolbar>
             <div class="content-body background" id="main-content">
-                <ons-gesture-detector  ng-click="showInput()" ng-swipedown="showRandom()">
+                <ons-gesture-detector  ng-swipedown="showRandom()" ng-click="showInput()">
                     <div id="main">
                         <div class="display">
                             <!--<div class="center">
@@ -168,7 +168,7 @@
 
 <script type="text/ons-template" id="seemore.html">
     <ons-carousel swipeable auto-scroll fullscreen>
-    <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
+    <ons-dialog style="height: 90%;width: 100%;" class="random-dialog" animation="slide" cancelable>
             <ons-page style="background-color: #76B8A6 !important;">
                         <div class="width-90" id="full-answer-show">
                         </div>
