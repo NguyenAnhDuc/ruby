@@ -8,8 +8,8 @@ $(document).ready(function () {
     $('.full-answer').hide();
     $('#input').hide();
     $('.loading').hide();
+    $('#footer').height('20%');
     //$('.recommend-question').hide();
-
     $('#btnSeeMore').click(function() {
         mixpanel.track("seeMore", {});
     });
@@ -21,7 +21,7 @@ $(document).ready(function () {
     $('#button-request').click(function (e) {
         // footer
         $('#button-request').hide();
-        $('#footer').height('10%');
+        $('#footer').height('36px');
         $('#input').val('');
         $('.show-question').hide();
         // init state

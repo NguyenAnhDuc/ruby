@@ -46,7 +46,7 @@ function removeFirstCoursel(htmlHistory){
     return result;
 }
 
-var count_request = 0, count_carousel = 0, max_carousel = 3;
+var count_request = 0, count_carousel = 0, max_carousel = 10;
 function seemore(){
     angular.element($('#wrapper')).scope().seemore();
     var index = ruby.carousel.getActiveCarouselItemIndex();

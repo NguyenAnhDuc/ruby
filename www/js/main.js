@@ -85,7 +85,7 @@
 
 
         $scope.showInput = function () {
-            $('#footer').height('25%');
+            $('#footer').height('20%');
             $('#input').hide();
             $('.show-question').show();
             $('#button-request').show();

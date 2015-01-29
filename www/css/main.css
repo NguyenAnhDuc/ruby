@@ -89,7 +89,7 @@ input[type=email], input[type=password] {
 }
 
 #footer{
-    height: 25%;
+    height: 20%;
     background-color: #E6E3B2;
     /*background-color: #2B2B2B;*/
 }
@@ -127,7 +127,7 @@ input[type=email], input[type=password] {
 
 
 /*center vertical*/
-.show-answer {display: table; height: 80%; position:absolute; overflow: hidden;width:100%;}
+.show-answer {display: table; height: 60%; position:absolute; overflow: hidden;width:100%;}
 .answer-box {#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;}
 .content-answer {#position: relative; #top: -50%;margin:0 auto;width:90%;}
 

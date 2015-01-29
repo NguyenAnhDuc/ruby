@@ -21,7 +21,7 @@ function ajax_request(question,count_request, count_carousel){
     $('#input').hide();
     $('#question').html(question);
     $('.recommend-question').hide();
-    $('#footer').height('25%');
+    $('#footer').height('20%');
     $('.button-request').hide();
     $('.show-question').show();
     $('#question').show();
@@ -51,7 +51,7 @@ function ajax_request(question,count_request, count_carousel){
                     var htmlAnswer = result.answer.substring(0, Math.round($('#wrapper').height() / 2));
                     var end = htmlAnswer.lastIndexOf("</br>");
                     htmlAnswer = htmlAnswer.substring(0,end);
-                    var htmlSeeMore = "<div class=\"center\">";
+                    var htmlSeeMore = "<div class=\"center\" id=\"seemore-row\">";
                     htmlSeeMore = htmlSeeMore.concat("<ons-button onclick=\"seemore()\" modifier=\"outline\" style=\"margin-top: 10px\" id=\"btnSeeMore\" class=\" btnSeeMore ng-isolate-scope button effeckt-button button--outline slide-left\"><span class=\"label ons-button-inner\"><span class=\"ng-scope\">Xem thêm</span></span>"
                         + "<span class=\"spinner button__spinner button--outline__spinner\"></span></ons-button></div>");
 

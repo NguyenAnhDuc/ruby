@@ -37,9 +37,6 @@
     <script src="js/init.js"></script>
     <script src="js/main.js"></script>
 
-    <!--<script src="js/offline.js"></script>-->
-    <!--<script src="js/simulate.js"></script>-->
-
 
     <style>
         /*.page__content {
@@ -55,27 +52,6 @@
 
     </style>
 
-    <!--<script>
-        $(function(){
-
-            var
-                    $online = $('.online'),
-                    $offline = $('.offline');
-
-            Offline.on('confirmed-down', function () {
-                $online.fadeOut(function () {
-                    $offline.fadeIn();
-                });
-            });
-
-            Offline.on('confirmed-up', function () {
-                $offline.fadeOut(function () {
-                    $online.fadeIn();
-                });
-            });
-
-        });
-    </script>-->
 </head>
 
 <body>
@@ -86,9 +62,9 @@
         <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
             <ons-toolbar modifier="transparent" class="background">
                 <div class="right">
-                    <ons-toolbar-button ng-click="showFrqPage()">
+                    <ons-toolbar-button ng-click="showFrqPage()" style="height: 50px">
                         <!--div class="center content" >Xem g</div>-->
-                        <ons-icon icon="ion-arrow-right-c" style="color: white"></ons-icon>
+                        <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color: white;"></ons-icon>
                     </ons-toolbar-button>
                 </div>
             </ons-toolbar>
@@ -104,7 +80,6 @@
 
                                 <ons-carousel-item>
                                     <div class=" your-question content width-90 right-content" id="your-question-0">
-                                        Xin chao
                                     </div>
                                     <div class="show-answer">
                                         <div class="answer-box">
@@ -144,7 +119,7 @@
                         </div>
                     </div>
 
-                    <div class="button-request" style="">
+                    <div class="button-request" style="height: 40%">
                         <ons-button id="button-request"      modifier="quiet"
                                     style="width: 100%;height: 100%; color:grey">Chạm để hỏi
                         </ons-button>
@@ -173,15 +148,15 @@
                 <div class="random-question-box">
                     <div class="random-question">
                         <ons-button id="random-question-1" class="random-question-button" modifier="large"
-                                    style="background-color: lightsalmon ">
+                                    style="background-color: lightseagreen ">
                             Chạm để sửa
                         </ons-button>
                         <ons-button id="random-question-2" class="random-question-button" modifier="large"
-                                    style="background-color: lightseagreen">
+                                    style="background-color: lightcoral">
                             Chạm để sửa
                         </ons-button>
                         <ons-button id="random-question-3" class="random-question-button" modifier="large"
-                                    style="background-color: lightcoral   ">
+                                    style="background-color:limegreen   ">
                             Chạm để sửa
                         </ons-button>
                     </div>
@@ -202,7 +177,6 @@
     </ons-dialog>
     </ons-carousel>
 </script>
-
 
 
 <script type="text/ons-template" id="alert.html">
