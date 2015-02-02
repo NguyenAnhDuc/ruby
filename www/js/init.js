@@ -1,7 +1,10 @@
 //var HOST = "http://118.69.135.27/rubyweb";
-var HOST = "http://10.3.9.236/rubyweb";
-//var HOST = "http://ruby.fti.pagekite.me/rubyweb";
-var TIME_OUT = 1000;
+//var HOST = "http://10.3.9.236/rubyweb";
+var HOST = "http://ruby.fti.pagekite.me/rubyweb";
+var TIME_OUT = 10000;
+var rubyDialog = {};
+var footerHeight = '100px';
+var inputHeight = '44px';
  // no '/'
 //var HOST = "http://10.3.9.44:8080/rubyweb";
 
@@ -15,7 +18,7 @@ $(document).ready(function () {
     $('.full-answer').hide();
     $('#input').hide();
     $('.loading').hide();
-    $('#footer').height('20%');
+    $('#footer').height(footerHeight);
     //$('.recommend-question').hide();
     $('#btnSeeMore').click(function() {
         mixpanel.track("seeMore", {});
@@ -28,7 +31,7 @@ $(document).ready(function () {
     $('#button-request').click(function (e) {
         // footer
         $('#button-request').hide();
-        $('#footer').height('8%');
+        $('#footer').height(inputHeight);
         //$('#input').css('line-height','36px');
         $('#input').val('');
         $('.show-question').hide();
@@ -38,11 +41,6 @@ $(document).ready(function () {
         $('.button-request').hide();
 
     });
-
-    // function send request. Paramater: questionư
-
-
-    
 
 
     //trigger enter key 

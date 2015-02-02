@@ -89,7 +89,7 @@ input[type=email], input[type=password] {
 }
 
 #footer{
-    height: 20%;
+    height: 120px;
     background-color: #76B8A6;
     /*background-color: #E6E3B2;*/
     /*background-color: #2B2B2B;*/
@@ -109,7 +109,7 @@ input[type=email], input[type=password] {
 
 .content{
     /*font-family: "Museo Slab";*/
-    font-family: "monospace";
+    font-family: "Arial,  sans-serif";
     /*color: #F6F6E8;*/
     /*color: #100F0E;*/
     color: #100F0E;

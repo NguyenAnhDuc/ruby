@@ -29,15 +29,8 @@ function displayProcess(question, answer){
 function ajax_request(question,count_request, count_carousel){
     var carousel_index = ruby.carousel.getActiveCarouselItemIndex();
     $('.your-question').hide();
-    /*$('#your-question').attr('id','your-question-' + carousel_index);
-    $('#full-answer').attr('id','full-answer-' + carousel_index);
-    $('#answer').attr('id','answer-'+carousel_index);*/
     var htmlHistory = $('#history-carousel').html();
     $('.content').hide();
-
-    //$('.show-answer').height('10%');
-    // loading
-
     $('.image').show();
     $('.loading').show();
     // hide keyboard
@@ -48,7 +41,7 @@ function ajax_request(question,count_request, count_carousel){
     $('#input').hide();
     $('#question').html(question);
     $('.recommend-question').hide();
-    $('#footer').height('20%');
+    $('#footer').height(footerHeight);
     $('.button-request').hide();
     $('.show-question').show();
     $('#question').show();
@@ -87,7 +80,7 @@ function ajax_request(question,count_request, count_carousel){
                     $('.recommend-question').show();
                     $('#recommend-question-text').html(result.related.suggest);
                     var random = getRandomInt(1,4);
-                    if (random === 1) $('#recommend-question').css('background-color','#00ACE9');  //lightseagreen
+                    if (random === 1) $('#recommend-question').css('background-color','#9E4E4F');  //lightseagreen
                     if (random === 2) $('#recommend-question').css('background-color','#D43F3F'); //lightcoral
                     if (random === 3) $('#recommend-question').css('background-color','#6A9A1F');
                     if ($('#recommend-question').height() > 36) $('#recommend-question').css('line-height','18px');

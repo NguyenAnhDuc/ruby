@@ -4,7 +4,6 @@
     var networkErrorString = "Tôi không thể tìm thấy kết nối internet, bạn hãy kiểm tra lại được không?";
     var preFrqQuestions = {};
     var randomQuestions = {};
-    var rubyDialog = {};
     $(document).ready(function () {
         // call ajax to get list frequently question
 
@@ -37,8 +36,8 @@
 
     module.controller('AlertController', function ($scope) {
         $scope.closeAlert = function() {
-            if(rubyDialog.dialog.alertDialog && rubyDialog.dialog.alertDialog.isShown()) {
-                rubyDialog.dialog.alertDialog.hide();
+            if(rubyDialog.dialog && rubyDialog.dialog.isShown()) {
+                rubyDialog.dialog.hide();
             }
         };
     });
@@ -93,7 +92,7 @@
 
 
         $scope.showInput = function () {
-            $('#footer').height('20%');
+            $('#footer').height(footerHeight);
             $('#input').hide();
             $('.show-question').show();
             $('.button-request').show();
