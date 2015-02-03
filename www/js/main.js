@@ -78,7 +78,7 @@
             for (var i=1;i<=3;i++){
                 $('#random-question-' + i).css('line-height','36px');
                 if ($('#random-question-'+i).height() > 36) $('#random-question-'+i).css('line-height','18px');
-                if ($('#random-question-'+i).height() === 18) $('#random-question-'+i).css('line-height','36px');
+                if ($('#random-question-'+i).height() < 36) $('#random-question-'+i).css('line-height','36px');
             }
             mixpanel.track("viewRandom");
 
