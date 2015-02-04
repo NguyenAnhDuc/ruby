@@ -42,8 +42,7 @@
         };
     });
 
-    module.controller('FrqQuestionController', function ($scope, $frqQuestions) {
-        $scope.items = $frqQuestions.items;
+    module.controller('FrqQuestionController', function ($scope) {
 
         $scope.btnQuestionClick = function () {
             ons.navigator.popPage();
@@ -55,11 +54,13 @@
             ons.navigator.popPage();
         }
 
+
     });
 
 
 
-    module.controller('MainCtrl', function ($scope) {
+    module.controller('MainCtrl', function ($scope, $frqQuestions) {
+        $scope.items = $frqQuestions.items;
         ons.createDialog('dialog.html').then(function (dialog) {
             $scope.dialog = dialog;
         });
@@ -67,6 +68,9 @@
         ons.createDialog('seemore.html').then(function (dialog) {
             $scope.dialog_seemore = dialog;
         });
+
+
+
         $scope.showRandom = function () {
             $('.dialog-mask').show();
             $scope.dialog.show();
@@ -83,6 +87,14 @@
             }
             mixpanel.track("viewRandom");
         }
+
+        $scope.showFrqPage = function(){
+            ons.createDialog('frq-question.html').then(function (dialog) {
+                $scope.dialog_frq = dialog;
+            });
+            $scope.dialog_frq.show();
+        }
+
         $scope.seemore = function (answer) {
             mixpanel.track("seemore", {});
             $scope.dialog_seemore.show();
@@ -99,10 +111,10 @@
             $('#button-request').show();
         }
 
-        $scope.showFrqPage = function () {
+       /* $scope.showFrqPage = function () {
             mixpanel.track("viewFrequent");
             ruby.navigator.pushPage('html/frq-questions.html', {title: 'frequently asked questions'})
-        }
+        }*/
 
 
         $scope.closeAlert = function() {

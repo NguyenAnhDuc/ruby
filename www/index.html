@@ -41,6 +41,44 @@
             width: 95%;
         }
 
+
+
+        .prop-desc {
+            margin-left: 10px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .item-list-frq {
+            /*background-color: #76B8A6;*/
+            background-color: #E6E3B2;
+            border-bottom: 1px solid #100F0E !important;
+        }
+
+        .white-color{
+            color: ghostwhite !important;
+        }
+
+        .fa-lg {
+            font-size: 1em;
+        }
+
+        .frq-question{
+            line-height: 20px;
+            font-size: 17px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .frq-question-icon{
+            line-height: 40px;
+        }
+
+        #toolbar-frq{
+            height: 50px;
+            border-bottom: 1px solid #100F0E !important;
+        }
+
     </style>
 
 </head>
@@ -51,14 +89,13 @@
 <ons-navigator var="ruby.navigator">
     <ons-carousel swipeable auto-scroll fullscreen>
         <ons-page id="wrapper"  fullscreen ng-controller="MainCtrl" >
-            <ons-toolbar modifier="transparent" class="background">
+            <!--<ons-toolbar modifier="transparent" class="background">
                 <div class="right">
                     <ons-toolbar-button   ng-click="showFrqPage()" style="height: 10%">
-                        <!--div class="center content" >Xem g</div>8F8B1D D43F3F -->
                         <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color:#D43F3F;margin-top: 20px"></ons-icon>
                     </ons-toolbar-button>
                 </div>
-            </ons-toolbar>
+            </ons-toolbar>-->
             <div class="content-body background" id="main-content">
                 <ons-gesture-detector  ng-swipedown="showRandom()"  ng-click="showInput()">
                     <div id="main">
@@ -109,9 +146,7 @@
                 <ons-bottom-toolbar id="footer">
 
                     <div class="show-question center" style="margin-top: 10px">
-                        <ons-row>
-                            <div class="content" id="question" style="white-space: normal"></div>
-                        </ons-row>
+                        <div class="content" id="question" style="white-space: normal"></div>
 
                         <div class=" recommend-question">
                             <ons-button id="recommend-question"  modifier="large">
@@ -124,14 +159,26 @@
                                     </ons-col>
                                 </ons-row>
                             </ons-button>
-                            <!--<ons-icon class="right" icon="fa-question"></ons-icon>-->
+
                         </div>
                     </div>
 
                     <div class="button-request" style="height: 40%">
-                        <ons-button id="button-request"      modifier="quiet"
-                                    style="width: 100%;height: 100%; color:seashell">Chạm để hỏi
-                        </ons-button>
+                        <ons-row>
+                            <ons-col width="20%">
+
+                            </ons-col>
+                            <ons-col width="60%">
+                                <ons-button id="button-request"      modifier="quiet"
+                                            style="width: 100%;height: 100%; color:seashell">Chạm để hỏi
+                                </ons-button>
+                            </ons-col>
+                            <ons-col width="20%">
+                                <ons-toolbar-button ng-click="showFrqPage()">
+                                    <ons-icon id="icon-frq" size="28px" class="right" style="color: white;" icon="fa fa-question-circle"></ons-icon>
+                                </ons-toolbar-button>
+                            </ons-col>
+                        </ons-row>
                     </div>
                     <div class="spinner-bottom loading"></div>
                     <input type="text" id="input" class="content text-input text-input--transparent" placeholder="Hỏi tôi"
@@ -199,6 +246,47 @@
         </div>
     </ons-alert-dialog>
     </ons-carousel>
+</script>
+
+
+<script type="text/ons-template" id="frq-question.html">
+    <ons-dialog ng-controller="FrqQuestionController" style="height: 80%;width: 80%;" class="frq-dialog" animation="slide" cancelable>
+        <ons-page >
+            <ons-toolbar id="toolbar-frq" class="background">
+                <ons-row>
+
+                    <ons-col class="center content" style="margin-top: 10px;"> <p style="margin-top: 5px;">Câu hỏi thường gặp </p></ons-col>>
+                </ons-row>
+
+            </ons-toolbar>
+            <div id="frq-questions" class="content-body">
+                <ons-list fullscreen class="list-frq">
+                    <ons-list-item modifier="tappable" class="item-list-frq content" ng-repeat="item in items" ng-click="btnQuestionClick()" >
+                        <ons-row >
+                            <ons-col width="40px" class="frq-question-icon" >
+                                <ons-icon  icon={{item.icon}}></ons-icon>
+                            </ons-col>
+                            <ons-col class="frq-question">
+                                <div  >{{item.question}}</div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-list-item>
+
+
+                </ons-list>
+            </div>
+
+            <ons-bottom-toolbar>
+                <div class="center" style="background-color: #76B8A6;">
+                    <ons-toolbar-button   ng-click="showMainPage()" style="height: 10%">
+                        <!--div class="center content" >Xem g</div>-->
+                        <ons-icon id="icon-back" size="35px" icon="ion-arrow-left-c" style="color: green;margin-top: 10px;"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+            </ons-bottom-toolbar>
+        </ons-page>
+
+    </ons-dialog>
 </script>
 
 <script type="text/javascript">
