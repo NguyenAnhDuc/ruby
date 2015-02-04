@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        .prop-desc {
+            margin-left: 10px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .item-list-frq {
+            /*background-color: #76B8A6;*/
+            background-color: #E6E3B2;
+            border-bottom: 1px solid #100F0E !important;
+        }
+
+        .white-color{
+            color: ghostwhite !important;
+        }
+
+        .fa-lg {
+            font-size: 1em;
+        }
+
+        .frq-question{
+            line-height: 20px;
+            font-size: 17px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .frq-question-icon{
+            line-height: 40px;
+        }
+
+        #toolbar-frq{
+            height: 50px;
+            border-bottom: 1px solid #100F0E !important;
+        }
+    </style>
+</head>
+<body >
+<!--<ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">-->
+    <ons-page ng-controller="FrqQuestionController">
+        <ons-toolbar id="toolbar-frq" class="background">
+            <ons-row>
+
+                <ons-col class="center content" style="margin-top: 10px;"> <p style="margin-top: 5px;">Câu hỏi thường gặp </p></ons-col>>
+            </ons-row>
+
+        </ons-toolbar>
+            <div id="frq-questions" class="content-body">
+                <ons-list fullscreen class="list-frq">
+                    <ons-list-item modifier="tappable" class="item-list-frq content" ng-repeat="item in items" ng-click="btnQuestionClick()" >
+                        <ons-row >
+                            <ons-col width="40px" class="frq-question-icon" >
+                                <ons-icon  icon={{item.icon}}></ons-icon>
+                            </ons-col>
+                            <ons-col class="frq-question">
+                                    <div  >{{item.question}}</div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-list-item>
+
+
+                </ons-list>
+            </div>
+
+        <ons-bottom-toolbar>
+            <div class="center" style="background-color: #76B8A6;">
+                <ons-toolbar-button   ng-click="showMainPage()" style="height: 10%">
+                    <!--div class="center content" >Xem g</div>-->
+                    <ons-icon id="icon-frq" size="35px" icon="ion-arrow-left-c" style="color: green;margin-top: 10px;"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-bottom-toolbar>
+    </ons-page>
+<!--</ons-carousel>-->
+</body>
+</html>
