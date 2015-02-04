@@ -38,7 +38,7 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 20px;
-            width: 90%;
+            width: 95%;
         }
 
     </style>
@@ -60,7 +60,7 @@
                 </div>
             </ons-toolbar>
             <div class="content-body background" id="main-content">
-                <ons-gesture-detector  ng-swipedown="showRandom()" ng-click="showInput()">
+                <ons-gesture-detector  ng-swipedown="showRandom()"  ng-click="showInput()">
                     <div id="main">
                         <div class="display">
                             <!--<div class="center">
@@ -109,7 +109,10 @@
                 <ons-bottom-toolbar id="footer">
 
                     <div class="show-question center" style="margin-top: 10px">
-                        <div class="content" id="question" style="white-space: normal"></div>
+                        <ons-row>
+                            <div class="content" id="question" style="white-space: normal"></div>
+                        </ons-row>
+
                         <div class=" recommend-question">
                             <ons-button id="recommend-question"  modifier="large">
                                 <ons-row>
@@ -121,6 +124,7 @@
                                     </ons-col>
                                 </ons-row>
                             </ons-button>
+                            <ons-icon class="right" icon="fa-question"></ons-icon>
                         </div>
                     </div>
 
@@ -147,6 +151,7 @@
 
 
 <script type="text/ons-template" id="dialog.html">
+    <ons-carousel swipeable auto-scroll fullscreen>
     <ons-dialog style="height: 50%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
         <ons-page id="pageSeeMore" style="background-color: #8F8B1D !important; ">
             <div class="page-inner">
@@ -166,6 +171,7 @@
             </div>
         </ons-page>
     </ons-dialog>
+    </ons-carousel>
 </script>
 
 <script type="text/ons-template" id="seemore.html">
@@ -182,6 +188,7 @@
 
 
 <script type="text/ons-template" id="alert.html">
+    <ons-carousel swipeable auto-scroll fullscreen>
     <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog" ng-controller="AlertController">
         <div class="alert-dialog-title">Lỗi!</div>
         <div class="alert-dialog-content">
@@ -191,6 +198,7 @@
             <button class="alert-dialog-button" ng-click="closeAlert()">OK</button>
         </div>
     </ons-alert-dialog>
+    </ons-carousel>
 </script>
 
 <script type="text/javascript">

@@ -77,11 +77,11 @@
             $('#random-question-3').html(items[getRandomInt(20,29)]);
             for (var i=1;i<=3;i++){
                 $('#random-question-' + i).css('line-height','36px');
-                if ($('#random-question-'+i).height() > 36) $('#random-question-'+i).css('line-height','18px');
-                if ($('#random-question-'+i).height() < 36) $('#random-question-'+i).css('line-height','36px');
+                var h = $('#random-question-'+i).height();
+                if (h > 36) $('#random-question-'+i).css('line-height','18px');
+                if (h < 36) $('#random-question-'+i).css('line-height','36px');
             }
             mixpanel.track("viewRandom");
-
         }
         $scope.seemore = function (answer) {
             mixpanel.track("seemore", {});
