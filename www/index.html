@@ -83,26 +83,19 @@
 
 </head>
 
-<body >
+<body ng-controller="MainCtrl" >
 
 
 <ons-navigator var="ruby.navigator">
     <ons-carousel swipeable auto-scroll fullscreen>
-        <ons-page id="wrapper"  fullscreen ng-controller="MainCtrl" >
-            <!--<ons-toolbar modifier="transparent" class="background">
-                <div class="right">
-                    <ons-toolbar-button   ng-click="showFrqPage()" style="height: 10%">
-                        <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color:#D43F3F;margin-top: 20px"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
-            </ons-toolbar>-->
+        <ons-page id="wrapper"  fullscreen  >
+            <ons-toolbar modifier="transparent" class="background">
+
+            </ons-toolbar>
             <div class="content-body background" id="main-content">
                 <ons-gesture-detector  ng-swipedown="showRandom()"  ng-click="showInput()">
                     <div id="main">
                         <div class="display">
-                            <!--<div class="center">
-                                <img class="image" src="img/assistant.png">
-                            </div>-->
                             <ons-carousel swipeable  auto-scroll fullscreen id="history-carousel"
                                           var="ruby.carousel">
 
@@ -114,7 +107,6 @@
                                             <div class="content content-answer" id="answer-0">
                                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
                                                 các câu hỏi về phim ảnh và các chương trình TV.</p>
-
                                                 &nbsp;&nbsp;&nbsp;&nbsp;Bạn có thể:
                                                 <ul class="begin">
                                                     <li>Click vào mũi tên phía trên bên phải để xem các câu hỏi thường được hỏi.</li>
@@ -236,7 +228,7 @@
 
 <script type="text/ons-template" id="alert.html">
     <ons-carousel swipeable auto-scroll fullscreen>
-    <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog" ng-controller="AlertController">
+    <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog">
         <div class="alert-dialog-title">Lỗi!</div>
         <div class="alert-dialog-content">
            Có lỗi xảy ra. Xin bạn vui lòng kiểm tra kết nối internet hoặc thử lại!
@@ -250,14 +242,12 @@
 
 
 <script type="text/ons-template" id="frq-question.html">
-    <ons-dialog ng-controller="FrqQuestionController" style="height: 80%;width: 80%;" class="frq-dialog" animation="slide" cancelable>
+    <ons-dialog style="height: 80%;width: 100%;" class="frq-dialog" animation="slide" cancelable>
         <ons-page >
             <ons-toolbar id="toolbar-frq" class="background">
                 <ons-row>
-
                     <ons-col class="center content" style="margin-top: 10px;"> <p style="margin-top: 5px;">Câu hỏi thường gặp </p></ons-col>>
                 </ons-row>
-
             </ons-toolbar>
             <div id="frq-questions" class="content-body">
                 <ons-list fullscreen class="list-frq">
@@ -276,14 +266,13 @@
                 </ons-list>
             </div>
 
-            <ons-bottom-toolbar>
+            <!--<ons-bottom-toolbar>
                 <div class="center" style="background-color: #76B8A6;">
                     <ons-toolbar-button   ng-click="showMainPage()" style="height: 10%">
-                        <!--div class="center content" >Xem g</div>-->
                         <ons-icon id="icon-back" size="35px" icon="ion-arrow-left-c" style="color: green;margin-top: 10px;"></ons-icon>
                     </ons-toolbar-button>
                 </div>
-            </ons-bottom-toolbar>
+            </ons-bottom-toolbar>-->
         </ons-page>
 
     </ons-dialog>
