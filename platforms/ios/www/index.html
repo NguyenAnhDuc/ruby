@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />-->
+    <title>Xem gì</title>
+
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+    <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
+    <link rel="stylesheet" href="styles/app.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/table_style.css"/>
+
+
+    <!--<link rel="stylesheet" href="css/chat.css"/>-->
+
+
+    <script src="lib/onsen/js/angular/angular.js"></script>
+    <script src="lib/onsen/js/onsenui.js"></script>
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/heyoffline.js"></script>
+
+    <script src="js/mixpanel-client.js"></script>
+    <script src="js/question_request.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <style>
+        /*.page__content {
+            background-color: #404040 !important;
+        }*/
+
+        .content-answer{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            width: 90%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<ons-navigator var="ruby.navigator">
+    <ons-carousel swipeable auto-scroll fullscreen>
+        <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
+            <ons-toolbar modifier="transparent" class="background">
+                <div class="right">
+                    <ons-toolbar-button   ng-click="showFrqPage()" style="height: 10%">
+                        <!--div class="center content" >Xem g</div>8F8B1D D43F3F -->
+                        <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color:#D43F3F;margin-top: 20px"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <div class="content-body background" id="main-content">
+                <ons-gesture-detector  ng-swipedown="showRandom()" ng-click="showInput()">
+                    <div id="main">
+                        <div class="display">
+                            <!--<div class="center">
+                                <img class="image" src="img/assistant.png">
+                            </div>-->
+                            <ons-carousel swipeable  auto-scroll fullscreen id="history-carousel"
+                                          var="ruby.carousel">
+
+                                <ons-carousel-item>
+                                    <div class=" your-question content width-90 right-content" id="your-question-0">
+                                    </div>
+                                    <div class="show-answer">
+                                        <div class="answer-box">
+                                            <div class="content content-answer" id="answer-0">
+                                                <table>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Kênh</th>
+                                                        <th>Thời gian</th>
+                                                        <th>Chương trình</th>
+                                                        <th>Chương trình</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr><td class="user-name">gary coleman</td><td class="user-email">gary.coleman21@example.com</td><td class="user-phone">(398)-332-5385</td><td class="user-mobile">(888)-677-3719</td></tr>
+                                                    <tr><td class="user-name">rose parker</td><td class="user-email">rose.parker16@example.com</td><td class="user-phone">(293)-873-2247</td><td class="user-mobile">(216)-889-4933</td></tr>
+                                                    <tr><td class="user-name">chloe nelson</td><td class="user-email">chloe.nelson18@example.com</td><td class="user-phone">(957)-213-3499</td><td class="user-mobile">(207)-516-4474</td></tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="full-answer" id="full-answer-0s">
+
+                                            </div>
+                                            <div class="center">
+                                                <ons-button class="btnSeeMore"  id="btnSeeMore" style="margin-top: 10px"  modifier="outline" >Xem thêm</ons-button>
+                                            </div>
+                                            <div class="spinner loading center">
+                                                <div class="bounce1"></div>
+                                                <div class="bounce2"></div>
+                                                <div class="bounce3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </ons-carousel-item>
+                            </ons-carousel>
+                        </div>
+                    </div>
+                </ons-gesture-detector>
+                <ons-bottom-toolbar id="footer">
+
+                    <div class="show-question center" style="margin-top: 10px">
+                        <div class="content" id="question" style="white-space: normal"></div>
+                        <div class=" recommend-question">
+                            <ons-button id="recommend-question"  modifier="large">
+                                <ons-row>
+                                    <ons-col width="20px" class="left">
+                                        <ons-icon icon="fa-lightbulb-o"></ons-icon>
+                                    </ons-col>
+                                    <ons-col id="recommend-question-text">
+                                        TV đang chiếu phim gì
+                                    </ons-col>
+                                </ons-row>
+                            </ons-button>
+                        </div>
+                    </div>
+
+                    <div class="button-request" style="height: 40%">
+                        <ons-button id="button-request"      modifier="quiet"
+                                    style="width: 100%;height: 100%; color:seashell">Chạm để hỏi
+                        </ons-button>
+                    </div>
+                    <div class="spinner-bottom loading"></div>
+                    <input type="text" id="input" class="content text-input text-input--transparent" placeholder="Hỏi tôi"
+                           style="width: 100%;line-height: 36px;">
+                </ons-bottom-toolbar>
+
+            </div>
+            <ons-modal style="color: #F6F6E8" var="ruby.modal" id="modal" ng-click="hideSeemore()">
+            </ons-modal>
+        </ons-page>
+
+
+    </ons-carousel>
+
+
+</ons-navigator>
+
+
+<script type="text/ons-template" id="dialog.html">
+    <ons-dialog style="height: 50%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
+        <ons-page id="pageSeeMore" style="background-color: #8F8B1D !important; ">
+            <div class="page-inner">
+                <div class="random-question-box">
+                    <div class="random-question">
+                        <ons-button id="random-question-1" class="random-question-button" modifier="large"
+                                    style="background-color: lightseagreen ">
+                        </ons-button>
+                        <ons-button id="random-question-2" class="random-question-button" modifier="large"
+                                    style="background-color: lightcoral">
+                        </ons-button>
+                        <ons-button id="random-question-3" class="random-question-button" modifier="large"
+                                    style="background-color:limegreen   ">
+                        </ons-button>
+                    </div>
+                </div>
+            </div>
+        </ons-page>
+    </ons-dialog>
+</script>
+
+<script type="text/ons-template" id="seemore.html">
+    <ons-carousel swipeable auto-scroll fullscreen>
+    <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
+            <ons-page style="background-color: #E6E3B2 !important;">
+                        <div class="width-90 content" id="full-answer-show">
+                        </div>
+
+            </ons-page>
+    </ons-dialog>
+    </ons-carousel>
+</script>
+
+
+<script type="text/ons-template" id="alert.html">
+    <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog" ng-controller="AlertController">
+        <div class="alert-dialog-title">Lỗi!</div>
+        <div class="alert-dialog-content">
+           Có lỗi xảy ra. Xin bạn vui lòng kiểm tra kết nối internet hoặc thử lại!
+        </div>
+       <div class="alert-dialog-footer">
+            <button class="alert-dialog-button" ng-click="closeAlert()">OK</button>
+        </div>
+    </ons-alert-dialog>
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        $(".recommend-question").click(function() {
+            mixpanel.track("ask", {'input': 'recommend'});
+        });
+
+        $(".random-question").click(function() {
+            mixpanel.track("ask", {'input': 'random'});
+        });
+    });
+
+
+</script>
+
+</body>
+</html>
