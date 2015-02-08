@@ -1,10 +1,11 @@
-//var HOST = "http://118.69.135.27/rubyweb";
-//var HOST = "http://10.3.9.236/rubyweb";
-var HOST = "http://ruby.fti.pagekite.me/rubyweb";
-var TIME_OUT = 10000;
+var HOST = "http://118.69.135.27/rubyweb";
+//var HOST = "http://tech.fpt.com.vn/rubyweb";
+//var HOST = "http://ruby.fti.pagekite.me/rubyweb"
+var TIME_OUT = 5000;
 var rubyDialog = {};
-var footerHeight = '100px';
+var footerHeight = '120px';
 var inputHeight = '44px';
+var errorStatus = "Có lỗi xảy ra. Xin bạn vui lòng kiểm tra kết nối internet hoặc thử lại!";
  // no '/'
 //var HOST = "http://10.3.9.44:8080/rubyweb";
 
@@ -48,7 +49,7 @@ $(document).ready(function () {
         if (event.keyCode === 13) {
             var question = $('#input').val();
             mixpanel.track("ask", {'input': 'type'});
-            if (question != '')
+            if (question.trim() != '')
                 request(question);
         }
     });

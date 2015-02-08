@@ -74,7 +74,11 @@ input[type=email], input[type=password] {
 }
 
 .width-90{
+<<<<<<< HEAD
     width: 90%;
+=======
+    width: 95%;
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     margin-left: auto;
     margin-right: auto ;
     margin-top: 10px;
@@ -109,7 +113,11 @@ input[type=email], input[type=password] {
 
 .content{
     /*font-family: "Museo Slab";*/
+<<<<<<< HEAD
     font-family: "Arial,  sans-serif";
+=======
+    font-family: "Helvetica";
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     /*color: #F6F6E8;*/
     /*color: #100F0E;*/
     color: #100F0E;
@@ -127,13 +135,21 @@ input[type=email], input[type=password] {
     text-align: right;
 }
 
+<<<<<<< HEAD
 ul
+=======
+.begin
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
 {
     list-style-type: none;
 }
 
 
+<<<<<<< HEAD
 li:before {
+=======
+.begin li:before {
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     content: '\f00c'; /* FontAwesome char code inside the '' */
     font-family: FontAwesome; /* FontAwesome or whatever */
     display: inline-block;

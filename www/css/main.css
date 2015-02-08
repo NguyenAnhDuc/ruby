@@ -74,7 +74,7 @@ input[type=email], input[type=password] {
 }
 
 .width-90{
-    width: 90%;
+    width: 95%;
     margin-left: auto;
     margin-right: auto ;
     margin-top: 10px;
@@ -109,7 +109,7 @@ input[type=email], input[type=password] {
 
 .content{
     /*font-family: "Museo Slab";*/
-    font-family: "Arial,  sans-serif";
+    font-family: "Helvetica";
     /*color: #F6F6E8;*/
     /*color: #100F0E;*/
     color: #100F0E;
@@ -127,13 +127,13 @@ input[type=email], input[type=password] {
     text-align: right;
 }
 
-ul
+.begin
 {
     list-style-type: none;
 }
 
 
-li:before {
+.begin li:before {
     content: '\f00c'; /* FontAwesome char code inside the '' */
     font-family: FontAwesome; /* FontAwesome or whatever */
     display: inline-block;

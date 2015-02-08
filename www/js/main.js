@@ -42,8 +42,7 @@
         };
     });
 
-    module.controller('FrqQuestionController', function ($scope, $frqQuestions) {
-        $scope.items = $frqQuestions.items;
+    module.controller('FrqQuestionController', function ($scope) {
 
         $scope.btnQuestionClick = function () {
             ons.navigator.popPage();
@@ -55,11 +54,13 @@
             ons.navigator.popPage();
         }
 
+
     });
 
 
 
-    module.controller('MainCtrl', function ($scope) {
+    module.controller('MainCtrl', function ($scope, $frqQuestions) {
+        $scope.items = $frqQuestions.items;
         ons.createDialog('dialog.html').then(function (dialog) {
             $scope.dialog = dialog;
         });
@@ -67,6 +68,9 @@
         ons.createDialog('seemore.html').then(function (dialog) {
             $scope.dialog_seemore = dialog;
         });
+
+
+
         $scope.showRandom = function () {
             $('.dialog-mask').show();
             $scope.dialog.show();
@@ -77,12 +81,20 @@
             $('#random-question-3').html(items[getRandomInt(20,29)]);
             for (var i=1;i<=3;i++){
                 $('#random-question-' + i).css('line-height','36px');
-                if ($('#random-question-'+i).height() > 36) $('#random-question-'+i).css('line-height','18px');
-                if ($('#random-question-'+i).height() === 18) $('#random-question-'+i).css('line-height','36px');
+                var h = $('#random-question-'+i).height();
+                if (h > 36) $('#random-question-'+i).css('line-height','18px');
+                if (h < 36) $('#random-question-'+i).css('line-height','36px');
             }
             mixpanel.track("viewRandom");
-
         }
+
+        $scope.showFrqPage = function(){
+            ons.createDialog('frq-question.html').then(function (dialog) {
+                $scope.dialog_frq = dialog;
+            });
+            $scope.dialog_frq.show();
+        }
+
         $scope.seemore = function (answer) {
             mixpanel.track("seemore", {});
             $scope.dialog_seemore.show();
@@ -99,10 +111,10 @@
             $('#button-request').show();
         }
 
-        $scope.showFrqPage = function () {
+       /* $scope.showFrqPage = function () {
             mixpanel.track("viewFrequent");
             ruby.navigator.pushPage('html/frq-questions.html', {title: 'frequently asked questions'})
-        }
+        }*/
 
 
         $scope.closeAlert = function() {

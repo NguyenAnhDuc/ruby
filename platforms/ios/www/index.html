@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
     <link rel="stylesheet" href="styles/app.css"/>
     <link rel="stylesheet" href="css/main.css"/>
+<<<<<<< HEAD
     <link rel="stylesheet" href="css/table_style.css"/>
 
 
+=======
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
 
@@ -41,19 +44,31 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 20px;
+<<<<<<< HEAD
             width: 90%;
+=======
+            width: 95%;
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
         }
 
     </style>
 
 </head>
 
+<<<<<<< HEAD
 <body>
+=======
+<body >
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
 
 
 <ons-navigator var="ruby.navigator">
     <ons-carousel swipeable auto-scroll fullscreen>
+<<<<<<< HEAD
         <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
+=======
+        <ons-page id="wrapper"  fullscreen ng-controller="MainCtrl" >
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
             <ons-toolbar modifier="transparent" class="background">
                 <div class="right">
                     <ons-toolbar-button   ng-click="showFrqPage()" style="height: 10%">
@@ -63,7 +78,11 @@
                 </div>
             </ons-toolbar>
             <div class="content-body background" id="main-content">
+<<<<<<< HEAD
                 <ons-gesture-detector  ng-swipedown="showRandom()" ng-click="showInput()">
+=======
+                <ons-gesture-detector  ng-swipedown="showRandom()"  ng-click="showInput()">
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                     <div id="main">
                         <div class="display">
                             <!--<div class="center">
@@ -78,6 +97,7 @@
                                     <div class="show-answer">
                                         <div class="answer-box">
                                             <div class="content content-answer" id="answer-0">
+<<<<<<< HEAD
                                                 <table>
                                                     <thead>
                                                     <tr>
@@ -93,6 +113,19 @@
                                                     <tr><td class="user-name">chloe nelson</td><td class="user-email">chloe.nelson18@example.com</td><td class="user-phone">(957)-213-3499</td><td class="user-mobile">(207)-516-4474</td></tr>
                                                     </tbody>
                                                 </table>
+=======
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
+                                                các câu hỏi về phim ảnh và các chương trình TV.</p>
+
+                                                &nbsp;&nbsp;&nbsp;&nbsp;Bạn có thể:
+                                                <ul class="begin">
+                                                    <li>Click vào mũi tên phía trên bên phải để xem các câu hỏi thường được hỏi.</li>
+                                                    <li>Swipe down để xem các câu hỏi ngẫu nhiên.</li>
+                                                    <li>Xem các câu hỏi liên quan ở phía dưới.</li>
+                                                    <li>Chạm để hỏi theo cách của bạn.</li>
+                                                </ul>
+
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                                             </div>
                                             <div class="full-answer" id="full-answer-0s">
 
@@ -116,7 +149,14 @@
                 <ons-bottom-toolbar id="footer">
 
                     <div class="show-question center" style="margin-top: 10px">
+<<<<<<< HEAD
                         <div class="content" id="question" style="white-space: normal"></div>
+=======
+                        <ons-row>
+                            <div class="content" id="question" style="white-space: normal"></div>
+                        </ons-row>
+
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                         <div class=" recommend-question">
                             <ons-button id="recommend-question"  modifier="large">
                                 <ons-row>
@@ -128,6 +168,10 @@
                                     </ons-col>
                                 </ons-row>
                             </ons-button>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                         </div>
                     </div>
 
@@ -135,6 +179,10 @@
                         <ons-button id="button-request"      modifier="quiet"
                                     style="width: 100%;height: 100%; color:seashell">Chạm để hỏi
                         </ons-button>
+<<<<<<< HEAD
+=======
+                        <ons-icon class="right" icon="fa-question"></ons-icon>
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                     </div>
                     <div class="spinner-bottom loading"></div>
                     <input type="text" id="input" class="content text-input text-input--transparent" placeholder="Hỏi tôi"
@@ -154,6 +202,10 @@
 
 
 <script type="text/ons-template" id="dialog.html">
+<<<<<<< HEAD
+=======
+    <ons-carousel swipeable auto-scroll fullscreen>
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     <ons-dialog style="height: 50%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
         <ons-page id="pageSeeMore" style="background-color: #8F8B1D !important; ">
             <div class="page-inner">
@@ -173,6 +225,10 @@
             </div>
         </ons-page>
     </ons-dialog>
+<<<<<<< HEAD
+=======
+    </ons-carousel>
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
 </script>
 
 <script type="text/ons-template" id="seemore.html">
@@ -189,6 +245,10 @@
 
 
 <script type="text/ons-template" id="alert.html">
+<<<<<<< HEAD
+=======
+    <ons-carousel swipeable auto-scroll fullscreen>
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog" ng-controller="AlertController">
         <div class="alert-dialog-title">Lỗi!</div>
         <div class="alert-dialog-content">
@@ -198,6 +258,10 @@
             <button class="alert-dialog-button" ng-click="closeAlert()">OK</button>
         </div>
     </ons-alert-dialog>
+<<<<<<< HEAD
+=======
+    </ons-carousel>
+>>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
 </script>
 
 <script type="text/javascript">
