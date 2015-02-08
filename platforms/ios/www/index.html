@@ -12,12 +12,6 @@
     <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">
     <link rel="stylesheet" href="styles/app.css"/>
     <link rel="stylesheet" href="css/main.css"/>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="css/table_style.css"/>
-
-
-=======
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
     <!--<link rel="stylesheet" href="css/chat.css"/>-->
 
 
@@ -44,50 +38,28 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 20px;
-<<<<<<< HEAD
-            width: 90%;
-=======
             width: 95%;
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
         }
+
+
 
     </style>
 
 </head>
 
-<<<<<<< HEAD
-<body>
-=======
-<body >
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
+<body ng-controller="MainCtrl" >
 
 
 <ons-navigator var="ruby.navigator">
     <ons-carousel swipeable auto-scroll fullscreen>
-<<<<<<< HEAD
-        <ons-page id="wrapper" ng-controller="MainCtrl" fullscreen>
-=======
-        <ons-page id="wrapper"  fullscreen ng-controller="MainCtrl" >
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
+        <ons-page id="wrapper"  fullscreen  >
             <ons-toolbar modifier="transparent" class="background">
-                <div class="right">
-                    <ons-toolbar-button   ng-click="showFrqPage()" style="height: 10%">
-                        <!--div class="center content" >Xem g</div>8F8B1D D43F3F -->
-                        <ons-icon id="icon-frq" size="35px" icon="ion-arrow-right-c" style="color:#D43F3F;margin-top: 20px"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
+
             </ons-toolbar>
             <div class="content-body background" id="main-content">
-<<<<<<< HEAD
-                <ons-gesture-detector  ng-swipedown="showRandom()" ng-click="showInput()">
-=======
                 <ons-gesture-detector  ng-swipedown="showRandom()"  ng-click="showInput()">
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                     <div id="main">
                         <div class="display">
-                            <!--<div class="center">
-                                <img class="image" src="img/assistant.png">
-                            </div>-->
                             <ons-carousel swipeable  auto-scroll fullscreen id="history-carousel"
                                           var="ruby.carousel">
 
@@ -97,26 +69,8 @@
                                     <div class="show-answer">
                                         <div class="answer-box">
                                             <div class="content content-answer" id="answer-0">
-<<<<<<< HEAD
-                                                <table>
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Kênh</th>
-                                                        <th>Thời gian</th>
-                                                        <th>Chương trình</th>
-                                                        <th>Chương trình</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr><td class="user-name">gary coleman</td><td class="user-email">gary.coleman21@example.com</td><td class="user-phone">(398)-332-5385</td><td class="user-mobile">(888)-677-3719</td></tr>
-                                                    <tr><td class="user-name">rose parker</td><td class="user-email">rose.parker16@example.com</td><td class="user-phone">(293)-873-2247</td><td class="user-mobile">(216)-889-4933</td></tr>
-                                                    <tr><td class="user-name">chloe nelson</td><td class="user-email">chloe.nelson18@example.com</td><td class="user-phone">(957)-213-3499</td><td class="user-mobile">(207)-516-4474</td></tr>
-                                                    </tbody>
-                                                </table>
-=======
                                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;Chào bạn, rất vui được làm quen với bạn. Mình có thể giúp bạn trả lời
-                                                các câu hỏi về phim ảnh và các chương trình TV.</p>
-
+                                                    các câu hỏi về phim ảnh và các chương trình TV.</p>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;Bạn có thể:
                                                 <ul class="begin">
                                                     <li>Click vào mũi tên phía trên bên phải để xem các câu hỏi thường được hỏi.</li>
@@ -125,7 +79,6 @@
                                                     <li>Chạm để hỏi theo cách của bạn.</li>
                                                 </ul>
 
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                                             </div>
                                             <div class="full-answer" id="full-answer-0s">
 
@@ -149,14 +102,8 @@
                 <ons-bottom-toolbar id="footer">
 
                     <div class="show-question center" style="margin-top: 10px">
-<<<<<<< HEAD
                         <div class="content" id="question" style="white-space: normal"></div>
-=======
-                        <ons-row>
-                            <div class="content" id="question" style="white-space: normal"></div>
-                        </ons-row>
 
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                         <div class=" recommend-question">
                             <ons-button id="recommend-question"  modifier="large">
                                 <ons-row>
@@ -168,21 +115,26 @@
                                     </ons-col>
                                 </ons-row>
                             </ons-button>
-<<<<<<< HEAD
-=======
 
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
                         </div>
                     </div>
 
                     <div class="button-request" style="height: 40%">
-                        <ons-button id="button-request"      modifier="quiet"
-                                    style="width: 100%;height: 100%; color:seashell">Chạm để hỏi
-                        </ons-button>
-<<<<<<< HEAD
-=======
-                        <ons-icon class="right" icon="fa-question"></ons-icon>
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
+                        <ons-row>
+                            <ons-col width="20%">
+
+                            </ons-col>
+                            <ons-col width="60%">
+                                <ons-button id="button-request"      modifier="quiet"
+                                            style="width: 100%;height: 100%; color:seashell">Chạm để hỏi
+                                </ons-button>
+                            </ons-col>
+                            <ons-col width="20%">
+                                <ons-toolbar-button ng-click="showFrqPage()">
+                                    <ons-icon id="icon-frq" size="28px" class="right" style="color: white;" icon="fa fa-question-circle"></ons-icon>
+                                </ons-toolbar-button>
+                            </ons-col>
+                        </ons-row>
                     </div>
                     <div class="spinner-bottom loading"></div>
                     <input type="text" id="input" class="content text-input text-input--transparent" placeholder="Hỏi tôi"
@@ -202,67 +154,58 @@
 
 
 <script type="text/ons-template" id="dialog.html">
-<<<<<<< HEAD
-=======
     <ons-carousel swipeable auto-scroll fullscreen>
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
-    <ons-dialog style="height: 50%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
-        <ons-page id="pageSeeMore" style="background-color: #8F8B1D !important; ">
-            <div class="page-inner">
-                <div class="random-question-box">
-                    <div class="random-question">
-                        <ons-button id="random-question-1" class="random-question-button" modifier="large"
-                                    style="background-color: lightseagreen ">
-                        </ons-button>
-                        <ons-button id="random-question-2" class="random-question-button" modifier="large"
-                                    style="background-color: lightcoral">
-                        </ons-button>
-                        <ons-button id="random-question-3" class="random-question-button" modifier="large"
-                                    style="background-color:limegreen   ">
-                        </ons-button>
+        <ons-dialog style="height: 50%;width: 100%;top:20%;" class="random-dialog" animation="slide" cancelable>
+            <ons-page id="pageSeeMore" style="background-color: #8F8B1D !important; ">
+                <div class="page-inner">
+                    <div class="random-question-box">
+                        <div class="random-question">
+                            <ons-button id="random-question-1" class="random-question-button" modifier="large"
+                                        style="background-color: lightseagreen ">
+                            </ons-button>
+                            <ons-button id="random-question-2" class="random-question-button" modifier="large"
+                                        style="background-color: lightcoral">
+                            </ons-button>
+                            <ons-button id="random-question-3" class="random-question-button" modifier="large"
+                                        style="background-color:limegreen   ">
+                            </ons-button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </ons-page>
-    </ons-dialog>
-<<<<<<< HEAD
-=======
+            </ons-page>
+        </ons-dialog>
     </ons-carousel>
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
 </script>
 
 <script type="text/ons-template" id="seemore.html">
     <ons-carousel swipeable auto-scroll fullscreen>
-    <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
+        <ons-dialog style="height: 80%;width: 100%;" class="random-dialog" animation="slide" cancelable>
             <ons-page style="background-color: #E6E3B2 !important;">
-                        <div class="width-90 content" id="full-answer-show">
-                        </div>
+                <div class="width-90 content" id="full-answer-show">
+                </div>
 
             </ons-page>
-    </ons-dialog>
+        </ons-dialog>
     </ons-carousel>
 </script>
 
 
 <script type="text/ons-template" id="alert.html">
-<<<<<<< HEAD
-=======
     <ons-carousel swipeable auto-scroll fullscreen>
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
-    <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog" ng-controller="AlertController">
-        <div class="alert-dialog-title">Lỗi!</div>
-        <div class="alert-dialog-content">
-           Có lỗi xảy ra. Xin bạn vui lòng kiểm tra kết nối internet hoặc thử lại!
-        </div>
-       <div class="alert-dialog-footer">
-            <button class="alert-dialog-button" ng-click="closeAlert()">OK</button>
-        </div>
-    </ons-alert-dialog>
-<<<<<<< HEAD
-=======
+        <ons-alert-dialog animation="default" cancelable  style="background-color: #76B8A6;" var="ruby.alertDialog">
+            <div class="alert-dialog-title">Lỗi!</div>
+            <div class="alert-dialog-content">
+                Có lỗi xảy ra. Xin bạn vui lòng kiểm tra kết nối internet hoặc thử lại!
+            </div>
+            <div class="alert-dialog-footer">
+                <button class="alert-dialog-button" ng-click="closeAlert()">OK</button>
+            </div>
+        </ons-alert-dialog>
     </ons-carousel>
->>>>>>> 389eb16cc4ab5b0b47dcf633bf9104ff2af3d311
 </script>
+
+
+
 
 <script type="text/javascript">
     $(function() {

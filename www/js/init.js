@@ -15,11 +15,11 @@ $(document).ready(function () {
 
 
 
-    $('#btnSeeMore').hide();
-    $('.full-answer').hide();
-    $('#input').hide();
+    /*$('#btnSeeMore').hide();
+    $('.full-answer').hide();*/
+    //$('#input').hide();
     $('.loading').hide();
-    $('#footer').height(footerHeight);
+    //$('#footer').height(footerHeight);
     //$('.recommend-question').hide();
     $('#btnSeeMore').click(function() {
         mixpanel.track("seeMore", {});
@@ -29,19 +29,16 @@ $(document).ready(function () {
         $(this).focus();
     });
 
-    $('#button-request').click(function (e) {
-        // footer
+    /*$('#button-request').click(function (e) {
         $('#button-request').hide();
         $('#footer').height(inputHeight);
-        //$('#input').css('line-height','36px');
         $('#input').val('');
         $('.show-question').hide();
-        // init state
         $('#input').show();
         $('#input').trigger('click');
         $('.button-request').hide();
 
-    });
+    });*/
 
 
     //trigger enter key 

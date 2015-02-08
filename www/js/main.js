@@ -34,33 +34,9 @@
         });
     });
 
-    module.controller('AlertController', function ($scope) {
-        $scope.closeAlert = function() {
-            if(rubyDialog.dialog && rubyDialog.dialog.isShown()) {
-                rubyDialog.dialog.hide();
-            }
-        };
-    });
 
-    module.controller('FrqQuestionController', function ($scope) {
+    module.controller('MainCtrl', function ($scope) {
 
-        $scope.btnQuestionClick = function () {
-            ons.navigator.popPage();
-            mixpanel.track("ask", {'input': 'freq'});
-            request(this.item.question);
-        }
-
-        $scope.showMainPage = function () {
-            ons.navigator.popPage();
-        }
-
-
-    });
-
-
-
-    module.controller('MainCtrl', function ($scope, $frqQuestions) {
-        $scope.items = $frqQuestions.items;
         ons.createDialog('dialog.html').then(function (dialog) {
             $scope.dialog = dialog;
         });
@@ -68,7 +44,6 @@
         ons.createDialog('seemore.html').then(function (dialog) {
             $scope.dialog_seemore = dialog;
         });
-
 
 
         $scope.showRandom = function () {
@@ -89,11 +64,11 @@
         }
 
         $scope.showFrqPage = function(){
-            ons.createDialog('frq-question.html').then(function (dialog) {
-                $scope.dialog_frq = dialog;
-            });
-            $scope.dialog_frq.show();
+            //ruby.navigator.pushPage('html/frq-questions.html', {title: 'frequently asked questions'})
+            ruby.navigator.pushPage('html/test.html', {title: 'frequently asked questions'})
         }
+
+
 
         $scope.seemore = function (answer) {
             mixpanel.track("seemore", {});
@@ -111,19 +86,38 @@
             $('#button-request').show();
         }
 
-       /* $scope.showFrqPage = function () {
-            mixpanel.track("viewFrequent");
-            ruby.navigator.pushPage('html/frq-questions.html', {title: 'frequently asked questions'})
-        }*/
+
+
+        $scope.btnQuestionClick = function () {
+            $scope.dialog_frq.hide();
+            mixpanel.track("ask", {'input': 'freq'});
+            request(this.item.question);
+        }
 
 
         $scope.closeAlert = function() {
-            if(rubyDialog.dialog.alertDialog && rubyDialog.dialog.alertDialog.isShown()) {
-                rubyDialog.dialog.alertDialog.hide();
+            if(rubyDialog.dialog && rubyDialog.dialog.isShown()) {
+                rubyDialog.dialog.hide();
             }
         };
     });
 
+
+    module.controller('FrqQuestionController', function ($scope,$frqQuestions) {
+        $scope.items = $frqQuestions.items;
+
+        $scope.btnQuestionClick = function () {
+            ons.navigator.popPage();
+            mixpanel.track("ask", {'input': 'freq'});
+            request(this.item.question);
+        }
+
+        $scope.showMainPage = function () {
+            ons.navigator.popPage();
+        }
+
+
+    });
 
     module.factory('$frqQuestions', function () {
         var data = {};

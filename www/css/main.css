@@ -37,16 +37,22 @@
       }
 }
 
-.button-request {
+/*.button-request {
     text-align: center;
-    width: 100%;
     margin: 10px auto 0;
-}
+}*/
 
 .recommend-question {
     text-align: center;
-    width: 80%;
     margin: 10px auto 0;
+}
+
+.text-color-white{
+    color: #ffffff;
+}
+
+.text-color-black{
+    color: #100F0E;
 }
 
 #recommend-question{
@@ -82,10 +88,6 @@ input[type=email], input[type=password] {
 
 .image{
     margin-top: 60px;
-}
-
-.text-input {
-    margin-left: 10px;
 }
 
 #footer{
