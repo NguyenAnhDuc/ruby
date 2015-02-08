@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+
+        .plan-list {
+            border-top: none;
+            background-image: none !important;
+        }
+
+        .plan {
+            line-height: 1;
+            padding: 0;
+        }
+
+
+
+        .plan-right {
+            padding: 10px 40px 10px 10px;
+        }
+
+       /* .plan-date {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .plan-duration {
+            font-size: 11px;
+            opacity: 0.4;
+        }
+
+        .plan-name {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .plan-info {
+            opacity: 0.4;
+            font-size: 12px;
+            line-height: 1.4;
+        }*
+        .plan-left {
+            text-align: right;
+            padding: 10px 10px 10px 0;
+        }
+
+        .plan-center {
+            background-color: #3399ff;
+            opacity: 0.5;
+        }
+        /
+
+
+    </style>
+
+</head>
+<body >
+
+<!--<ons-tabbar>-->
+   <!--<ons-tab page="schedule.html" active="true">-->
+        <!--<ons-icon icon="ion-ios7-calendar" style="font-size: 28px; vertical-align: -4px;"></ons-icon>-->
+    <!--</ons-tab>-->
+
+    <!--<ons-tab page="schedule.html">-->
+        <!--<ons-icon icon="ion-ios7-people" style="font-size: 28px; vertical-align: -4px;"></ons-icon>-->
+    <!--</ons-tab>-->
+
+    <!--<ons-tab page="schedule.html">-->
+        <!--<ons-icon icon="ion-gear-a" style="font-size: 28px; vertical-align: -4px;"></ons-icon>-->
+    <!--</ons-tab>-->
+<!--</ons-tabbar>-->
+
+    <ons-page ng-controller="FrqQuestionController">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button>
+                    <ons-back-button>Quay về</ons-back-button>
+                    <!--<ons-icon icon="ion-back" fixed-width="false" style="vertical-align: -4px;"></ons-icon>-->
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                Schedule
+            </div>
+            <div class="right">
+
+            </div>
+        </ons-toolbar>
+
+        <div class="navigation-bar width-90">
+            <div class="navigation-bar__center">
+
+                <!-- segment control -->
+                <div class="button-bar" style="width:200px; margin:8px auto 0;">
+                    <div class="button-bar__item">
+                        <input type="radio" name="navi-segment-a" checked>
+                        <div class="button-bar__button">Tivi</div>
+                    </div>
+                    <div class="button-bar__item">
+                        <input type="radio" name="navi-segment-a">
+                        <div class="button-bar__button">Phim ảnh</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <ons-list class="plan-list width-90">
+            <ons-list-item modifier="chevron" class="plan" ng-repeat="item in items" ng-click="btnQuestionClick()">
+                <ons-row>
+                    <ons-col class="plan-right">
+                        <div  >{{item.question}}</div>
+                    </ons-col>
+                    <!--<ons-col width="80px" class="plan-left">
+                        <div class="plan-date">5:30 PM</div>
+                        <div class="plan-duration">1h</div>
+                    </ons-col>
+
+                    <ons-col width="6px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#3399ff' : '#ccc'}">
+                    </ons-col>
+
+                    <ons-col class="plan-right">
+                        <div class="plan-name">Onsen UI Meetup</div>
+
+                        <div class="plan-info">
+                            <div ng-hide="a % 4 == 0">
+                                <ons-icon icon="fa-phone"></ons-icon>123-456-789
+                            </div>
+
+                            <div ng-hide="a % 3 == 0">
+                                <ons-icon icon="fa-map-marker"></ons-icon>Moscone, San Francisco
+                            </div>
+                        </div>
+                    </ons-col>-->
+                </ons-row>
+            </ons-list-item>
+
+        </ons-list>
+
+
+
+    </ons-page>
+
+</body>
+</html>
+
