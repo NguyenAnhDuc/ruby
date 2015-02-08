@@ -1,0 +1,13 @@
+/* Component styles */
+
+
+td, th {
+    padding: 0.75em 1.5em;
+    text-align: left;
+}
+
+
+tbody tr:nth-child(2n-1) {
+    background-color: #f5f5f5;
+    transition: all .125s ease-in-out;
+}
